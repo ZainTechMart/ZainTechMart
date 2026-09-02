@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZainTechMart - Mobile Accessories</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .cart {
+      background: white;
+      color: #111827;
+      border: none;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    nav {
+      margin-top: 15px;
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #374151);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      color: #e5e7eb;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background: white;
+      color: #111827;
+      text-decoration: none;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 35px 16px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .category {
+      background: white;
+      padding: 22px 10px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-weight: bold;
+    }
+
+    .category span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding-bottom: 15px;
+    }
+
+    .product-image {
+      height: 150px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+    }
+
+    .product-info {
+      padding: 13px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 7px;
+      background: #111827;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .feature {
+      background: white;
+      padding: 20px 10px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .feature span {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+      text-align: center;
+      border-radius: 14px;
+      padding: 30px 15px;
+    }
+
+    .whatsapp {
+      display: inline-block;
+      margin-top: 18px;
+      background: white;
+      color: #111827;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #0b1120;
+      color: #d1d5db;
+      text-align: center;
+      padding: 22px 10px;
+      margin-top: 35px;
+      font-size: 14px;
+    }
+
+    @media (min-width: 700px) {
+      .categories {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .features {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="logo">⚡ ZainTechMart</div>
+      <button class="cart">🛒 Cart (0)</button>
+    </div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Smart Accessories. Better Life.</h1>
+    <p>Quality mobile accessories at affordable prices.</p>
+    <a href="#products" class="shop-btn">Shop Now</a>
+  </div>
+
+  <section id="categories">
+    <h2 class="section-title">📱 Shop Categories</h2>
+
+    <div class="categories">
+
+      <div class="category">
+        <span>🔌</span>
+        Chargers
+      </div>
+
+      <div class="category">
+        <span>🔗</span>
+        USB & Type-C Cables
+      </div>
+
+      <div class="category">
+        <span>🎧</span>
+        Earphones
+      </div>
+
+      <div class="category">
+        <span>🔋</span>
+        Power Banks
+      </div>
+
+      <div class="category">
+        <span>📱</span>
+        Mobile Covers
+      </div>
+
+      <div class="category">
+        <span>🛡️</span>
+        Screen Protectors
+      </div>
+
+      <div class="category">
+        <span>🚗</span>
+        Mobile Holders
+      </div>
+
+      <div class="category">
+        <span>🎵</span>
+        TWS Earbuds
+      </div>
+
+    </div>
+  </section>
+
+  <section id="products">
+    <h2 class="section-title">🔥 Featured Products</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="product-image">🔌</div>
+
+        <div class="product-info">
+          <h3>Fast Charger</h3>
+          <div class="price">Rs. 1,499</div>
+          <button class="buy-btn" onclick="orderProduct('Fast Charger')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">🔗</div>
+
+        <div class="product-info">
+          <h3>Type-C Cable</h3>
+          <div class="price">Rs. 699</div>
+          <button class="buy-btn" onclick="orderProduct('Type-C Cable')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">🎧</div>
+
+        <div class="product-info">
+          <h3>TWS Wireless Earbuds</h3>
+          <div class="price">Rs. 2,199</div>
+          <button class="buy-btn" onclick="orderProduct('TWS Wireless Earbuds')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">🔋</div>
+
+        <div class="product-info">
+          <h3>Power Bank</h3>
+          <div class="price">Rs. 2,999</div>
+          <button class="buy-btn" onclick="orderProduct('Power Bank')">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🚚 Why Choose ZainTechMart?</h2>
+
+    <div class="features">
+
+      <div class="feature">
+        <span>🚚</span>
+        Fast Delivery
+      </div>
+
+      <div class="feature">
+        <span>💵</span>
+        Cash on Delivery
+      </div>
+
+      <div class="feature">
+        <span>✅</span>
+        Quality Products
+      </div>
+
+      <div class="feature">
+        <span>📞</span>
+        Customer Support
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+
+    <div class="contact">
+
+      <h2>📞 Need Help?</h2>
+
+      <p style="margin-top:10px;">
+        Contact ZainTechMart for product information and orders.
+      </p>
+
+      <a class="whatsapp"
+         href="https://wa.me/923000000000"
+         target="_blank">
+        💬 WhatsApp Us
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 ZainTechMart. All Rights Reserved.
+  </footer>
+
+  <script>
+
+    function orderProduct(productName) {
+      alert(
+        "You selected: " + productName +
+        "\n\nOrder system will be added in the next step."
+      );
+    }
+
+  </script>
+
+</body>
+</html>
