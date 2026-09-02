@@ -473,13 +473,12 @@
   <script>
 
     function orderProduct(productName) {
+  const phone = "923303118422";
+  const message = "Assalam o Alaikum, mujhe " + productName + " order karna hai.";
+  const whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
-      alert(
-        "You selected: " + productName +
-        "\n\nOrder system will be added in the next step."
-      );
-
-    }
+  window.open(whatsappURL, "_blank");
+}
 
   </script>
 
