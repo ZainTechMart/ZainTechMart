@@ -139,12 +139,19 @@
     }
 
     .product-image {
-      height: 150px;
+      height: 180px;
       background: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 55px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .product-info {
@@ -154,12 +161,20 @@
     .product h3 {
       font-size: 16px;
       margin-bottom: 8px;
+      line-height: 1.4;
     }
 
     .price {
       font-size: 19px;
       font-weight: bold;
       margin-bottom: 12px;
+    }
+
+    .product-features {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      color: #444;
     }
 
     .buy-btn {
@@ -226,7 +241,7 @@
       }
 
       .products {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .features {
@@ -235,6 +250,10 @@
 
       .hero h1 {
         font-size: 45px;
+      }
+
+      .product-image {
+        height: 250px;
       }
     }
   </style>
@@ -256,11 +275,13 @@
     </nav>
   </header>
 
+
   <div class="hero">
     <h1>Smart Accessories. Better Life.</h1>
     <p>Quality mobile accessories at affordable prices.</p>
     <a href="#products" class="shop-btn">Shop Now</a>
   </div>
+
 
   <section id="categories">
     <h2 class="section-title">📱 Shop Categories</h2>
@@ -310,64 +331,91 @@
     </div>
   </section>
 
+
   <section id="products">
     <h2 class="section-title">🔥 Featured Products</h2>
 
     <div class="products">
 
-      <div class="product">
-        <div class="product-image">🔌</div>
 
-        <div class="product-info">
-          <h3>Fast Charger</h3>
-          <div class="price">Rs. 1,499</div>
-          <button class="buy-btn" onclick="orderProduct('Fast Charger')">
-            Buy Now
-          </button>
-        </div>
-      </div>
+      <!-- USB-C 20W Power Adapter -->
 
       <div class="product">
-        <div class="product-image">🔗</div>
+
+        <div class="product-image">
+          <img src="usb-c-20w.jpg"
+               alt="USB-C 20W Power Adapter">
+        </div>
 
         <div class="product-info">
-          <h3>Type-C Cable</h3>
-          <div class="price">Rs. 699</div>
-          <button class="buy-btn" onclick="orderProduct('Type-C Cable')">
+
+          <h3>USB-C 20W Power Adapter</h3>
+
+          <div class="price">
+            Rs. 3,500
+          </div>
+
+          <div class="product-features">
+            ⚡ 20W Fast Charging<br>
+            🔌 USB-C Output<br>
+            📱 Compatible with Smartphones & Tablets<br>
+            📦 Compact & Easy to Carry
+          </div>
+
+          <button class="buy-btn"
+                  onclick="orderProduct('USB-C 20W Power Adapter')">
             Buy Now
           </button>
+
         </div>
+
       </div>
+
+
+      <!-- Air31 Earbuds -->
 
       <div class="product">
-        <div class="product-image">🎧</div>
+
+        <div class="product-image">
+          <img src="air31-earbuds.jpg"
+               alt="Air31 Earbuds">
+        </div>
 
         <div class="product-info">
-          <h3>TWS Wireless Earbuds</h3>
-          <div class="price">Rs. 2,199</div>
-          <button class="buy-btn" onclick="orderProduct('TWS Wireless Earbuds')">
+
+          <h3>Air31 Earbuds</h3>
+
+          <div class="price">
+            Rs. 1,799
+          </div>
+
+          <div class="product-features">
+            🎧 Wireless Bluetooth Connectivity<br>
+            🔋 Charging Case Included<br>
+            🔌 Type-C Charging<br>
+            👆 Touch Controls<br>
+            💡 LED Battery Display
+          </div>
+
+          <button class="buy-btn"
+                  onclick="orderProduct('Air31 Earbuds')">
             Buy Now
           </button>
+
         </div>
+
       </div>
 
-      <div class="product">
-        <div class="product-image">🔋</div>
-
-        <div class="product-info">
-          <h3>Power Bank</h3>
-          <div class="price">Rs. 2,999</div>
-          <button class="buy-btn" onclick="orderProduct('Power Bank')">
-            Buy Now
-          </button>
-        </div>
-      </div>
 
     </div>
   </section>
 
+
   <section>
-    <h2 class="section-title">🚚 Why Choose ZainTechMart?</h2>
+
+    <h2 class="section-title">
+      🚚 Why Choose ZainTechMart?
+    </h2>
 
     <div class="features">
 
@@ -392,7 +440,9 @@
       </div>
 
     </div>
+
   </section>
+
 
   <section id="contact">
 
@@ -414,17 +464,21 @@
 
   </section>
 
+
   <footer>
     © 2026 ZainTechMart. All Rights Reserved.
   </footer>
 
+
   <script>
 
     function orderProduct(productName) {
+
       alert(
         "You selected: " + productName +
         "\n\nOrder system will be added in the next step."
       );
+
     }
 
   </script>
