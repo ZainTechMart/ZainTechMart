@@ -1,487 +1,1216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ZainTechMart - Mobile Accessories</title>
+<title>ZainTechMart | Smart Accessories</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f6fa;
-      color: #222;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #0b1120;
+  color: white;
+}
 
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
+/* HEADER */
 
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
+header {
+  background: #111827;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #1f2937;
+}
 
-    .cart {
-      background: white;
-      color: #111827;
-      border: none;
-      padding: 9px 13px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: #22d3ee;
+}
 
-    nav {
-      margin-top: 15px;
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-    }
+.cart-button {
+  background: #22d3ee;
+  color: #07111f;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      white-space: nowrap;
-    }
+.cart-button:hover {
+  background: #67e8f9;
+}
 
-    .hero {
-      background: linear-gradient(135deg, #111827, #374151);
-      color: white;
-      text-align: center;
-      padding: 55px 20px;
-    }
+/* HERO */
 
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 12px;
-      color: cyan;
-    }
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+  background: linear-gradient(135deg, #111827, #164e63);
+}
 
-    .hero p {
-      font-size: 16px;
-      margin-bottom: 25px;
-      color: #e5e7eb;
-    }
+.hero h1 {
+  font-size: 38px;
+  color: #22d3ee;
+  margin-bottom: 15px;
+}
 
-    .shop-btn {
-      display: inline-block;
-      background: white;
-      color: #111827;
-      text-decoration: none;
-      padding: 13px 25px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+.hero p {
+  color: #d1d5db;
+  font-size: 17px;
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+}
 
-    section {
-      padding: 35px 16px;
-      max-width: 1100px;
-      margin: auto;
-    }
+/* SEARCH */
 
-    .section-title {
-      text-align: center;
-      font-size: 25px;
-      margin-bottom: 25px;
-    }
+.search-box {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 0 20px;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+.search-box input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #111827;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
 
-    .category {
-      background: white;
-      padding: 22px 10px;
-      text-align: center;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      font-weight: bold;
-    }
+.search-box input:focus {
+  border-color: #22d3ee;
+}
 
-    .category span {
-      display: block;
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
+/* CATEGORIES */
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+.categories {
+  text-align: center;
+  padding: 20px;
+}
 
-    .product {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding-bottom: 15px;
-    }
+.categories button {
+  margin: 5px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #22d3ee;
+  background: transparent;
+  color: #22d3ee;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .product-image {
-      height: 180px;
-      background: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+.categories button:hover {
+  background: #22d3ee;
+  color: #07111f;
+}
 
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+/* PRODUCTS */
 
-    .product-info {
-      padding: 13px;
-    }
+.products {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
 
-    .product h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
+.product {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+}
 
-    .price {
-      font-size: 19px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+.product:hover {
+  transform: translateY(-5px);
+  border-color: #22d3ee;
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.12);
+}
 
-    .product-features {
-      font-size: 13px;
-      line-height: 1.7;
-      margin-bottom: 12px;
-      color: #444;
-    }
+.product img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background: white;
+  padding: 15px;
+}
 
-    .buy-btn {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 7px;
-      background: #111827;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.product-content {
+  padding: 18px;
+}
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+.product h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
 
-    .feature {
-      background: white;
-      padding: 20px 10px;
-      text-align: center;
-      border-radius: 10px;
-    }
+.price {
+  color: #22d3ee;
+  font-size: 21px;
+  font-weight: bold;
+  margin: 10px 0;
+}
 
-    .feature span {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 8px;
-    }
+.stock {
+  color: #4ade80;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
 
-    .contact {
-      background: #111827;
-      color: white;
-      text-align: center;
-      border-radius: 14px;
-      padding: 30px 15px;
-    }
+.product-buttons {
+  display: flex;
+  gap: 10px;
+}
 
-    .whatsapp {
-      display: inline-block;
-      margin-top: 18px;
-      background: white;
-      color: #111827;
-      padding: 12px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.buy-button,
+.add-button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    footer {
-      background: #0b1120;
-      color: #d1d5db;
-      text-align: center;
-      padding: 22px 10px;
-      margin-top: 35px;
-      font-size: 14px;
-    }
+.buy-button {
+  background: #22d3ee;
+  color: #07111f;
+  border: none;
+}
 
-    @media (min-width: 700px) {
-      .categories {
-        grid-template-columns: repeat(4, 1fr);
-      }
+.buy-button:hover {
+  background: #67e8f9;
+}
 
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
+.add-button {
+  background: transparent;
+  color: #22d3ee;
+  border: 1px solid #22d3ee;
+}
 
-      .features {
-        grid-template-columns: repeat(4, 1fr);
-      }
+.add-button:hover {
+  background: #22d3ee;
+  color: #07111f;
+}
 
-      .hero h1 {
-        font-size: 45px;
-      }
+/* FEATURES */
 
-      .product-image {
-        height: 250px;
-      }
-    }
-  </style>
+.features {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.feature {
+  background: #111827;
+  border: 1px solid #1f2937;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.feature h3 {
+  color: #22d3ee;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+  background: #111827;
+  color: #94a3b8;
+}
+
+.whatsapp-contact {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #22c55e;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* CART */
+
+.cart-panel {
+  position: fixed;
+  right: -420px;
+  top: 0;
+  width: 400px;
+  max-width: 95%;
+  height: 100%;
+  background: #0f172a;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+  transition: 0.3s;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+}
+
+.cart-panel.open {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h2 {
+  color: #22d3ee;
+}
+
+.close-cart {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.cart-item {
+  background: #111827;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #1f2937;
+}
+
+.cart-item h3 {
+  margin-bottom: 8px;
+}
+
+.cart-item-price {
+  color: #22d3ee;
+  font-weight: bold;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #22d3ee;
+  color: #07111f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-button {
+  margin-top: 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-total {
+  border-top: 1px solid #334155;
+  padding-top: 18px;
+  margin-top: 20px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #22d3ee;
+}
+
+/* CHECKOUT */
+
+.checkout {
+  margin-top: 25px;
+}
+
+.checkout h3 {
+  color: #22d3ee;
+  margin-bottom: 15px;
+}
+
+.checkout input,
+.checkout textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #111827;
+  color: white;
+  outline: none;
+}
+
+.checkout textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.checkout input:focus,
+.checkout textarea:focus {
+  border-color: #22d3ee;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 14px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background: #16a34a;
+}
+
+/* NO RESULTS */
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding: 50px 15px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .products {
+    padding: 15px;
+  }
+
+  .product img {
+    height: 220px;
+  }
+
+  .cart-panel {
+    width: 100%;
+    max-width: 100%;
+    right: -100%;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="header-top">
-      <div class="logo">⚡ ZainTechMart</div>
-      <button class="cart">🛒 Cart (0)</button>
+<!-- HEADER -->
+
+<header>
+
+  <div class="logo">
+    ZainTechMart
+  </div>
+
+  <button class="cart-button" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <h1>Smart Accessories. Better Life.</h1>
+
+  <p>
+    Discover useful tech accessories at ZainTechMart.
+    Simple shopping, reliable products and easy WhatsApp ordering.
+  </p>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 Search products..."
+    onkeyup="searchProducts()"
+  >
+
+</div>
+
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+  <button onclick="filterProducts('all')">
+    All Products
+  </button>
+
+  <button onclick="filterProducts('charger')">
+    Chargers
+  </button>
+
+  <button onclick="filterProducts('earbuds')">
+    TWS Earbuds
+  </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<section class="products" id="productList">
+
+
+  <!-- USB-C CHARGER -->
+
+  <div class="product" data-category="charger" data-name="USB-C 20W Power Adapter">
+
+    <img
+      src="usb-c-20w.jpg"
+      alt="USB-C 20W Power Adapter"
+    >
+
+    <div class="product-content">
+
+      <h3>USB-C 20W Power Adapter</h3>
+
+      <div class="price">
+        Rs. 3,500
+      </div>
+
+      <div class="stock">
+        ● Available
+      </div>
+
+      <div class="product-buttons">
+
+        <button
+          class="buy-button"
+          onclick="orderProduct('USB-C 20W Power Adapter', 3500)"
+        >
+          Buy Now
+        </button>
+
+        <button
+          class="add-button"
+          onclick="addToCart('USB-C 20W Power Adapter', 3500)"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
     </div>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#categories">Categories</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-
-  <div class="hero">
-    <h1>Smart Accessories. Better Life.</h1>
-    <p>Quality mobile accessories at affordable prices.</p>
-    <a href="#products" class="shop-btn">Shop Now</a>
   </div>
 
 
-  <section id="categories">
-    <h2 class="section-title">📱 Shop Categories</h2>
+  <!-- AIR31 EARBUDS -->
 
-    <div class="categories">
+  <div class="product" data-category="earbuds" data-name="Air31 Earbuds">
 
-      <div class="category">
-        <span>🔌</span>
-        Chargers
+    <img
+      src="air31-earbuds.jpeg"
+      alt="Air31 Earbuds"
+    >
+
+    <div class="product-content">
+
+      <h3>Air31 Earbuds</h3>
+
+      <div class="price">
+        Rs. 1,799
       </div>
 
-      <div class="category">
-        <span>🔗</span>
-        USB & Type-C Cables
+      <div class="stock">
+        ● Available
       </div>
 
-      <div class="category">
-        <span>🎧</span>
-        Earphones
-      </div>
+      <div class="product-buttons">
 
-      <div class="category">
-        <span>🔋</span>
-        Power Banks
-      </div>
+        <button
+          class="buy-button"
+          onclick="orderProduct('Air31 Earbuds', 1799)"
+        >
+          Buy Now
+        </button>
 
-      <div class="category">
-        <span>📱</span>
-        Mobile Covers
-      </div>
+        <button
+          class="add-button"
+          onclick="addToCart('Air31 Earbuds', 1799)"
+        >
+          Add to Cart
+        </button>
 
-      <div class="category">
-        <span>🛡️</span>
-        Screen Protectors
-      </div>
-
-      <div class="category">
-        <span>🚗</span>
-        Mobile Holders
-      </div>
-
-      <div class="category">
-        <span>🎵</span>
-        TWS Earbuds
-      </div>
-
-    </div>
-  </section>
-
-
-  <section id="products">
-    <h2 class="section-title">🔥 Featured Products</h2>
-
-    <div class="products">
-
-
-      <!-- USB-C 20W Power Adapter -->
-
-      <div class="product">
-
-        <div class="product-image">
-          <img src="usb-c-20w.jpg"
-               alt="USB-C 20W Power Adapter">
-        </div>
-
-        <div class="product-info">
-
-          <h3>USB-C 20W Power Adapter</h3>
-
-          <div class="price">
-            Rs. 3,500
-          </div>
-
-          <div class="product-features">
-            ⚡ 20W Fast Charging<br>
-            🔌 USB-C Output<br>
-            📱 Compatible with Smartphones & Tablets<br>
-            📦 Compact & Easy to Carry
-          </div>
-
-          <button class="buy-btn"
-                  onclick="orderProduct('USB-C 20W Power Adapter')">
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- Air31 Earbuds -->
-
-      <div class="product">
-
-        <div class="product-image">
-          <img src="air31-earbuds.jpeg"
-               alt="Air31 Earbuds">
-        </div>
-
-        <div class="product-info">
-
-          <h3>Air31 Earbuds</h3>
-
-          <div class="price">
-            Rs. 1,799
-          </div>
-
-          <div class="product-features">
-            🎧 Wireless Bluetooth Connectivity<br>
-            🔋 Charging Case Included<br>
-            🔌 Type-C Charging<br>
-            👆 Touch Controls<br>
-            💡 LED Battery Display
-          </div>
-
-          <button class="buy-btn"
-                  onclick="orderProduct('Air31 Earbuds')">
-            Buy Now
-          </button>
-
-        </div>
-
-      </div>
-
-
-    </div>
-  </section>
-
-
-  <section>
-
-    <h2 class="section-title">
-      🚚 Why Choose ZainTechMart?
-    </h2>
-
-    <div class="features">
-
-      <div class="feature">
-        <span>🚚</span>
-        Fast Delivery
-      </div>
-
-      <div class="feature">
-        <span>💵</span>
-        Cash on Delivery
-      </div>
-
-      <div class="feature">
-        <span>✅</span>
-        Quality Products
-      </div>
-
-      <div class="feature">
-        <span>📞</span>
-        Customer Support
       </div>
 
     </div>
 
-  </section>
+  </div>
 
 
-  <section id="contact">
-
-    <div class="contact">
-
-      <h2>📞 Need Help?</h2>
-
-      <p style="margin-top:10px;">
-        Contact ZainTechMart for product information and orders.
-      </p>
-
-      <a class="whatsapp"
-         href="https://wa.me/923303118422"
-         target="_blank">
-        💬 WhatsApp Us
-      </a>
-
-    </div>
-
-  </section>
+</section>
 
 
-  <footer>
-    © 2026 ZainTechMart. All Rights Reserved.
-  </footer>
+<!-- FEATURES -->
+
+<section class="features">
+
+  <div class="feature">
+
+    <h3>📦 Easy Ordering</h3>
+
+    <p>
+      Place your order easily through WhatsApp.
+    </p>
+
+  </div>
 
 
-  <script>
+  <div class="feature">
 
-    function orderProduct(productName) {
-  const phone = "923303118422";
-  const message = "Assalam o Alaikum, mujhe " + productName + " order karna hai.";
-  const whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    <h3>💬 WhatsApp Support</h3>
 
-  window.open(whatsappURL, "_blank");
+    <p>
+      Contact us directly for product information.
+    </p>
+
+  </div>
+
+
+  <div class="feature">
+
+    <h3>🚚 Delivery</h3>
+
+    <p>
+      Delivery details can be confirmed on WhatsApp.
+    </p>
+
+  </div>
+
+
+  <div class="feature">
+
+    <h3>🔒 Simple & Easy</h3>
+
+    <p>
+      Easy shopping experience from your mobile.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <p>
+    © 2026 ZainTechMart. All rights reserved.
+  </p>
+
+  <a
+    class="whatsapp-contact"
+    href="https://wa.me/923303118422"
+    target="_blank"
+  >
+    💬 Contact on WhatsApp
+  </a>
+
+</footer>
+
+
+<!-- CART PANEL -->
+
+<div class="cart-panel" id="cartPanel">
+
+  <div class="cart-header">
+
+    <h2>Your Cart</h2>
+
+    <button
+      class="close-cart"
+      onclick="closeCart()"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div id="cartItems">
+
+    <p style="color:#94a3b8;">
+      Your cart is empty.
+    </p>
+
+  </div>
+
+
+  <div class="cart-total">
+
+    Total:
+    Rs. <span id="cartTotal">0</span>
+
+  </div>
+
+
+  <!-- CHECKOUT -->
+
+  <div class="checkout">
+
+    <h3>Customer Details</h3>
+
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Your Name"
+    >
+
+    <input
+      type="tel"
+      id="customerPhone"
+      placeholder="Phone Number"
+    >
+
+    <textarea
+      id="customerAddress"
+      placeholder="Delivery Address"
+    ></textarea>
+
+    <button
+      class="checkout-button"
+      onclick="sendOrder()"
+    >
+      📲 Checkout on WhatsApp
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* WHATSAPP NUMBER */
+
+const whatsappNumber = "923303118422";
+
+
+/* CART */
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(name, price) {
+
+  const existingItem = cart.find(
+    item => item.name === name
+  );
+
+  if (existingItem) {
+
+    existingItem.quantity++;
+
+  } else {
+
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+
+  }
+
+  updateCart();
+
+  alert(name + " added to cart.");
+
 }
 
-  </script>
+
+/* UPDATE CART */
+
+function updateCart() {
+
+  const cartItems = document.getElementById("cartItems");
+
+  const cartCount = document.getElementById("cartCount");
+
+  const cartTotal = document.getElementById("cartTotal");
+
+
+  cartItems.innerHTML = "";
+
+  let total = 0;
+
+  let count = 0;
+
+
+  if (cart.length === 0) {
+
+    cartItems.innerHTML =
+      '<p style="color:#94a3b8;">Your cart is empty.</p>';
+
+  }
+
+
+  cart.forEach((item, index) => {
+
+    const itemTotal =
+      item.price * item.quantity;
+
+    total += itemTotal;
+
+    count += item.quantity;
+
+
+    const div = document.createElement("div");
+
+    div.className = "cart-item";
+
+
+    div.innerHTML = `
+
+      <h3>${item.name}</h3>
+
+      <div class="cart-item-price">
+        Rs. ${item.price.toLocaleString()}
+      </div>
+
+      <div class="quantity-controls">
+
+        <button onclick="changeQuantity(${index}, -1)">
+          −
+        </button>
+
+        <strong>
+          ${item.quantity}
+        </strong>
+
+        <button onclick="changeQuantity(${index}, 1)">
+          +
+        </button>
+
+      </div>
+
+      <p style="margin-top:10px;">
+        Item Total:
+        Rs. ${itemTotal.toLocaleString()}
+      </p>
+
+      <button
+        class="remove-button"
+        onclick="removeItem(${index})"
+      >
+        Remove
+      </button>
+
+    `;
+
+
+    cartItems.appendChild(div);
+
+  });
+
+
+  cartCount.textContent = count;
+
+  cartTotal.textContent =
+    total.toLocaleString();
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQuantity(index, change) {
+
+  cart[index].quantity += change;
+
+
+  if (cart[index].quantity <= 0) {
+
+    cart.splice(index, 1);
+
+  }
+
+
+  updateCart();
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  updateCart();
+
+}
+
+
+/* OPEN CART */
+
+function openCart() {
+
+  document
+    .getElementById("cartPanel")
+    .classList
+    .add("open");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart() {
+
+  document
+    .getElementById("cartPanel")
+    .classList
+    .remove("open");
+
+}
+
+
+/* BUY NOW */
+
+function orderProduct(name, price) {
+
+  const message =
+    "Assalam o Alaikum, mujhe " +
+    name +
+    " order karna hai.\n\n" +
+    "Price: Rs. " +
+    price.toLocaleString();
+
+
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(url, "_blank");
+
+}
+
+
+/* WHATSAPP CHECKOUT */
+
+function sendOrder() {
+
+  if (cart.length === 0) {
+
+    alert("Your cart is empty.");
+
+    return;
+
+  }
+
+
+  const name =
+    document
+      .getElementById("customerName")
+      .value
+      .trim();
+
+
+  const phone =
+    document
+      .getElementById("customerPhone")
+      .value
+      .trim();
+
+
+  const address =
+    document
+      .getElementById("customerAddress")
+      .value
+      .trim();
+
+
+  if (!name || !phone || !address) {
+
+    alert(
+      "Please enter your name, phone number and delivery address."
+    );
+
+    return;
+
+  }
+
+
+  let message =
+    "Assalam o Alaikum, I want to place an order from ZainTechMart.\n\n";
+
+
+  message +=
+    "Customer Name: " +
+    name +
+    "\n";
+
+
+  message +=
+    "Phone: " +
+    phone +
+    "\n";
+
+
+  message +=
+    "Address: " +
+    address +
+    "\n\n";
+
+
+  message +=
+    "Order Details:\n";
+
+
+  let total = 0;
+
+
+  cart.forEach(item => {
+
+    const itemTotal =
+      item.price * item.quantity;
+
+
+    total += itemTotal;
+
+
+    message +=
+      "- " +
+      item.name +
+      " × " +
+      item.quantity +
+      " = Rs. " +
+      itemTotal.toLocaleString() +
+      "\n";
+
+  });
+
+
+  message +=
+    "\nTotal: Rs. " +
+    total.toLocaleString();
+
+
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(url, "_blank");
+
+}
+
+
+/* SEARCH */
+
+function searchProducts() {
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
+
+
+  const products =
+    document.querySelectorAll(".product");
+
+
+  let visibleProducts = 0;
+
+
+  products.forEach(product => {
+
+    const name =
+      product
+        .getAttribute("data-name")
+        .toLowerCase();
+
+
+    if (name.includes(search)) {
+
+      product.style.display = "block";
+
+      visibleProducts++;
+
+    } else {
+
+      product.style.display = "none";
+
+    }
+
+  });
+
+
+  showNoResults(visibleProducts);
+
+}
+
+
+/* CATEGORY FILTER */
+
+function filterProducts(category) {
+
+  const products =
+    document.querySelectorAll(".product");
+
+
+  let visibleProducts = 0;
+
+
+  products.forEach(product => {
+
+    const productCategory =
+      product.getAttribute("data-category");
+
+
+    if (
+      category === "all" ||
+      productCategory === category
+    ) {
+
+      product.style.display = "block";
+
+      visibleProducts++;
+
+    } else {
+
+      product.style.display = "none";
+
+    }
+
+  });
+
+
+  document
+    .getElementById("searchInput")
+    .value = "";
+
+
+  showNoResults(visibleProducts);
+
+}
+
+
+/* NO RESULTS MESSAGE */
+
+function showNoResults(count) {
+
+  let message =
+    document.getElementById("noResults");
+
+
+  if (!message) {
+
+    message =
+      document.createElement("div");
+
+    message.id = "noResults";
+
+    message.className = "no-results";
+
+    document
+      .getElementById("productList")
+      .after(message);
+
+  }
+
+
+  if (count === 0) {
+
+    message.textContent =
+      "No products found.";
+
+    message.style.display = "block";
+
+  } else {
+
+    message.style.display = "none";
+
+  }
+
+}
+
+
+/* INITIAL CART */
+
+updateCart();
+
+</script>
 
 </body>
 </html>
