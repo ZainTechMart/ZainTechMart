@@ -6,6 +6,9 @@
 
 <title>ZainTechMart | Smart Accessories</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 /* =========================
@@ -41,11 +44,9 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-
   position: sticky;
   top: 0;
   z-index: 1000;
-
   border-bottom: 1px solid #1f2937;
 }
 
@@ -59,12 +60,9 @@ header {
 .cart-button {
   background: #22d3ee;
   color: #07111f;
-
   border: none;
   padding: 10px 16px;
-
   border-radius: 8px;
-
   font-weight: bold;
   cursor: pointer;
 }
@@ -80,15 +78,8 @@ header {
 
 .hero {
   text-align: center;
-
   padding: 55px 20px 40px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #111827,
-      #0b1120
-    );
+  background: linear-gradient(180deg, #111827, #0b1120);
 }
 
 .hero h1 {
@@ -108,23 +99,17 @@ header {
 
 
 /* =========================
-   AMAZON STOREFRONT BUTTON
+   AMAZON BUTTON
 ========================= */
 
 .amazon-store-button {
   display: inline-block;
-
   background: #22d3ee;
   color: #07111f;
-
   text-decoration: none;
-
   padding: 13px 22px;
-
   border-radius: 9px;
-
   font-weight: bold;
-
   transition: 0.2s;
 }
 
@@ -140,27 +125,18 @@ header {
 
 .search-container {
   max-width: 700px;
-
   margin: 20px auto 10px;
-
   padding: 0 20px;
 }
 
 #searchInput {
   width: 100%;
-
   padding: 14px 16px;
-
   border-radius: 10px;
-
   border: 1px solid #334155;
-
   background: #111827;
-
   color: white;
-
   font-size: 16px;
-
   outline: none;
 }
 
@@ -179,77 +155,54 @@ header {
 
 .categories {
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
   padding: 20px;
 }
 
 .category-button {
   background: #1e293b;
-
   color: white;
-
   border: 1px solid #334155;
-
   padding: 10px 16px;
-
   border-radius: 8px;
-
   cursor: pointer;
-
   transition: 0.2s;
 }
 
 .category-button:hover,
 .category-button.active {
   background: #22d3ee;
-
   color: #07111f;
-
   border-color: #22d3ee;
 }
 
 
 /* =========================
-   AMAZON STORE BANNER
+   AMAZON BANNER
 ========================= */
 
 .store-banner {
   max-width: 1100px;
-
   margin: 10px auto 30px;
-
   padding: 0 20px;
 }
 
 .store-banner-inner {
   background: #111827;
-
   border: 1px solid #1f3b46;
-
   border-radius: 14px;
-
   padding: 20px;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   gap: 20px;
 }
 
 .store-banner h2 {
   color: #22d3ee;
-
   font-size: 21px;
-
   margin-bottom: 5px;
 }
 
@@ -264,51 +217,32 @@ header {
 
 .products {
   max-width: 1200px;
-
   margin: auto;
-
   padding: 20px;
-
   display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(240px, 1fr)
-    );
-
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 22px;
 }
 
 .product {
   background: #111827;
-
   border: 1px solid #1f2937;
-
   border-radius: 14px;
-
   overflow: hidden;
-
   transition: 0.25s;
 }
 
 .product:hover {
   transform: translateY(-4px);
-
   border-color: #22d3ee;
 }
 
 .product-image {
   width: 100%;
-
   height: 230px;
-
   object-fit: contain;
-
   background: #f8fafc;
-
   padding: 12px;
-
   display: block;
 }
 
@@ -318,54 +252,38 @@ header {
 
 .product h3 {
   font-size: 18px;
-
   margin-bottom: 8px;
 }
 
 .product-description {
   color: #94a3b8;
-
   font-size: 14px;
-
   min-height: 42px;
-
   margin-bottom: 12px;
 }
 
 
 /* =========================
-   PRODUCT BADGES
+   BADGES
 ========================= */
 
 .amazon-badge {
   display: inline-block;
-
   background: #334155;
-
   color: #67e8f9;
-
   font-size: 12px;
-
   padding: 4px 8px;
-
   border-radius: 5px;
-
   margin-bottom: 10px;
 }
 
 .local-badge {
   display: inline-block;
-
   background: #1e293b;
-
   color: #cbd5e1;
-
   font-size: 12px;
-
   padding: 4px 8px;
-
   border-radius: 5px;
-
   margin-bottom: 10px;
 }
 
@@ -376,11 +294,8 @@ header {
 
 .price {
   color: #22d3ee;
-
   font-size: 21px;
-
   font-weight: bold;
-
   margin-bottom: 12px;
 }
 
@@ -391,35 +306,24 @@ header {
 
 .product-buttons {
   display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
 .product-buttons a,
 .product-buttons button {
   text-align: center;
-
   text-decoration: none;
-
   border: none;
-
   padding: 10px 8px;
-
   border-radius: 7px;
-
   font-weight: bold;
-
   cursor: pointer;
-
   font-size: 13px;
 }
 
 .buy-button {
   background: #22d3ee;
-
   color: #07111f;
 }
 
@@ -429,9 +333,7 @@ header {
 
 .add-button {
   background: #1e293b;
-
   color: white;
-
   border: 1px solid #334155 !important;
 }
 
@@ -441,18 +343,34 @@ header {
 
 .details-button {
   background: transparent;
-
   color: #22d3ee;
-
   border: 1px solid #22d3ee !important;
-
   grid-column: 1 / -1;
 }
 
 .details-button:hover {
   background: #22d3ee;
-
   color: #07111f;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingProducts {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 35px 20px;
+  color: #94a3b8;
+}
+
+#databaseError {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px;
+  color: #fca5a5;
+  display: none;
 }
 
 
@@ -462,13 +380,9 @@ header {
 
 #noResults {
   grid-column: 1 / -1;
-
   text-align: center;
-
   padding: 40px 20px;
-
   color: #94a3b8;
-
   display: none;
 }
 
@@ -479,14 +393,9 @@ header {
 
 .overlay {
   display: none;
-
   position: fixed;
-
   inset: 0;
-
-  background:
-    rgba(0, 0, 0, 0.7);
-
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1999;
 }
 
@@ -497,35 +406,22 @@ header {
 
 .cart-panel {
   display: none;
-
   position: fixed;
-
   right: 0;
-
   top: 0;
-
   width: min(420px, 95%);
-
   height: 100vh;
-
   background: #111827;
-
   z-index: 2000;
-
   padding: 20px;
-
   overflow-y: auto;
-
   border-left: 1px solid #334155;
 }
 
 .cart-header {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   margin-bottom: 20px;
 }
 
@@ -535,15 +431,10 @@ header {
 
 .close-button {
   background: #1e293b;
-
   color: white;
-
   border: none;
-
   padding: 8px 12px;
-
   border-radius: 6px;
-
   cursor: pointer;
 }
 
@@ -554,17 +445,13 @@ header {
 
 .cart-item {
   background: #0b1120;
-
   padding: 13px;
-
   border-radius: 9px;
-
   margin-bottom: 10px;
 }
 
 .cart-item-name {
   font-weight: bold;
-
   margin-bottom: 5px;
 }
 
@@ -574,41 +461,27 @@ header {
 
 .quantity-controls {
   display: flex;
-
   align-items: center;
-
   gap: 10px;
-
   margin-top: 10px;
 }
 
 .quantity-controls button {
   width: 28px;
-
   height: 28px;
-
   border: none;
-
   border-radius: 5px;
-
   cursor: pointer;
-
   font-weight: bold;
 }
 
 .remove-button {
   margin-left: auto;
-
   background: #7f1d1d;
-
   color: white;
-
   padding: 7px 10px;
-
   border: none;
-
   border-radius: 5px;
-
   cursor: pointer;
 }
 
@@ -619,13 +492,9 @@ header {
 
 .cart-total {
   border-top: 1px solid #334155;
-
   margin-top: 20px;
-
   padding-top: 15px;
-
   font-size: 20px;
-
   font-weight: bold;
 }
 
@@ -641,19 +510,12 @@ header {
 .checkout-box input,
 .checkout-box textarea {
   width: 100%;
-
   margin-bottom: 10px;
-
   padding: 11px;
-
   border-radius: 7px;
-
   border: 1px solid #334155;
-
   background: #0b1120;
-
   color: white;
-
   outline: none;
 }
 
@@ -664,25 +526,17 @@ header {
 
 .checkout-box textarea {
   min-height: 80px;
-
   resize: vertical;
 }
 
 .checkout-button {
   width: 100%;
-
   background: #22d3ee;
-
   color: #07111f;
-
   border: none;
-
   padding: 13px;
-
   border-radius: 8px;
-
   font-weight: bold;
-
   cursor: pointer;
 }
 
@@ -693,52 +547,32 @@ header {
 
 .details-modal {
   display: none;
-
   position: fixed;
-
   inset: 0;
-
-  background:
-    rgba(0, 0, 0, 0.75);
-
+  background: rgba(0, 0, 0, 0.75);
   z-index: 3000;
-
   align-items: center;
-
   justify-content: center;
-
   padding: 20px;
 }
 
 .details-box {
   width: min(600px, 100%);
-
   max-height: 90vh;
-
   overflow-y: auto;
-
   background: #111827;
-
   border: 1px solid #334155;
-
   border-radius: 14px;
-
   padding: 20px;
-
   position: relative;
 }
 
 .details-box img {
   width: 100%;
-
   height: 250px;
-
   object-fit: contain;
-
   background: white;
-
   border-radius: 8px;
-
   margin: 15px 0;
 }
 
@@ -748,27 +582,18 @@ header {
 
 .details-box ul {
   margin: 12px 0 15px 20px;
-
   color: #cbd5e1;
 }
 
 .modal-close {
   position: absolute;
-
   right: 15px;
-
   top: 15px;
-
   background: #1e293b;
-
   color: white;
-
   border: none;
-
   border-radius: 6px;
-
   padding: 7px 10px;
-
   cursor: pointer;
 }
 
@@ -779,41 +604,27 @@ header {
 
 .info-section {
   max-width: 1100px;
-
   margin: 30px auto;
-
   padding: 20px;
-
   display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(220px, 1fr)
-    );
-
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
 }
 
 .info-card {
   background: #111827;
-
   border: 1px solid #1f2937;
-
   border-radius: 12px;
-
   padding: 20px;
 }
 
 .info-card h3 {
   color: #22d3ee;
-
   margin-bottom: 7px;
 }
 
 .info-card p {
   color: #94a3b8;
-
   font-size: 14px;
 }
 
@@ -824,63 +635,46 @@ header {
 
 footer {
   margin-top: 40px;
-
   padding: 35px 20px;
-
   text-align: center;
-
   background: #060b15;
-
   border-top: 1px solid #1f2937;
 }
 
 footer h2 {
   color: #22d3ee;
-
   margin-bottom: 8px;
 }
 
 footer p {
   color: #94a3b8;
-
   font-size: 14px;
-
   margin: 5px 0;
 }
 
 .footer-buttons {
   margin: 18px 0;
-
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
 }
 
 .footer-buttons a {
   display: inline-block;
-
   text-decoration: none;
-
   padding: 10px 16px;
-
   border-radius: 7px;
-
   font-weight: bold;
 }
 
 .whatsapp-button {
   background: #22c55e;
-
   color: white;
 }
 
 .footer-amazon-button {
   background: #22d3ee;
-
   color: #07111f;
 }
 
@@ -891,36 +685,20 @@ footer p {
 
 .floating-whatsapp {
   position: fixed;
-
   right: 18px;
-
   bottom: 18px;
-
   width: 54px;
-
   height: 54px;
-
   border-radius: 50%;
-
   background: #22c55e;
-
   color: white;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   text-decoration: none;
-
   font-size: 25px;
-
   z-index: 1500;
-
-  box-shadow:
-    0 5px 18px
-    rgba(0,0,0,0.35);
+  box-shadow: 0 5px 18px rgba(0,0,0,0.35);
 }
 
 
@@ -948,33 +726,27 @@ footer p {
 
   .cart-button {
     padding: 9px 12px;
-
     font-size: 13px;
   }
 
   .products {
     grid-template-columns: 1fr;
-
     padding: 15px;
   }
 
   .store-banner-inner {
     flex-direction: column;
-
     align-items: flex-start;
   }
 
-  .store-banner-inner
-  .amazon-store-button {
+  .store-banner-inner .amazon-store-button {
     width: 100%;
-
     text-align: center;
   }
 
   .product-image {
     height: 240px;
   }
-
 }
 
 </style>
@@ -990,23 +762,16 @@ footer p {
 
 <header>
 
-  <a
-    href="#"
-    class="logo"
-  >
+  <a href="#" class="logo">
     ZainTechMart
   </a>
 
-  <button
-    class="cart-button"
-    onclick="openCart()"
-  >
+  <button class="cart-button" onclick="openCart()">
     🛒 Cart
     (<span id="cartCount">0</span>)
   </button>
 
 </header>
-
 
 
 <!-- =========================
@@ -1037,7 +802,6 @@ footer p {
 </section>
 
 
-
 <!-- =========================
      SEARCH
 ========================= -->
@@ -1052,7 +816,6 @@ footer p {
   >
 
 </div>
-
 
 
 <!-- =========================
@@ -1113,7 +876,6 @@ footer p {
 </div>
 
 
-
 <!-- =========================
      AMAZON STORE BANNER
 ========================= -->
@@ -1149,7 +911,6 @@ footer p {
 </section>
 
 
-
 <!-- =========================
      PRODUCTS
 ========================= -->
@@ -1159,553 +920,25 @@ footer p {
   id="productList"
 >
 
-
-<!-- PRODUCT 1
-     USB C CABLE
-========================= -->
-
-<div
-  class="product"
-  data-category="cable"
-  data-source="amazon"
->
-
-  <img
-    src="usb-c-cable.jpeg"
-    alt="USB C Cable 5 Pack 6FT"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="amazon-badge">
-      Amazon Pick
-    </span>
-
-    <h3>
-      USB C Cable 5 Pack 6FT
-    </h3>
-
-    <p class="product-description">
-      Convenient USB-C cable pack for everyday
-      charging and connectivity.
-    </p>
-
-    <div class="price">
-      Check Price on Amazon
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://amzn.to/4h4vS4i"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="buy-button"
-      >
-        View on Amazon
-      </a>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'USB C Cable 5 Pack 6FT',
-          'Check Price on Amazon',
-          'usb-c-cable.jpeg',
-          'Useful USB-C cable pack for everyday charging and connectivity.',
-          [
-            '5-pack cable set',
-            '6FT length',
-            'USB-C connection',
-            'Useful for everyday charging'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
+  <div id="loadingProducts">
+    Loading products...
   </div>
 
-</div>
+  <div id="databaseError"></div>
 
-
-
-<!-- PRODUCT 2
-     USB C 20W ADAPTER
-========================= -->
-
-<div
-  class="product"
-  data-category="charger"
-  data-source="local"
->
-
-  <img
-    src="usb-c-20w.jpg"
-    alt="USB-C 20W Power Adapter"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="local-badge">
-      Available Directly
-    </span>
+  <div id="noResults">
 
     <h3>
-      USB-C 20W Power Adapter
+      No products found
     </h3>
 
-    <p class="product-description">
-      Compact 20W USB-C power adapter for
-      convenient everyday charging.
+    <p>
+      Try another search or category.
     </p>
 
-    <div class="price">
-      Rs. 3,500
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://wa.me/923303118422?text=Assalam-o-Alaikum%2C%20I%20want%20to%20buy%20USB-C%2020W%20Power%20Adapter.%20Price%3A%20Rs.%203%2C500"
-        target="_blank"
-        class="buy-button"
-      >
-        Buy Now
-      </a>
-
-      <button
-        class="add-button"
-        onclick="addToCart(
-          'USB-C 20W Power Adapter',
-          3500
-        )"
-      >
-        Add to Cart
-      </button>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'USB-C 20W Power Adapter',
-          'Rs. 3,500',
-          'usb-c-20w.jpg',
-          'Compact USB-C 20W power adapter for convenient everyday charging.',
-          [
-            '20W charging output',
-            'USB-C connection',
-            'Compact design',
-            'Suitable for everyday use'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
   </div>
-
-</div>
-
-
-
-<!-- PRODUCT 3
-     AIR31 EARBUDS
-========================= -->
-
-<div
-  class="product"
-  data-category="earbuds"
-  data-source="local"
->
-
-  <img
-    src="air31-earbuds.jpeg"
-    alt="Air31 Earbuds"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="local-badge">
-      Available Directly
-    </span>
-
-    <h3>
-      Air31 Earbuds
-    </h3>
-
-    <p class="product-description">
-      Stylish wireless earbuds for music,
-      calls and everyday use.
-    </p>
-
-    <div class="price">
-      Rs. 1,799
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://wa.me/923303118422?text=Assalam-o-Alaikum%2C%20I%20want%20to%20buy%20Air31%20Earbuds.%20Price%3A%20Rs.%201%2C799"
-        target="_blank"
-        class="buy-button"
-      >
-        Buy Now
-      </a>
-
-      <button
-        class="add-button"
-        onclick="addToCart(
-          'Air31 Earbuds',
-          1799
-        )"
-      >
-        Add to Cart
-      </button>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'Air31 Earbuds',
-          'Rs. 1,799',
-          'air31-earbuds.jpeg',
-          'Stylish wireless earbuds for music, calls and everyday use.',
-          [
-            'Wireless design',
-            'Suitable for music and calls',
-            'Portable charging case',
-            'Everyday use'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- PRODUCT 4
-     CAR PHONE HOLDER
-========================= -->
-
-<div
-  class="product"
-  data-category="car"
-  data-source="amazon"
->
-
-  <img
-    src="car-phone-holder.jpeg"
-    alt="Car Phone Holder"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="amazon-badge">
-      Amazon Pick
-    </span>
-
-    <h3>
-      Car Phone Holder
-    </h3>
-
-    <p class="product-description">
-      A practical phone holder for convenient
-      use while driving.
-    </p>
-
-    <div class="price">
-      Check Price on Amazon
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://amzn.to/4qTpqjY"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="buy-button"
-      >
-        View on Amazon
-      </a>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'Car Phone Holder',
-          'Check Price on Amazon',
-          'car-phone-holder.jpeg',
-          'A practical Amazon pick for holding your phone conveniently in the car.',
-          [
-            'Car phone holder',
-            'Convenient phone placement',
-            'Useful for navigation',
-            'Check Amazon listing for exact specifications'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- PRODUCT 5
-     KTGEE EARBUDS
-========================= -->
-
-<div
-  class="product"
-  data-category="earbuds"
-  data-source="amazon"
->
-
-  <img
-    src="ktgee-wireless-earbuds.jpg"
-    alt="KTGEE Wireless Earbuds"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="amazon-badge">
-      Amazon Pick
-    </span>
-
-    <h3>
-      KTGEE Wireless Earbuds
-    </h3>
-
-    <p class="product-description">
-      Wireless earbuds selected from Amazon
-      for everyday listening.
-    </p>
-
-    <div class="price">
-      Check Price on Amazon
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://amzn.to/4gFMCxm"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="buy-button"
-      >
-        View on Amazon
-      </a>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'KTGEE Wireless Earbuds',
-          'Check Price on Amazon',
-          'ktgee-wireless-earbuds.jpg',
-          'Wireless earbuds selected from Amazon for everyday listening.',
-          [
-            'Wireless earbuds',
-            'Portable design',
-            'Suitable for everyday listening',
-            'Check Amazon listing for exact specifications'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- PRODUCT 6
-     UNBREAKCABLE SCREEN PROTECTOR
-========================= -->
-
-<div
-  class="product"
-  data-category="screen"
-  data-source="amazon"
->
-
-  <img
-    src="unbreakcable-iphone-17-pro-screen-protector.jpg"
-    alt="UNBREAKcable iPhone 17 Pro Screen Protector"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="amazon-badge">
-      Amazon Pick
-    </span>
-
-    <h3>
-      UNBREAKcable iPhone 17 Pro Screen Protector
-    </h3>
-
-    <p class="product-description">
-      Screen protection option for iPhone 17 Pro
-      available through Amazon.
-    </p>
-
-    <div class="price">
-      Check Price on Amazon
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://amzn.to/3TdVSRD"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="buy-button"
-      >
-        View on Amazon
-      </a>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'UNBREAKcable iPhone 17 Pro Screen Protector',
-          'Check Price on Amazon',
-          'unbreakcable-iphone-17-pro-screen-protector.jpg',
-          'Screen protection option for iPhone 17 Pro available through Amazon.',
-          [
-            'Designed for iPhone 17 Pro',
-            'Screen protection',
-            'Amazon listing available',
-            'Check Amazon listing for exact specifications'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- PRODUCT 7
-     USB WALL CHARGER
-========================= -->
-
-<div
-  class="product"
-  data-category="charger"
-  data-source="amazon"
->
-
-  <img
-    src="usb-wall-charger.jpg"
-    alt="USB Wall Charger"
-    class="product-image"
-    onerror="this.alt='Product image unavailable';"
-  >
-
-  <div class="product-content">
-
-    <span class="amazon-badge">
-      Amazon Pick
-    </span>
-
-    <h3>
-      USB Wall Charger
-    </h3>
-
-    <p class="product-description">
-      A practical wall charger option
-      available through Amazon.
-    </p>
-
-    <div class="price">
-      Check Price on Amazon
-    </div>
-
-    <div class="product-buttons">
-
-      <a
-        href="https://amzn.to/4daAOlF"
-        target="_blank"
-        rel="nofollow sponsored noopener"
-        class="buy-button"
-      >
-        View on Amazon
-      </a>
-
-      <button
-        class="details-button"
-        onclick="showDetails(
-          'USB Wall Charger',
-          'Check Price on Amazon',
-          'usb-wall-charger.jpg',
-          'A practical wall charger option available through Amazon.',
-          [
-            'USB wall charger',
-            'Compact design',
-            'Useful for everyday charging',
-            'Check Amazon listing for exact specifications'
-          ]
-        )"
-      >
-        Details
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- NO RESULTS -->
-
-<div id="noResults">
-
-  <h3>
-    No products found
-  </h3>
-
-  <p>
-    Try another search or category.
-  </p>
-
-</div>
-
 
 </section>
-
 
 
 <!-- =========================
@@ -1713,7 +946,6 @@ footer p {
 ========================= -->
 
 <section class="info-section">
-
 
   <div class="info-card">
 
@@ -1728,7 +960,6 @@ footer p {
 
   </div>
 
-
   <div class="info-card">
 
     <h3>
@@ -1741,7 +972,6 @@ footer p {
     </p>
 
   </div>
-
 
   <div class="info-card">
 
@@ -1756,7 +986,6 @@ footer p {
 
   </div>
 
-
   <div class="info-card">
 
     <h3>
@@ -1770,9 +999,7 @@ footer p {
 
   </div>
 
-
 </section>
-
 
 
 <!-- =========================
@@ -1789,7 +1016,6 @@ footer p {
     Smart Accessories. Better Life.
   </p>
 
-
   <div class="footer-buttons">
 
     <a
@@ -1801,7 +1027,6 @@ footer p {
       🛍️ Amazon Store
     </a>
 
-
     <a
       href="https://wa.me/923303118422"
       target="_blank"
@@ -1812,11 +1037,9 @@ footer p {
 
   </div>
 
-
   <p>
     © 2026 ZainTechMart. All rights reserved.
   </p>
-
 
   <p>
     As an Amazon Associate, we may earn
@@ -1824,7 +1047,6 @@ footer p {
   </p>
 
 </footer>
-
 
 
 <!-- =========================
@@ -1841,7 +1063,6 @@ footer p {
 </a>
 
 
-
 <!-- =========================
      CART OVERLAY
 ========================= -->
@@ -1851,7 +1072,6 @@ footer p {
   id="cartOverlay"
   onclick="closeCart()"
 ></div>
-
 
 
 <!-- =========================
@@ -1878,9 +1098,7 @@ footer p {
 
   </div>
 
-
   <div id="cartItems"></div>
-
 
   <div class="cart-total">
 
@@ -1892,7 +1110,6 @@ footer p {
 
   </div>
 
-
   <div class="checkout-box">
 
     <input
@@ -1901,19 +1118,16 @@ footer p {
       placeholder="Your Name"
     >
 
-
     <input
       type="tel"
       id="customerPhone"
       placeholder="Phone Number"
     >
 
-
     <textarea
       id="customerAddress"
       placeholder="Delivery Address"
     ></textarea>
-
 
     <button
       class="checkout-button"
@@ -1925,7 +1139,6 @@ footer p {
   </div>
 
 </div>
-
 
 
 <!-- =========================
@@ -1946,9 +1159,7 @@ footer p {
       ✕
     </button>
 
-
     <h2 id="detailsTitle"></h2>
-
 
     <img
       id="detailsImage"
@@ -1956,28 +1167,18 @@ footer p {
       alt=""
     >
 
-
     <h3 id="detailsPrice"></h3>
-
 
     <p
       id="detailsDescription"
-      style="
-        color:#cbd5e1;
-        margin-top:10px;
-      "
+      style="color:#cbd5e1; margin-top:10px;"
     ></p>
 
-
     <h3
-      style="
-        margin-top:15px;
-        color:#22d3ee;
-      "
+      style="margin-top:15px; color:#22d3ee;"
     >
       Features
     </h3>
-
 
     <ul id="detailsFeatures"></ul>
 
@@ -1986,12 +1187,27 @@ footer p {
 </div>
 
 
-
 <script>
+
+/* =========================
+   SUPABASE SETTINGS
+========================= */
+
+const SUPABASE_URL =
+  "https://lynpuyxriagxyglygdqf.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_XICT109xIvHO389cu0xi6w_uSKUbVbe";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
 
 /* =========================
-   SETTINGS
+   GENERAL SETTINGS
 ========================= */
 
 const whatsappNumber =
@@ -2002,21 +1218,805 @@ const amazonStorefront =
 
 
 /* =========================
-   CART DATA
+   CART
 ========================= */
 
 let cart = [];
 
 
 /* =========================
+   PRODUCTS
+========================= */
+
+let allProducts = [];
+
+
+/* =========================
+   OLD / AMAZON PRODUCTS
+========================= */
+
+const localProducts = [
+
+  {
+    id: "amazon-1",
+    name: "USB C Cable 5 Pack 6FT",
+    price: "Check Price on Amazon",
+    image: "usb-c-cable.jpeg",
+    description:
+      "Convenient USB-C cable pack for everyday charging and connectivity.",
+    category: "cable",
+    source: "amazon",
+    link: "https://amzn.to/4h4vS4i",
+    features: [
+      "5-pack cable set",
+      "6FT length",
+      "USB-C connection",
+      "Useful for everyday charging"
+    ]
+  },
+
+  {
+    id: "local-1",
+    name: "USB-C 20W Power Adapter",
+    price: 3500,
+    image: "usb-c-20w.jpg",
+    description:
+      "Compact 20W USB-C power adapter for convenient everyday charging.",
+    category: "charger",
+    source: "local",
+    link: "whatsapp",
+    features: [
+      "20W charging output",
+      "USB-C connection",
+      "Compact design",
+      "Suitable for everyday use"
+    ]
+  },
+
+  {
+    id: "local-2",
+    name: "Air31 Earbuds",
+    price: 1799,
+    image: "air31-earbuds.jpeg",
+    description:
+      "Stylish wireless earbuds for music, calls and everyday use.",
+    category: "earbuds",
+    source: "local",
+    link: "whatsapp",
+    features: [
+      "Wireless design",
+      "Suitable for music and calls",
+      "Portable charging case",
+      "Everyday use"
+    ]
+  },
+
+  {
+    id: "amazon-2",
+    name: "Car Phone Holder",
+    price: "Check Price on Amazon",
+    image: "car-phone-holder.jpeg",
+    description:
+      "A practical phone holder for convenient use while driving.",
+    category: "car",
+    source: "amazon",
+    link: "https://amzn.to/4qTpqjY",
+    features: [
+      "Car phone holder",
+      "Convenient phone placement",
+      "Useful for navigation",
+      "Check Amazon listing for exact specifications"
+    ]
+  },
+
+  {
+    id: "amazon-3",
+    name: "KTGEE Wireless Earbuds",
+    price: "Check Price on Amazon",
+    image: "ktgee-wireless-earbuds.jpg",
+    description:
+      "Wireless earbuds selected from Amazon for everyday listening.",
+    category: "earbuds",
+    source: "amazon",
+    link: "https://amzn.to/4gFMCxm",
+    features: [
+      "Wireless earbuds",
+      "Portable design",
+      "Suitable for everyday listening",
+      "Check Amazon listing for exact specifications"
+    ]
+  },
+
+  {
+    id: "amazon-4",
+    name: "UNBREAKcable iPhone 17 Pro Screen Protector",
+    price: "Check Price on Amazon",
+    image: "unbreakcable-iphone-17-pro-screen-protector.jpg",
+    description:
+      "Screen protection option for iPhone 17 Pro available through Amazon.",
+    category: "screen",
+    source: "amazon",
+    link: "https://amzn.to/3TdVSRD",
+    features: [
+      "Designed for iPhone 17 Pro",
+      "Screen protection",
+      "Amazon listing available",
+      "Check Amazon listing for exact specifications"
+    ]
+  },
+
+  {
+    id: "amazon-5",
+    name: "USB Wall Charger",
+    price: "Check Price on Amazon",
+    image: "usb-wall-charger.jpg",
+    description:
+      "A practical wall charger option available through Amazon.",
+    category: "charger",
+    source: "amazon",
+    link: "https://amzn.to/4daAOlF",
+    features: [
+      "USB wall charger",
+      "Compact design",
+      "Useful for everyday charging",
+      "Check Amazon listing for exact specifications"
+    ]
+  }
+
+];
+
+
+/* =========================
+   CATEGORY DETECTION
+========================= */
+
+function detectCategory(name, description) {
+
+  const text =
+    (
+      (name || "") +
+      " " +
+      (description || "")
+    ).toLowerCase();
+
+
+  if (
+    text.includes("earbud") ||
+    text.includes("airpod") ||
+    text.includes("tws")
+  ) {
+    return "earbuds";
+  }
+
+
+  if (
+    text.includes("cable") ||
+    text.includes("wire")
+  ) {
+    return "cable";
+  }
+
+
+  if (
+    text.includes("charger") ||
+    text.includes("charging") ||
+    text.includes("adapter") ||
+    text.includes("power")
+  ) {
+    return "charger";
+  }
+
+
+  if (
+    text.includes("car") ||
+    text.includes("phone holder")
+  ) {
+    return "car";
+  }
+
+
+  if (
+    text.includes("screen") ||
+    text.includes("protector")
+  ) {
+    return "screen";
+  }
+
+
+  return "all";
+}
+
+
+/* =========================
+   LOAD PRODUCTS FROM SUPABASE
+========================= */
+
+async function loadProducts() {
+
+  const loading =
+    document.getElementById(
+      "loadingProducts"
+    );
+
+  const errorBox =
+    document.getElementById(
+      "databaseError"
+    );
+
+
+  try {
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
+
+    if (error) {
+      throw error;
+    }
+
+
+    const databaseProducts =
+      (data || []).map(
+        product => ({
+
+          id:
+            "db-" +
+            product.id,
+
+          databaseId:
+            product.id,
+
+          name:
+            product.name || "",
+
+          price:
+            product.price ?? "",
+
+          image:
+            product.image || "",
+
+          description:
+            product.description || "",
+
+          category:
+            detectCategory(
+              product.name,
+              product.description
+            ),
+
+          source:
+            "local",
+
+          link:
+            "whatsapp",
+
+          features:
+            createFeatures(
+              product.name,
+              product.description
+            )
+
+        })
+      );
+
+
+    allProducts = [
+      ...databaseProducts,
+      ...localProducts
+    ];
+
+
+    loading.style.display =
+      "none";
+
+    errorBox.style.display =
+      "none";
+
+
+    renderProducts(
+      allProducts
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Supabase products error:",
+      error
+    );
+
+
+    /*
+      Agar database mein koi error aaye,
+      purane products phir bhi show honge.
+    */
+
+    allProducts = [
+      ...localProducts
+    ];
+
+
+    loading.style.display =
+      "none";
+
+
+    errorBox.style.display =
+      "block";
+
+
+    errorBox.innerHTML =
+      "Database products could not be loaded. Existing products are still available.";
+
+
+    renderProducts(
+      allProducts
+    );
+
+  }
+
+}
+
+
+/* =========================
+   CREATE FEATURES
+========================= */
+
+function createFeatures(
+  name,
+  description
+) {
+
+  const features = [];
+
+
+  if (name) {
+    features.push(
+      name
+    );
+  }
+
+
+  if (description) {
+    features.push(
+      description
+    );
+  }
+
+
+  features.push(
+    "Available directly through ZainTechMart"
+  );
+
+
+  return features;
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =========================
+   PRICE DISPLAY
+========================= */
+
+function formatPrice(price) {
+
+  if (
+    price === null ||
+    price === undefined ||
+    price === ""
+  ) {
+    return "Contact for Price";
+  }
+
+
+  if (
+    typeof price === "number"
+  ) {
+
+    return (
+      "Rs. " +
+      price.toLocaleString()
+    );
+
+  }
+
+
+  const numericPrice =
+    Number(price);
+
+
+  if (
+    !isNaN(numericPrice) &&
+    numericPrice > 0
+  ) {
+
+    return (
+      "Rs. " +
+      numericPrice.toLocaleString()
+    );
+
+  }
+
+
+  return String(price);
+}
+
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts(
+  products
+) {
+
+  const productList =
+    document.getElementById(
+      "productList"
+    );
+
+  const loading =
+    document.getElementById(
+      "loadingProducts"
+    );
+
+  const errorBox =
+    document.getElementById(
+      "databaseError"
+    );
+
+  const noResults =
+    document.getElementById(
+      "noResults"
+    );
+
+
+  /*
+    Sirf actual product cards remove
+    karna hain.
+  */
+
+  productList
+    .querySelectorAll(
+      ".product"
+    )
+    .forEach(
+      card => card.remove()
+    );
+
+
+  products.forEach(
+    product => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "product";
+
+
+      card.dataset.category =
+        product.category || "all";
+
+
+      card.dataset.source =
+        product.source || "local";
+
+
+      const isAmazon =
+        product.source === "amazon";
+
+
+      const numericPrice =
+        Number(product.price);
+
+
+      const hasNumericPrice =
+        !isNaN(numericPrice) &&
+        numericPrice > 0;
+
+
+      let buyButton = "";
+
+
+      let addButton = "";
+
+
+      if (isAmazon) {
+
+        buyButton =
+          `
+          <a
+            href="${escapeHTML(product.link)}"
+            target="_blank"
+            rel="nofollow sponsored noopener"
+            class="buy-button"
+          >
+            View on Amazon
+          </a>
+          `;
+
+      }
+
+      else {
+
+        const message =
+          encodeURIComponent(
+            "Assalam-o-Alaikum, I want to buy " +
+            product.name +
+            (
+              hasNumericPrice
+                ? ". Price: Rs. " +
+                  numericPrice.toLocaleString()
+                : ""
+            )
+          );
+
+
+        buyButton =
+          `
+          <a
+            href="https://wa.me/${whatsappNumber}?text=${message}"
+            target="_blank"
+            class="buy-button"
+          >
+            Buy Now
+          </a>
+          `;
+
+
+        if (hasNumericPrice) {
+
+          addButton =
+            `
+            <button
+              class="add-button"
+              onclick="addToCartById('${escapeHTML(product.id)}')"
+            >
+              Add to Cart
+            </button>
+            `;
+
+        }
+
+        else {
+
+          addButton =
+            `
+            <button
+              class="add-button"
+              disabled
+              style="opacity:0.5; cursor:not-allowed;"
+            >
+              Price Unavailable
+            </button>
+            `;
+
+        }
+
+      }
+
+
+      if (isAmazon) {
+
+        addButton = "";
+
+      }
+
+
+      card.innerHTML =
+        `
+
+        <img
+          src="${escapeHTML(product.image)}"
+          alt="${escapeHTML(product.name)}"
+          class="product-image"
+          onerror="this.alt='Product image unavailable';"
+        >
+
+        <div class="product-content">
+
+          <span class="${
+            isAmazon
+              ? "amazon-badge"
+              : "local-badge"
+          }">
+
+            ${
+              isAmazon
+                ? "Amazon Pick"
+                : "Available Directly"
+            }
+
+          </span>
+
+          <h3>
+            ${escapeHTML(product.name)}
+          </h3>
+
+          <p class="product-description">
+            ${escapeHTML(product.description)}
+          </p>
+
+          <div class="price">
+            ${escapeHTML(
+              formatPrice(product.price)
+            )}
+          </div>
+
+          <div class="product-buttons">
+
+            ${buyButton}
+
+            ${addButton}
+
+            <button
+              class="details-button"
+              onclick="showDetailsById('${escapeHTML(product.id)}')"
+            >
+              Details
+            </button>
+
+          </div>
+
+        </div>
+
+        `;
+
+
+      /*
+        Error image par hide nahi karna.
+        Background visible rahega.
+      */
+
+      const image =
+        card.querySelector(
+          ".product-image"
+        );
+
+
+      image.addEventListener(
+        "error",
+        function() {
+
+          this.style.objectFit =
+            "contain";
+
+        }
+      );
+
+
+      productList.insertBefore(
+        card,
+        loading
+      );
+
+    }
+  );
+
+
+  loading.style.display =
+    "none";
+
+
+  noResults.style.display =
+    products.length === 0
+      ? "block"
+      : "none";
+
+}
+
+
+/* =========================
+   ADD DATABASE PRODUCT TO CART
+========================= */
+
+function addToCartById(
+  productId
+) {
+
+  const product =
+    allProducts.find(
+      item =>
+        String(item.id) ===
+        String(productId)
+    );
+
+
+  if (!product) {
+
+    alert(
+      "Product not found."
+    );
+
+    return;
+
+  }
+
+
+  const price =
+    Number(product.price);
+
+
+  if (
+    isNaN(price) ||
+    price <= 0
+  ) {
+
+    alert(
+      "Price is not available for this product."
+    );
+
+    return;
+
+  }
+
+
+  addToCart(
+    product.name,
+    price
+  );
+
+}
+
+
+/* =========================
    ADD TO CART
 ========================= */
 
-function addToCart(name, price) {
+function addToCart(
+  name,
+  price
+) {
 
   const existingItem =
     cart.find(
-      item => item.name === name
+      item =>
+        item.name === name
     );
 
 
@@ -2024,7 +2024,9 @@ function addToCart(name, price) {
 
     existingItem.quantity++;
 
-  } else {
+  }
+
+  else {
 
     cart.push({
       name: name,
@@ -2036,6 +2038,7 @@ function addToCart(name, price) {
 
 
   updateCart();
+
 
   alert(
     name +
@@ -2067,15 +2070,20 @@ function updateCart() {
     );
 
 
-  cartItems.innerHTML = "";
+  cartItems.innerHTML =
+    "";
 
 
-  let total = 0;
+  let total =
+    0;
 
-  let itemCount = 0;
+  let itemCount =
+    0;
 
 
-  if (cart.length === 0) {
+  if (
+    cart.length === 0
+  ) {
 
     cartItems.innerHTML =
       `
@@ -2084,11 +2092,15 @@ function updateCart() {
       </p>
       `;
 
-  } else {
+  }
 
+  else {
 
     cart.forEach(
-      (item, index) => {
+      (
+        item,
+        index
+      ) => {
 
         total +=
           item.price *
@@ -2112,7 +2124,7 @@ function updateCart() {
         itemDiv.innerHTML =
           `
           <div class="cart-item-name">
-            ${item.name}
+            ${escapeHTML(item.name)}
           </div>
 
           <div class="cart-item-price">
@@ -2123,10 +2135,7 @@ function updateCart() {
           <div class="quantity-controls">
 
             <button
-              onclick="changeQuantity(
-                ${index},
-                -1
-              )"
+              onclick="changeQuantity(${index}, -1)"
             >
               −
             </button>
@@ -2136,19 +2145,14 @@ function updateCart() {
             </span>
 
             <button
-              onclick="changeQuantity(
-                ${index},
-                1
-              )"
+              onclick="changeQuantity(${index}, 1)"
             >
               +
             </button>
 
             <button
               class="remove-button"
-              onclick="removeItem(
-                ${index}
-              )"
+              onclick="removeItem(${index})"
             >
               Remove
             </button>
@@ -2211,12 +2215,15 @@ function changeQuantity(
    REMOVE ITEM
 ========================= */
 
-function removeItem(index) {
+function removeItem(
+  index
+) {
 
   cart.splice(
     index,
     1
   );
+
 
   updateCart();
 
@@ -2231,12 +2238,14 @@ function openCart() {
 
   document.getElementById(
     "cartPanel"
-  ).style.display = "block";
+  ).style.display =
+    "block";
 
 
   document.getElementById(
     "cartOverlay"
-  ).style.display = "block";
+  ).style.display =
+    "block";
 
 }
 
@@ -2249,12 +2258,52 @@ function closeCart() {
 
   document.getElementById(
     "cartPanel"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 
   document.getElementById(
     "cartOverlay"
-  ).style.display = "none";
+  ).style.display =
+    "none";
+
+}
+
+
+/* =========================
+   SHOW DETAILS BY ID
+========================= */
+
+function showDetailsById(
+  productId
+) {
+
+  const product =
+    allProducts.find(
+      item =>
+        String(item.id) ===
+        String(productId)
+    );
+
+
+  if (!product) {
+
+    alert(
+      "Product details not found."
+    );
+
+    return;
+
+  }
+
+
+  showDetails(
+    product.name,
+    formatPrice(product.price),
+    product.image,
+    product.description,
+    product.features || []
+  );
 
 }
 
@@ -2273,22 +2322,26 @@ function showDetails(
 
   document.getElementById(
     "detailsTitle"
-  ).textContent = name;
+  ).textContent =
+    name;
 
 
   document.getElementById(
     "detailsPrice"
-  ).textContent = price;
+  ).textContent =
+    price;
 
 
   document.getElementById(
     "detailsImage"
-  ).src = image;
+  ).src =
+    image;
 
 
   document.getElementById(
     "detailsImage"
-  ).alt = name;
+  ).alt =
+    name;
 
 
   document.getElementById(
@@ -2303,7 +2356,8 @@ function showDetails(
     );
 
 
-  featureList.innerHTML = "";
+  featureList.innerHTML =
+    "";
 
 
   features.forEach(
@@ -2329,7 +2383,8 @@ function showDetails(
 
   document.getElementById(
     "detailsModal"
-  ).style.display = "flex";
+  ).style.display =
+    "flex";
 
 }
 
@@ -2342,7 +2397,8 @@ function closeDetails() {
 
   document.getElementById(
     "detailsModal"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 }
 
@@ -2353,7 +2409,9 @@ function closeDetails() {
 
 function sendOrder() {
 
-  if (cart.length === 0) {
+  if (
+    cart.length === 0
+  ) {
 
     alert(
       "Your cart is empty."
@@ -2432,7 +2490,8 @@ function sendOrder() {
     "Order:\n";
 
 
-  let total = 0;
+  let total =
+    0;
 
 
   cart.forEach(
@@ -2500,7 +2559,8 @@ function searchProducts() {
     );
 
 
-  let visibleCount = 0;
+  let visibleCount =
+    0;
 
 
   products.forEach(
@@ -2520,7 +2580,9 @@ function searchProducts() {
 
         visibleCount++;
 
-      } else {
+      }
+
+      else {
 
         product.style.display =
           "none";
@@ -2576,7 +2638,8 @@ function filterProducts(
 
   document.getElementById(
     "searchInput"
-  ).value = "";
+  ).value =
+    "";
 
 
   const products =
@@ -2585,7 +2648,8 @@ function filterProducts(
     );
 
 
-  let visibleCount = 0;
+  let visibleCount =
+    0;
 
 
   products.forEach(
@@ -2599,17 +2663,18 @@ function filterProducts(
         product.dataset.source;
 
 
-      let show = false;
+      let show =
+        false;
 
 
       if (
         category === "all"
       ) {
 
-        show = true;
+        show =
+          true;
 
       }
-
 
       else if (
         category === "amazon"
@@ -2620,7 +2685,6 @@ function filterProducts(
           "amazon";
 
       }
-
 
       else {
 
@@ -2638,7 +2702,9 @@ function filterProducts(
 
         visibleCount++;
 
-      } else {
+      }
+
+      else {
 
         product.style.display =
           "none";
@@ -2660,8 +2726,7 @@ function filterProducts(
 
 
 /* =========================
-   CLOSE DETAILS
-   BY BACKGROUND
+   CLOSE DETAILS BY BACKGROUND
 ========================= */
 
 document
@@ -2689,6 +2754,8 @@ document
 ========================= */
 
 updateCart();
+
+loadProducts();
 
 </script>
 
