@@ -164,67 +164,155 @@ header {
 }
 
 /* ==============================
-   MESSAGE SLIDER
+   DECORATED MESSAGE SLIDER
 ============================== */
 
 .profile-message-slider {
   position: absolute;
-  top: 105px;
-  left: 20px;
-  width: 300px;
-  height: 72px;
-  perspective: 800px;
+
+  /*
+    Profile picture is on the right.
+    Message card stays on its left.
+  */
+  top: 27px;
+  right: 135px;
+
+  width: 370px;
+  height: 82px;
+
   z-index: 5;
-  text-align: left;
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  text-align: center;
 }
+
+/* ==============================
+   MESSAGE CARD
+============================== */
 
 .message-card {
   position: absolute;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
-  padding: 14px;
-  border-radius: 14px;
+
+  padding: 12px 18px;
+
+  border-radius: 18px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(37,99,235,0.20),
-      rgba(124,58,237,0.18)
+      rgba(34,211,238,0.14),
+      rgba(37,99,235,0.22),
+      rgba(124,58,237,0.20)
     );
 
-  border: 1px solid rgba(96,165,250,0.25);
+  border: 1px solid rgba(103,232,249,0.35);
 
   box-shadow:
-    0 15px 40px rgba(0,0,0,0.25);
+    0 0 15px rgba(34,211,238,0.12),
+    0 12px 35px rgba(0,0,0,0.30);
+
+  backdrop-filter: blur(9px);
 
   opacity: 0;
-  transform:
-    rotateX(20deg)
-    translateY(15px)
-    scale(.95);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
 
   transition:
-    opacity .5s ease,
-    transform .5s ease;
+    transform .8s cubic-bezier(.22,.61,.36,1),
+    opacity .8s ease;
 }
 
-.message-card.active {
-  opacity: 1;
+/* ==============================
+   ENGLISH
+   LEFT → RIGHT
+============================== */
+
+.message-card.english {
   transform:
-    rotateX(0)
-    translateY(0)
+    translateX(-115%)
+    scale(.92);
+}
+
+.message-card.english.active {
+  opacity: 1;
+
+  transform:
+    translateX(0)
     scale(1);
 }
 
+/* ==============================
+   URDU
+   RIGHT → LEFT
+============================== */
+
+.message-card.urdu {
+  direction: rtl;
+
+  transform:
+    translateX(115%)
+    scale(.92);
+
+  font-family:
+    "Noto Nastaliq Urdu",
+    "Noto Naskh Arabic",
+    Arial,
+    sans-serif;
+}
+
+.message-card.urdu.active {
+  opacity: 1;
+
+  transform:
+    translateX(0)
+    scale(1);
+}
+
+/* ==============================
+   MESSAGE TEXT
+============================== */
+
 .message-card strong {
   color: #67e8f9;
+
   display: block;
+
   margin-bottom: 5px;
+
+  font-size: 15px;
+
+  text-shadow:
+    0 0 10px rgba(103,232,249,0.40);
 }
 
 .message-card p {
-  color: #dbeafe;
+  color: #e0f2fe;
+
   font-size: 13px;
+
+  line-height: 1.4;
+
+  margin: 0;
+}
+
+.message-card.urdu strong {
+  color: #a7f3d0;
+}
+
+.message-card.urdu p {
+  font-size: 15px;
 }
 
 /* ==============================
@@ -546,6 +634,7 @@ footer strong {
 
   .hero {
     min-height: 460px;
+
     padding:
       175px 15px 45px;
   }
@@ -553,16 +642,47 @@ footer strong {
   .profile-corner {
     width: 76px;
     height: 76px;
+
     top: 15px;
     right: 15px;
     left: auto;
   }
 
+  /*
+    Mobile:
+    message card is placed
+    on the LEFT of profile picture.
+  */
+
   .profile-message-slider {
-    top: 88px;
+
+    top: 15px;
     left: 15px;
-    width: calc(100% - 30px);
-    height: 70px;
+    right: 100px;
+
+    width: auto;
+    height: 76px;
+
+    border-radius: 16px;
+  }
+
+  .message-card {
+    padding: 9px 10px;
+    border-radius: 16px;
+  }
+
+  .message-card strong {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .message-card p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .message-card.urdu p {
+    font-size: 13px;
   }
 
   .hero h1 {
@@ -644,6 +764,8 @@ footer strong {
 
 <section class="hero">
 
+  <!-- PROFILE PICTURE -->
+
   <div class="profile-corner">
 
     <img
@@ -655,36 +777,67 @@ footer strong {
   </div>
 
 
+  <!-- ==============================
+       DECORATED MESSAGE SLIDER
+  ============================== -->
+
   <div class="profile-message-slider">
 
-    <div class="message-card active">
+    <!-- ENGLISH MESSAGE 1 -->
 
-      <strong>Welcome to ZainTechMart</strong>
+    <div class="message-card english active">
+
+      <strong>
+        ✨ Welcome to ZainTechMart
+      </strong>
 
       <p>
-        Smart accessories for everyday life.
+        Smart accessories, useful gadgets & better value.
       </p>
 
     </div>
 
 
-    <div class="message-card">
+    <!-- URDU MESSAGE 1 -->
 
-      <strong>Quality & Value</strong>
+    <div class="message-card urdu">
+
+      <strong>
+        🇵🇰 خوش آمدید
+      </strong>
 
       <p>
-        Useful products at practical prices.
+        روزمرہ زندگی کے لیے بہترین اور کارآمد ٹیک ایکسیسریز۔
       </p>
 
     </div>
 
 
-    <div class="message-card">
+    <!-- ENGLISH MESSAGE 2 -->
 
-      <strong>Shop Smart</strong>
+    <div class="message-card english">
+
+      <strong>
+        💡 Shop Smart
+      </strong>
 
       <p>
-        Discover accessories for your tech life.
+        Discover useful tech products selected for you.
+      </p>
+
+    </div>
+
+
+    <!-- URDU MESSAGE 2 -->
+
+    <div class="message-card urdu">
+
+      <strong>
+        🛍️ سمجھداری سے خریداری کریں
+      </strong>
+
+      <p>
+        معیاری مصنوعات، مناسب قیمت اور آسان آرڈر۔
       </p>
 
     </div>
@@ -2126,7 +2279,7 @@ function createProductCard(
 
     const cartButton =
       document.createElement(
-        "button"
+      "button"
       );
 
     cartButton.className =
@@ -2527,7 +2680,7 @@ async function updateVisitorCounter() {
 
 
 /* ==============================
-   MESSAGE SLIDER
+   NEW MESSAGE SLIDER
 ============================== */
 
 function startMessageSlider() {
@@ -2545,36 +2698,122 @@ function startMessageSlider() {
   }
 
 
-  let index =
+  /*
+    Messages are arranged in pairs:
+
+    Pair 1:
+    English 1 → Urdu 1
+
+    Then:
+    10 minute break
+
+    Pair 2:
+    English 2 → Urdu 2
+
+    Then:
+    10 minute break
+
+    Then repeat.
+  */
+
+  let currentPair =
     0;
 
 
-  setInterval(
-    function() {
+  function showCard(
+    cardIndex
+  ) {
 
-      cards[
-        index
-      ].classList.remove(
-        "active"
-      );
+    cards.forEach(
+      card => {
 
+        card.classList.remove(
+          "active"
+        );
 
-      index =
-        (
-          index + 1
-        ) %
-        cards.length;
+      }
+    );
 
 
-      cards[
-        index
-      ].classList.add(
-        "active"
-      );
+    cards[
+      cardIndex
+    ].classList.add(
+      "active"
+    );
+  }
 
-    },
-    3500
-  );
+
+  function runPair() {
+
+    const englishIndex =
+      currentPair * 2;
+
+    const urduIndex =
+      currentPair * 2 + 1;
+
+
+    /*
+      Start with English.
+    */
+
+    showCard(
+      englishIndex
+    );
+
+
+    /*
+      After 3.5 seconds,
+      show Urdu.
+    */
+
+    setTimeout(
+      function() {
+
+        showCard(
+          urduIndex
+        );
+
+
+        /*
+          After Urdu has displayed
+          for 3.5 seconds, begin
+          the 10 minute break.
+        */
+
+        setTimeout(
+          function() {
+
+            currentPair =
+              (
+                currentPair + 1
+              ) % 2;
+
+
+            /*
+              After 10 minutes,
+              start the next pair.
+            */
+
+            setTimeout(
+              runPair,
+              10 * 60 * 1000
+            );
+
+          },
+          3500
+        );
+
+      },
+      3500
+    );
+  }
+
+
+  /*
+    First pair starts immediately.
+  */
+
+  runPair();
 }
 
 
