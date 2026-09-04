@@ -519,6 +519,17 @@ footer strong {
   color: #60a5fa;
 }
 
+.amazon-storefront-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  background: #f59e0b;
+  color: #111827;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* ==============================
    MOBILE
 ============================== */
@@ -818,6 +829,17 @@ footer strong {
 
   Smart Accessories. Better Life.
 
+  <br>
+
+  <a
+    class="amazon-storefront-button"
+    href="https://amzn.to/4i5Lo0R"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    🛒 Visit Amazon Storefront
+  </a>
+
 </footer>
 
 
@@ -957,7 +979,7 @@ const localProducts = [
       "",
 
     image:
-      "",
+      "car-phone-holder.jpeg",
 
     description:
       "Convenient phone holder for use in the car.",
@@ -986,7 +1008,7 @@ const localProducts = [
       "",
 
     image:
-      "",
+      "ktgee-wireless-earbuds.jpg",
 
     description:
       "Wireless earbuds selected from Amazon.",
@@ -1015,7 +1037,7 @@ const localProducts = [
       "",
 
     image:
-      "",
+      "unbreakcable-iphone-17-pro-screen-protector.jpg",
 
     description:
       "Screen protector selected from Amazon.",
@@ -1044,7 +1066,7 @@ const localProducts = [
       "",
 
     image:
-      "",
+      "usb-wall-charger.jpg",
 
     description:
       "USB wall charger selected from Amazon.",
@@ -1285,8 +1307,6 @@ function renderCategoryButtons() {
   });
 
 
-  // Amazon Picks remains available
-
   const amazonButton =
     document.createElement("button");
 
@@ -1383,8 +1403,6 @@ async function loadProducts() {
           "Uncategorized";
 
 
-        // New category system
-
         if (
           product.category_id
         ) {
@@ -1409,8 +1427,6 @@ async function loadProducts() {
 
         }
 
-
-        // Old products without category_id
 
         if (
           !product.category_id
@@ -1679,11 +1695,6 @@ function renderProducts(
     "";
 
 
-  /*
-    When "All Products" is selected,
-    group products by category.
-  */
-
   if (
     activeCategory ===
     "all"
@@ -1703,8 +1714,8 @@ function renderProducts(
       "div"
     );
 
-    grid.className =
-      "products-grid";
+  grid.className =
+    "products-grid";
 
 
   products.forEach(
@@ -2051,10 +2062,6 @@ function createProductCard(
     "product-buttons";
 
 
-  /*
-    AMAZON PRODUCT
-  */
-
   if (
     product.source ===
     "amazon"
@@ -2087,10 +2094,6 @@ function createProductCard(
 
   }
 
-
-  /*
-    LOCAL PRODUCT
-  */
 
   else {
 
@@ -2464,11 +2467,6 @@ async function updateVisitorCounter() {
 
   try {
 
-    /*
-      Increment the visitor count
-      once when the shop loads.
-    */
-
     const {
       data: newCount,
       error: incrementError
@@ -2488,11 +2486,6 @@ async function updateVisitorCounter() {
       return;
     }
 
-
-    /*
-      Fallback:
-      read current count.
-    */
 
     const {
       data,
