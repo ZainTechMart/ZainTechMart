@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="iOGox9a70iLkAr11osvCnmyy4EJM3QshANnJFVL6s2w" />
+<meta name="google-site-verification" content="iOGox9a70iLkAr11osvCnmyy4EJM3QshANnJFVL6s2w">
 
 <title>ZainTechMart | Smart Accessories</title>
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -101,67 +100,44 @@ header {
     );
 }
 
-
-/* =========================
-   HERO DECORATION
-========================= */
-
 .hero::before {
   content: "";
   position: absolute;
-
   width: 220px;
   height: 220px;
-
   border-radius: 50%;
-
-  background:
-    rgba(34,211,238,0.07);
-
+  background: rgba(34,211,238,0.07);
   top: -100px;
   left: -90px;
-
   filter: blur(5px);
-
   pointer-events: none;
 }
 
 .hero::after {
   content: "";
   position: absolute;
-
   width: 180px;
   height: 180px;
-
   border-radius: 50%;
-
-  background:
-    rgba(124,58,237,0.08);
-
+  background: rgba(124,58,237,0.08);
   right: -70px;
   bottom: -80px;
-
   filter: blur(5px);
-
   pointer-events: none;
 }
 
 
 /* =========================
-   PROFILE PICTURE
+   PROFILE
 ========================= */
 
 .profile-corner {
   position: absolute;
-
   top: 20px;
   left: 20px;
-
   width: 78px;
   height: 78px;
-
   padding: 3px;
-
   border-radius: 50%;
 
   background:
@@ -177,35 +153,22 @@ header {
     0 0 30px rgba(34,211,238,0.25);
 
   z-index: 10;
-
-  animation:
-    profileFloat 4s ease-in-out infinite;
+  animation: profileFloat 4s ease-in-out infinite;
 }
 
 .profile-corner img {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
-
   border-radius: 50%;
-
   border: 3px solid #07101f;
-
   background: #111827;
 }
 
-
-/* =========================
-   PROFILE ANIMATION
-========================= */
-
 @keyframes profileFloat {
 
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
 
@@ -222,35 +185,26 @@ header {
 
 .profile-message-slider {
   position: absolute;
-
   top: 105px;
   left: 20px;
-
   width: 300px;
   height: 72px;
-
   perspective: 900px;
-
   z-index: 12;
-
   overflow: hidden;
 }
 
 .profile-message-track {
   width: 100%;
   height: 100%;
-
   position: relative;
-
   transform-style: preserve-3d;
 }
 
 .profile-message {
   position: absolute;
-
   width: 100%;
   min-height: 58px;
-
   padding: 10px 13px;
 
   display: flex;
@@ -268,8 +222,7 @@ header {
       rgba(30,41,59,0.96)
     );
 
-  border:
-    1px solid rgba(34,211,238,0.55);
+  border: 1px solid rgba(34,211,238,0.55);
 
   box-shadow:
     0 8px 25px rgba(0,0,0,0.35),
@@ -279,15 +232,12 @@ header {
 
   font-size: 13px;
   font-weight: bold;
-
   line-height: 1.35;
 
   backface-visibility: hidden;
-
   transform-origin: center center;
 
-  animation:
-    message3D 8s infinite;
+  animation: message3D 8s infinite;
 }
 
 .profile-message.urdu {
@@ -297,9 +247,6 @@ header {
 .profile-message.english {
   animation-delay: 4s;
 }
-
-
-/* 3D sliding effect */
 
 @keyframes message3D {
 
@@ -352,7 +299,7 @@ header {
 
 
 /* =========================
-   HERO CONTENT ABOVE DECORATIONS
+   HERO CONTENT
 ========================= */
 
 .hero h1,
@@ -361,11 +308,6 @@ header {
   position: relative;
   z-index: 2;
 }
-
-
-/* =========================
-   HERO TITLE
-========================= */
 
 .hero h1 {
   font-size: 42px;
@@ -384,23 +326,17 @@ header {
 
 
 /* =========================
-   AMAZON BUTTON
+   BUTTONS
 ========================= */
 
 .amazon-store-button {
   display: inline-block;
-
   background: #22d3ee;
   color: #07111f;
-
   text-decoration: none;
-
   padding: 13px 22px;
-
   border-radius: 9px;
-
   font-weight: bold;
-
   transition: 0.2s;
 }
 
@@ -416,27 +352,18 @@ header {
 
 .search-container {
   max-width: 700px;
-
   margin: 20px auto 10px;
-
   padding: 0 20px;
 }
 
 #searchInput {
   width: 100%;
-
   padding: 14px 16px;
-
   border-radius: 10px;
-
   border: 1px solid #334155;
-
   background: #111827;
-
   color: white;
-
   font-size: 16px;
-
   outline: none;
 }
 
@@ -455,38 +382,26 @@ header {
 
 .categories {
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
   padding: 20px;
 }
 
 .category-button {
   background: #1e293b;
-
   color: white;
-
   border: 1px solid #334155;
-
   padding: 10px 16px;
-
   border-radius: 8px;
-
   cursor: pointer;
-
   transition: 0.2s;
 }
 
 .category-button:hover,
 .category-button.active {
   background: #22d3ee;
-
   color: #07111f;
-
   border-color: #22d3ee;
 }
 
@@ -497,35 +412,25 @@ header {
 
 .store-banner {
   max-width: 1100px;
-
   margin: 10px auto 30px;
-
   padding: 0 20px;
 }
 
 .store-banner-inner {
   background: #111827;
-
   border: 1px solid #1f3b46;
-
   border-radius: 14px;
-
   padding: 20px;
 
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   gap: 20px;
 }
 
 .store-banner h2 {
   color: #22d3ee;
-
   font-size: 21px;
-
   margin-bottom: 5px;
 }
 
@@ -535,14 +440,261 @@ header {
 
 
 /* =========================
+   TRUST SECTION
+========================= */
+
+.trust-section {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  color: #22d3ee;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.section-heading p {
+  color: #94a3b8;
+}
+
+
+/* =========================
+   TRUST CARDS
+========================= */
+
+.trust-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    );
+
+  gap: 15px;
+}
+
+.trust-card {
+  background:
+    linear-gradient(
+      145deg,
+      #111827,
+      #0f172a
+    );
+
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 20px;
+
+  transition: 0.25s;
+}
+
+.trust-card:hover {
+  transform: translateY(-4px);
+  border-color: #22d3ee;
+}
+
+.trust-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.trust-card h3 {
+  color: #ffffff;
+  margin-bottom: 7px;
+}
+
+.trust-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+
+/* =========================
+   SUPPORT CARD
+========================= */
+
+.support-card {
+  margin-top: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34,211,238,0.10),
+      rgba(124,58,237,0.08)
+    );
+
+  border: 1px solid rgba(34,211,238,0.35);
+  border-radius: 14px;
+
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.support-card h3 {
+  color: #22d3ee;
+  margin-bottom: 5px;
+}
+
+.support-card p {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.support-button {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  text-decoration: none;
+  padding: 11px 17px;
+  border-radius: 8px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+
+/* =========================
+   POLICY CARD
+========================= */
+
+.policy-card {
+  margin-top: 15px;
+
+  background: #111827;
+
+  border: 1px solid #1f2937;
+
+  border-radius: 14px;
+
+  padding: 20px;
+}
+
+.policy-card h3 {
+  color: #22d3ee;
+  margin-bottom: 10px;
+}
+
+.policy-card p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.policy-card strong {
+  color: #cbd5e1;
+}
+
+
+/* =========================
+   SHARE + VISITOR
+========================= */
+
+.activity-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 15px;
+
+  margin-top: 15px;
+}
+
+.share-card,
+.visitor-card {
+  background: #111827;
+
+  border: 1px solid #1f2937;
+
+  border-radius: 14px;
+
+  padding: 20px;
+}
+
+.share-card {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.share-card h3,
+.visitor-card h3 {
+  color: #22d3ee;
+  margin-bottom: 5px;
+}
+
+.share-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.share-button {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+
+  padding: 11px 17px;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.share-button:hover {
+  background: #3b82f6;
+}
+
+.visitor-card {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 15px;
+
+  text-align: center;
+}
+
+.visitor-label {
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+#visitorCount {
+  color: #22d3ee;
+  font-size: 28px;
+}
+
+
+/* =========================
    PRODUCTS
 ========================= */
 
 .products {
   max-width: 1200px;
-
   margin: auto;
-
   padding: 20px;
 
   display: grid;
@@ -570,21 +722,15 @@ header {
 
 .product:hover {
   transform: translateY(-4px);
-
   border-color: #22d3ee;
 }
 
 .product-image {
   width: 100%;
-
   height: 230px;
-
   object-fit: contain;
-
   background: #f8fafc;
-
   padding: 12px;
-
   display: block;
 }
 
@@ -594,17 +740,13 @@ header {
 
 .product h3 {
   font-size: 18px;
-
   margin-bottom: 8px;
 }
 
 .product-description {
   color: #94a3b8;
-
   font-size: 14px;
-
   min-height: 42px;
-
   margin-bottom: 12px;
 }
 
@@ -617,7 +759,6 @@ header {
   display: inline-block;
 
   background: #334155;
-
   color: #67e8f9;
 
   font-size: 12px;
@@ -633,7 +774,6 @@ header {
   display: inline-block;
 
   background: #1e293b;
-
   color: #cbd5e1;
 
   font-size: 12px;
@@ -695,7 +835,6 @@ header {
 
 .buy-button {
   background: #22d3ee;
-
   color: #07111f;
 }
 
@@ -705,11 +844,8 @@ header {
 
 .add-button {
   background: #1e293b;
-
   color: white;
-
-  border:
-    1px solid #334155 !important;
+  border: 1px solid #334155 !important;
 }
 
 .add-button:hover {
@@ -718,62 +854,41 @@ header {
 
 .details-button {
   background: transparent;
-
   color: #22d3ee;
-
-  border:
-    1px solid #22d3ee !important;
-
+  border: 1px solid #22d3ee !important;
   grid-column: 1 / -1;
 }
 
 .details-button:hover {
   background: #22d3ee;
-
   color: #07111f;
 }
 
 
 /* =========================
-   LOADING
+   LOADING / ERRORS
 ========================= */
 
 #loadingProducts {
   grid-column: 1 / -1;
-
   text-align: center;
-
   padding: 35px 20px;
-
   color: #94a3b8;
 }
 
 #databaseError {
   grid-column: 1 / -1;
-
   text-align: center;
-
   padding: 20px;
-
   color: #fca5a5;
-
   display: none;
 }
 
-
-/* =========================
-   NO RESULTS
-========================= */
-
 #noResults {
   grid-column: 1 / -1;
-
   text-align: center;
-
   padding: 40px 20px;
-
   color: #94a3b8;
-
   display: none;
 }
 
@@ -789,8 +904,7 @@ header {
 
   inset: 0;
 
-  background:
-    rgba(0, 0, 0, 0.7);
+  background: rgba(0,0,0,0.7);
 
   z-index: 1999;
 }
@@ -808,8 +922,7 @@ header {
   right: 0;
   top: 0;
 
-  width:
-    min(420px, 95%);
+  width: min(420px,95%);
 
   height: 100vh;
 
@@ -821,8 +934,7 @@ header {
 
   overflow-y: auto;
 
-  border-left:
-    1px solid #334155;
+  border-left: 1px solid #334155;
 }
 
 .cart-header {
@@ -841,7 +953,6 @@ header {
 
 .close-button {
   background: #1e293b;
-
   color: white;
 
   border: none;
@@ -870,7 +981,6 @@ header {
 
 .cart-item-name {
   font-weight: bold;
-
   margin-bottom: 5px;
 }
 
@@ -890,7 +1000,6 @@ header {
 
 .quantity-controls button {
   width: 28px;
-
   height: 28px;
 
   border: none;
@@ -924,8 +1033,7 @@ header {
 ========================= */
 
 .cart-total {
-  border-top:
-    1px solid #334155;
+  border-top: 1px solid #334155;
 
   margin-top: 20px;
 
@@ -955,8 +1063,7 @@ header {
 
   border-radius: 7px;
 
-  border:
-    1px solid #334155;
+  border: 1px solid #334155;
 
   background: #0b1120;
 
@@ -972,7 +1079,6 @@ header {
 
 .checkout-box textarea {
   min-height: 80px;
-
   resize: vertical;
 }
 
@@ -1006,8 +1112,7 @@ header {
 
   inset: 0;
 
-  background:
-    rgba(0, 0, 0, 0.75);
+  background: rgba(0,0,0,0.75);
 
   z-index: 3000;
 
@@ -1019,8 +1124,7 @@ header {
 }
 
 .details-box {
-  width:
-    min(600px, 100%);
+  width: min(600px,100%);
 
   max-height: 90vh;
 
@@ -1028,8 +1132,7 @@ header {
 
   background: #111827;
 
-  border:
-    1px solid #334155;
+  border: 1px solid #334155;
 
   border-radius: 14px;
 
@@ -1057,9 +1160,7 @@ header {
 }
 
 .details-box ul {
-  margin:
-    12px 0 15px 20px;
-
+  margin: 12px 0 15px 20px;
   color: #cbd5e1;
 }
 
@@ -1067,7 +1168,6 @@ header {
   position: absolute;
 
   right: 15px;
-
   top: 15px;
 
   background: #1e293b;
@@ -1085,7 +1185,110 @@ header {
 
 
 /* =========================
-   INFO SECTION
+   SHARE MODAL
+========================= */
+
+.share-modal {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0,0,0,0.78);
+
+  z-index: 4000;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.share-box {
+  width: min(420px,100%);
+
+  background: #111827;
+
+  border: 1px solid #334155;
+
+  border-radius: 16px;
+
+  padding: 25px;
+
+  position: relative;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5);
+}
+
+.share-box h2 {
+  color: #22d3ee;
+
+  margin-bottom: 8px;
+}
+
+.share-box p {
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  margin-bottom: 18px;
+}
+
+.share-option {
+  width: 100%;
+
+  display: block;
+
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border-radius: 8px;
+
+  border: none;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.native-share {
+  background: #2563eb;
+  color: white;
+}
+
+.copy-share {
+  background: #334155;
+  color: white;
+}
+
+.whatsapp-share {
+  background: #22c55e;
+  color: white;
+}
+
+#copyMessage {
+  color: #22d3ee;
+
+  min-height: 20px;
+
+  margin-top: 12px;
+
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   INFORMATION
 ========================= */
 
 .info-section {
@@ -1100,7 +1303,7 @@ header {
   grid-template-columns:
     repeat(
       auto-fit,
-      minmax(220px, 1fr)
+      minmax(220px,1fr)
     );
 
   gap: 15px;
@@ -1109,8 +1312,7 @@ header {
 .info-card {
   background: #111827;
 
-  border:
-    1px solid #1f2937;
+  border: 1px solid #1f2937;
 
   border-radius: 12px;
 
@@ -1143,8 +1345,7 @@ footer {
 
   background: #060b15;
 
-  border-top:
-    1px solid #1f2937;
+  border-top: 1px solid #1f2937;
 }
 
 footer h2 {
@@ -1187,13 +1388,11 @@ footer p {
 
 .whatsapp-button {
   background: #22c55e;
-
   color: white;
 }
 
 .footer-amazon-button {
   background: #22d3ee;
-
   color: #07111f;
 }
 
@@ -1206,11 +1405,9 @@ footer p {
   position: fixed;
 
   right: 18px;
-
   bottom: 18px;
 
   width: 54px;
-
   height: 54px;
 
   border-radius: 50%;
@@ -1232,8 +1429,7 @@ footer p {
   z-index: 1500;
 
   box-shadow:
-    0 5px 18px
-    rgba(0,0,0,0.35);
+    0 5px 18px rgba(0,0,0,0.35);
 }
 
 
@@ -1241,7 +1437,7 @@ footer p {
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
 
   .hero {
     padding-top: 175px;
@@ -1258,31 +1454,22 @@ footer p {
   .profile-corner {
     width: 62px;
     height: 62px;
-
     top: 15px;
     left: 15px;
   }
 
-
-  /* MOBILE 3D MESSAGE */
-
   .profile-message-slider {
     top: 88px;
     left: 15px;
-
     width: calc(100% - 30px);
-
     height: 70px;
   }
 
   .profile-message {
     font-size: 12px;
-
     padding: 9px 11px;
-
     min-height: 55px;
   }
-
 
   header {
     padding: 13px 4%;
@@ -1294,31 +1481,67 @@ footer p {
 
   .cart-button {
     padding: 9px 12px;
-
     font-size: 13px;
   }
 
   .products {
     grid-template-columns: 1fr;
-
     padding: 15px;
   }
 
   .store-banner-inner {
     flex-direction: column;
-
     align-items: flex-start;
   }
 
-  .store-banner-inner
-  .amazon-store-button {
+  .store-banner-inner .amazon-store-button {
     width: 100%;
-
     text-align: center;
   }
 
   .product-image {
     height: 240px;
+  }
+
+  .support-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .support-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .share-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .share-button {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .profile-corner,
+  .profile-message {
+    animation: none;
   }
 
 }
@@ -1357,9 +1580,6 @@ footer p {
 
 <section class="hero">
 
-
-  <!-- PROFILE PICTURE -->
-
   <div class="profile-corner">
 
     <img
@@ -1371,26 +1591,18 @@ footer p {
   </div>
 
 
-  <!-- =========================
-       3D CUSTOMER MESSAGE SLIDER
-  ========================= -->
-
   <div class="profile-message-slider">
 
     <div class="profile-message-track">
 
-
-      <!-- URDU MESSAGE -->
-
-      <div class="profile-message urdu" dir="rtl">
-
+      <div
+        class="profile-message urdu"
+        dir="rtl"
+      >
         🇵🇰 بہترین چیزیں، مناسب قیمتیں —
         آپ کا اعتماد ہماری پہچان ہے! 🛍️
-
       </div>
 
-
-      <!-- ENGLISH MESSAGE -->
 
       <div class="profile-message english">
 
@@ -1398,7 +1610,6 @@ footer p {
         Your Trust Is Our Identity! 🛍️
 
       </div>
-
 
     </div>
 
@@ -1408,9 +1619,7 @@ footer p {
   <h1>
 
     Smart Accessories.
-    <span>
-      Better Life.
-    </span>
+    <span>Better Life.</span>
 
   </h1>
 
@@ -1429,11 +1638,8 @@ footer p {
     rel="nofollow sponsored noopener"
     class="amazon-store-button"
   >
-
     🛍️ Visit Our Amazon Store
-
   </a>
-
 
 </section>
 
@@ -1467,14 +1673,12 @@ footer p {
     All Products
   </button>
 
-
   <button
     class="category-button"
     onclick="filterProducts('charger', this)"
   >
     Chargers
   </button>
-
 
   <button
     class="category-button"
@@ -1483,14 +1687,12 @@ footer p {
     TWS Earbuds
   </button>
 
-
   <button
     class="category-button"
     onclick="filterProducts('cable', this)"
   >
     Cables
   </button>
-
 
   <button
     class="category-button"
@@ -1499,14 +1701,12 @@ footer p {
     Car Accessories
   </button>
 
-
   <button
     class="category-button"
     onclick="filterProducts('screen', this)"
   >
     Screen Protectors
   </button>
-
 
   <button
     class="category-button"
@@ -1539,7 +1739,6 @@ footer p {
 
     </div>
 
-
     <a
       href="https://amzn.to/4i5Lo0R"
       target="_blank"
@@ -1548,6 +1747,209 @@ footer p {
     >
       Shop Full Store
     </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TRUST SECTION
+========================= -->
+
+<section class="trust-section">
+
+  <div class="section-heading">
+
+    <h2>
+      🛡️ Why Shop With Us?
+    </h2>
+
+    <p>
+      Simple, clear and honest shopping.
+    </p>
+
+  </div>
+
+
+  <div class="trust-grid">
+
+
+    <div class="trust-card">
+
+      <div class="trust-icon">
+        🔎
+      </div>
+
+      <h3>
+        Carefully Selected
+      </h3>
+
+      <p>
+        We aim to list useful mobile accessories
+        and products that are relevant to everyday needs.
+      </p>
+
+    </div>
+
+
+    <div class="trust-card">
+
+      <div class="trust-icon">
+        💰
+      </div>
+
+      <h3>
+        Clear Pricing
+      </h3>
+
+      <p>
+        Direct products show their available price.
+        Amazon products can be checked through their listing.
+      </p>
+
+    </div>
+
+
+    <div class="trust-card">
+
+      <div class="trust-icon">
+        💬
+      </div>
+
+      <h3>
+        Direct Support
+      </h3>
+
+      <p>
+        Questions about products or orders can be
+        discussed directly through WhatsApp.
+      </p>
+
+    </div>
+
+
+    <div class="trust-card">
+
+      <div class="trust-icon">
+        📱
+      </div>
+
+      <h3>
+        Easy Ordering
+      </h3>
+
+      <p>
+        Direct products can be ordered through
+        WhatsApp with your name, phone and address.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- SUPPORT -->
+
+  <div class="support-card">
+
+    <div>
+
+      <h3>
+        💬 Need Help?
+      </h3>
+
+      <p>
+        Product, price ya order ke bare mein
+        directly WhatsApp par pooch sakte hain.
+      </p>
+
+    </div>
+
+
+    <a
+      href="https://wa.me/923303118422?text=Assalam-o-Alaikum%2C%20I%20need%20help%20with%20ZainTechMart."
+      target="_blank"
+      class="support-button"
+    >
+      Chat on WhatsApp
+    </a>
+
+  </div>
+
+
+  <!-- DELIVERY / RETURN -->
+
+  <div class="policy-card">
+
+    <h3>
+      📋 Delivery & Return Information
+    </h3>
+
+    <p>
+      <strong>Delivery:</strong>
+      Direct orders ki delivery details aur charges
+      order confirm karne se pehle WhatsApp par confirm kiye jate hain.
+    </p>
+
+    <p>
+      <strong>Return / Replacement:</strong>
+      Return ya replacement product ke mutabiq ho sakti hai.
+      Order se pehle applicable terms WhatsApp par confirm kar lein.
+    </p>
+
+    <p>
+      <strong>Amazon Products:</strong>
+      Amazon products ke liye price, delivery aur return policy
+      Amazon listing par check karein.
+    </p>
+
+  </div>
+
+
+  <!-- SHARE + VISITOR -->
+
+  <div class="activity-grid">
+
+
+    <div class="share-card">
+
+      <div>
+
+        <h3>
+          🔗 Share ZainTechMart
+        </h3>
+
+        <p>
+          Apne friends aur family ke sath shop share karein.
+        </p>
+
+      </div>
+
+
+      <button
+        class="share-button"
+        onclick="openShareBox()"
+      >
+        Share Shop
+      </button>
+
+    </div>
+
+
+    <div class="visitor-card">
+
+      <span class="visitor-label">
+        👥 Visitors
+      </span>
+
+      <strong id="visitorCount">
+        —
+      </strong>
+
+    </div>
+
 
   </div>
 
@@ -1567,9 +1969,7 @@ footer p {
     Loading products...
   </div>
 
-
   <div id="databaseError"></div>
-
 
   <div id="noResults">
 
@@ -1662,7 +2062,6 @@ footer p {
     ZainTechMart
   </h2>
 
-
   <p>
     Smart Accessories. Better Life.
   </p>
@@ -1744,7 +2143,6 @@ footer p {
       🛒 Your Cart
     </h2>
 
-
     <button
       class="close-button"
       onclick="closeCart()"
@@ -1778,13 +2176,11 @@ footer p {
       placeholder="Your Name"
     >
 
-
     <input
       type="tel"
       id="customerPhone"
       placeholder="Phone Number"
     >
-
 
     <textarea
       id="customerAddress"
@@ -1814,7 +2210,6 @@ footer p {
 >
 
   <div class="details-box">
-
 
     <button
       class="modal-close"
@@ -1863,6 +2258,69 @@ footer p {
 </div>
 
 
+<!-- =========================
+     SHARE MODAL
+========================= -->
+
+<div
+  class="share-modal"
+  id="shareModal"
+>
+
+  <div class="share-box">
+
+    <button
+      class="modal-close"
+      onclick="closeShareBox()"
+    >
+      ✕
+    </button>
+
+
+    <h2>
+      🔗 Share ZainTechMart
+    </h2>
+
+
+    <p>
+      Apne friends aur family ke sath
+      ZainTechMart share karein.
+    </p>
+
+
+    <button
+      class="share-option native-share"
+      onclick="nativeShare()"
+    >
+      📱 Share
+    </button>
+
+
+    <button
+      class="share-option copy-share"
+      onclick="copyShopLink()"
+    >
+      📋 Copy Shop Link
+    </button>
+
+
+    <a
+      id="whatsappShareLink"
+      href="#"
+      target="_blank"
+      class="share-option whatsapp-share"
+    >
+      💬 Share on WhatsApp
+    </a>
+
+
+    <p id="copyMessage"></p>
+
+  </div>
+
+</div>
+
+
 <script>
 
 /* =========================
@@ -1896,6 +2354,10 @@ const amazonStorefront =
   "https://amzn.to/4i5Lo0R";
 
 
+const shopUrl =
+  "https://zaintechmart.github.io/ZainTechMart/";
+
+
 /* =========================
    CART
 ========================= */
@@ -1911,7 +2373,7 @@ let allProducts = [];
 
 
 /* =========================
-   OLD / AMAZON PRODUCTS
+   STATIC PRODUCTS
 ========================= */
 
 const localProducts = [
@@ -2171,9 +2633,7 @@ function detectCategory(
     text.includes("airpod") ||
     text.includes("tws")
   ) {
-
     return "earbuds";
-
   }
 
 
@@ -2181,9 +2641,7 @@ function detectCategory(
     text.includes("cable") ||
     text.includes("wire")
   ) {
-
     return "cable";
-
   }
 
 
@@ -2193,9 +2651,7 @@ function detectCategory(
     text.includes("adapter") ||
     text.includes("power")
   ) {
-
     return "charger";
-
   }
 
 
@@ -2203,9 +2659,7 @@ function detectCategory(
     text.includes("car") ||
     text.includes("phone holder")
   ) {
-
     return "car";
-
   }
 
 
@@ -2213,19 +2667,16 @@ function detectCategory(
     text.includes("screen") ||
     text.includes("protector")
   ) {
-
     return "screen";
-
   }
 
 
   return "all";
-
 }
 
 
 /* =========================
-   LOAD PRODUCTS FROM SUPABASE
+   LOAD PRODUCTS
 ========================= */
 
 async function loadProducts() {
@@ -2260,9 +2711,7 @@ async function loadProducts() {
 
 
     if (error) {
-
       throw error;
-
     }
 
 
@@ -2378,20 +2827,12 @@ function createFeatures(
 
 
   if (name) {
-
-    features.push(
-      name
-    );
-
+    features.push(name);
   }
 
 
   if (description) {
-
-    features.push(
-      description
-    );
-
+    features.push(description);
   }
 
 
@@ -2401,7 +2842,6 @@ function createFeatures(
 
 
   return features;
-
 }
 
 
@@ -2416,26 +2856,11 @@ function escapeHTML(
   return String(
     value ?? ""
   )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -2565,12 +2990,8 @@ function renderProducts(
         numericPrice > 0;
 
 
-      let buyButton =
-        "";
-
-
-      let addButton =
-        "";
+      let buyButton = "";
+      let addButton = "";
 
 
       if (isAmazon) {
@@ -2652,9 +3073,7 @@ function renderProducts(
 
 
       if (isAmazon) {
-
         addButton = "";
-
       }
 
 
@@ -2772,7 +3191,7 @@ function renderProducts(
 
 
 /* =========================
-   ADD DATABASE PRODUCT TO CART
+   ADD TO CART BY ID
 ========================= */
 
 function addToCartById(
@@ -2903,12 +3322,8 @@ function updateCart() {
     "";
 
 
-  let total =
-    0;
-
-
-  let itemCount =
-    0;
+  let total = 0;
+  let itemCount = 0;
 
 
   if (
@@ -3124,7 +3539,7 @@ function closeCart() {
 
 
 /* =========================
-   SHOW DETAILS BY ID
+   DETAILS
 ========================= */
 
 function showDetailsById(
@@ -3170,7 +3585,7 @@ function showDetailsById(
 
 
 /* =========================
-   PRODUCT DETAILS
+   SHOW DETAILS
 ========================= */
 
 function showDetails(
@@ -3265,7 +3680,7 @@ function closeDetails() {
 
 
 /* =========================
-   CHECKOUT
+   SEND ORDER
 ========================= */
 
 function sendOrder() {
@@ -3351,8 +3766,7 @@ function sendOrder() {
     "Order:\n";
 
 
-  let total =
-    0;
+  let total = 0;
 
 
   cart.forEach(
@@ -3527,16 +3941,14 @@ function filterProducts(
         product.dataset.source;
 
 
-      let show =
-        false;
+      let show = false;
 
 
       if (
         category === "all"
       ) {
 
-        show =
-          true;
+        show = true;
 
       }
 
@@ -3590,6 +4002,251 @@ function filterProducts(
 
 
 /* =========================
+   SHARE SHOP
+========================= */
+
+function openShareBox() {
+
+  const shareModal =
+    document.getElementById(
+      "shareModal"
+    );
+
+
+  const whatsappShareLink =
+    document.getElementById(
+      "whatsappShareLink"
+    );
+
+
+  const shareText =
+    "ZainTechMart 🛍️\n" +
+    "Smart Accessories. Better Life.\n\n" +
+    shopUrl;
+
+
+  whatsappShareLink.href =
+    "https://wa.me/?text=" +
+    encodeURIComponent(
+      shareText
+    );
+
+
+  document.getElementById(
+    "copyMessage"
+  ).textContent =
+    "";
+
+
+  shareModal.style.display =
+    "flex";
+
+}
+
+
+/* =========================
+   CLOSE SHARE BOX
+========================= */
+
+function closeShareBox() {
+
+  document.getElementById(
+    "shareModal"
+  ).style.display =
+    "none";
+
+}
+
+
+/* =========================
+   NATIVE SHARE
+========================= */
+
+async function nativeShare() {
+
+  if (
+    navigator.share
+  ) {
+
+    try {
+
+      await navigator.share({
+
+        title:
+          "ZainTechMart",
+
+        text:
+          "Smart Accessories. Better Life.",
+
+        url:
+          shopUrl
+
+      });
+
+    }
+
+    catch (error) {
+
+      console.log(
+        "Share cancelled."
+      );
+
+    }
+
+  }
+
+  else {
+
+    copyShopLink();
+
+  }
+
+}
+
+
+/* =========================
+   COPY SHOP LINK
+========================= */
+
+async function copyShopLink() {
+
+  const message =
+    document.getElementById(
+      "copyMessage"
+    );
+
+
+  try {
+
+    await navigator.clipboard.writeText(
+      shopUrl
+    );
+
+
+    message.textContent =
+      "✅ Shop link copied!";
+
+  }
+
+  catch (error) {
+
+    window.prompt(
+      "Copy this shop link:",
+      shopUrl
+    );
+
+  }
+
+}
+
+
+/* =========================
+   VISITOR COUNTER
+========================= */
+
+async function updateVisitorCounter() {
+
+  const visitorCountEl =
+    document.getElementById(
+      "visitorCount"
+    );
+
+
+  if (!visitorCountEl) {
+    return;
+  }
+
+
+  const storageKey =
+    "zaintechmart_visitor_counted_v1";
+
+
+  let count;
+
+
+  try {
+
+    if (
+      !localStorage.getItem(
+        storageKey
+      )
+    ) {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.rpc(
+          "increment_visitor_count"
+        );
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      count =
+        Number(data);
+
+
+      localStorage.setItem(
+        storageKey,
+        "1"
+      );
+
+    }
+
+    else {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("site_stats")
+          .select("visitor_count")
+          .eq("id",1)
+          .single();
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      count =
+        Number(
+          data.visitor_count
+        );
+
+    }
+
+
+    visitorCountEl.textContent =
+      Number.isFinite(count)
+        ? count.toLocaleString()
+        : "—";
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Visitor counter error:",
+      error
+    );
+
+
+    visitorCountEl.textContent =
+      "—";
+
+  }
+
+}
+
+
+/* =========================
    CLOSE DETAILS BY BACKGROUND
 ========================= */
 
@@ -3614,12 +4271,38 @@ document
 
 
 /* =========================
+   CLOSE SHARE BY BACKGROUND
+========================= */
+
+document
+  .getElementById(
+    "shareModal"
+  )
+  .addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        event.target === this
+      ) {
+
+        closeShareBox();
+
+      }
+
+    }
+  );
+
+
+/* =========================
    INITIAL LOAD
 ========================= */
 
 updateCart();
 
 loadProducts();
+
+updateVisitorCounter();
 
 </script>
 
