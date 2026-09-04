@@ -77,10 +77,153 @@ header {
 ========================= */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  padding: 55px 20px 40px;
-  background: linear-gradient(180deg, #111827, #0b1120);
+  padding: 90px 20px 55px;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(34,211,238,0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(124,58,237,0.10),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #111827,
+      #0b1120
+    );
 }
+
+
+/* =========================
+   HERO DECORATION
+========================= */
+
+.hero::before {
+  content: "";
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(34,211,238,0.07);
+
+  top: -100px;
+  left: -90px;
+
+  filter: blur(5px);
+
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(124,58,237,0.08);
+
+  right: -70px;
+  bottom: -80px;
+
+  filter: blur(5px);
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   PROFILE PICTURE
+========================= */
+
+.profile-corner {
+  position: absolute;
+
+  top: 20px;
+  left: 20px;
+
+  width: 78px;
+  height: 78px;
+
+  padding: 3px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #22d3ee,
+      #2563eb,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 0 0 5px rgba(34,211,238,0.05),
+    0 0 30px rgba(34,211,238,0.25);
+
+  z-index: 10;
+
+  animation:
+    profileFloat 4s ease-in-out infinite;
+}
+
+.profile-corner img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 3px solid #07101f;
+
+  background: #111827;
+}
+
+
+/* PROFILE ANIMATION */
+
+@keyframes profileFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+}
+
+
+/* HERO CONTENT ABOVE DECORATIONS */
+
+.hero h1,
+.hero p,
+.hero .amazon-store-button {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* HERO TITLE */
 
 .hero h1 {
   font-size: 42px;
@@ -104,12 +247,18 @@ header {
 
 .amazon-store-button {
   display: inline-block;
+
   background: #22d3ee;
   color: #07111f;
+
   text-decoration: none;
+
   padding: 13px 22px;
+
   border-radius: 9px;
+
   font-weight: bold;
+
   transition: 0.2s;
 }
 
@@ -125,18 +274,27 @@ header {
 
 .search-container {
   max-width: 700px;
+
   margin: 20px auto 10px;
+
   padding: 0 20px;
 }
 
 #searchInput {
   width: 100%;
+
   padding: 14px 16px;
+
   border-radius: 10px;
+
   border: 1px solid #334155;
+
   background: #111827;
+
   color: white;
+
   font-size: 16px;
+
   outline: none;
 }
 
@@ -155,26 +313,38 @@ header {
 
 .categories {
   display: flex;
+
   justify-content: center;
+
   flex-wrap: wrap;
+
   gap: 10px;
+
   padding: 20px;
 }
 
 .category-button {
   background: #1e293b;
+
   color: white;
+
   border: 1px solid #334155;
+
   padding: 10px 16px;
+
   border-radius: 8px;
+
   cursor: pointer;
+
   transition: 0.2s;
 }
 
 .category-button:hover,
 .category-button.active {
   background: #22d3ee;
+
   color: #07111f;
+
   border-color: #22d3ee;
 }
 
@@ -185,24 +355,35 @@ header {
 
 .store-banner {
   max-width: 1100px;
+
   margin: 10px auto 30px;
+
   padding: 0 20px;
 }
 
 .store-banner-inner {
   background: #111827;
+
   border: 1px solid #1f3b46;
+
   border-radius: 14px;
+
   padding: 20px;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 20px;
 }
 
 .store-banner h2 {
   color: #22d3ee;
+
   font-size: 21px;
+
   margin-bottom: 5px;
 }
 
@@ -217,32 +398,51 @@ header {
 
 .products {
   max-width: 1200px;
+
   margin: auto;
+
   padding: 20px;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(240px, 1fr)
+    );
+
   gap: 22px;
 }
 
 .product {
   background: #111827;
+
   border: 1px solid #1f2937;
+
   border-radius: 14px;
+
   overflow: hidden;
+
   transition: 0.25s;
 }
 
 .product:hover {
   transform: translateY(-4px);
+
   border-color: #22d3ee;
 }
 
 .product-image {
   width: 100%;
+
   height: 230px;
+
   object-fit: contain;
+
   background: #f8fafc;
+
   padding: 12px;
+
   display: block;
 }
 
@@ -252,13 +452,17 @@ header {
 
 .product h3 {
   font-size: 18px;
+
   margin-bottom: 8px;
 }
 
 .product-description {
   color: #94a3b8;
+
   font-size: 14px;
+
   min-height: 42px;
+
   margin-bottom: 12px;
 }
 
@@ -269,21 +473,33 @@ header {
 
 .amazon-badge {
   display: inline-block;
+
   background: #334155;
+
   color: #67e8f9;
+
   font-size: 12px;
+
   padding: 4px 8px;
+
   border-radius: 5px;
+
   margin-bottom: 10px;
 }
 
 .local-badge {
   display: inline-block;
+
   background: #1e293b;
+
   color: #cbd5e1;
+
   font-size: 12px;
+
   padding: 4px 8px;
+
   border-radius: 5px;
+
   margin-bottom: 10px;
 }
 
@@ -294,8 +510,11 @@ header {
 
 .price {
   color: #22d3ee;
+
   font-size: 21px;
+
   font-weight: bold;
+
   margin-bottom: 12px;
 }
 
@@ -306,24 +525,35 @@ header {
 
 .product-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 8px;
 }
 
 .product-buttons a,
 .product-buttons button {
   text-align: center;
+
   text-decoration: none;
+
   border: none;
+
   padding: 10px 8px;
+
   border-radius: 7px;
+
   font-weight: bold;
+
   cursor: pointer;
+
   font-size: 13px;
 }
 
 .buy-button {
   background: #22d3ee;
+
   color: #07111f;
 }
 
@@ -333,8 +563,11 @@ header {
 
 .add-button {
   background: #1e293b;
+
   color: white;
-  border: 1px solid #334155 !important;
+
+  border:
+    1px solid #334155 !important;
 }
 
 .add-button:hover {
@@ -343,13 +576,18 @@ header {
 
 .details-button {
   background: transparent;
+
   color: #22d3ee;
-  border: 1px solid #22d3ee !important;
+
+  border:
+    1px solid #22d3ee !important;
+
   grid-column: 1 / -1;
 }
 
 .details-button:hover {
   background: #22d3ee;
+
   color: #07111f;
 }
 
@@ -360,16 +598,23 @@ header {
 
 #loadingProducts {
   grid-column: 1 / -1;
+
   text-align: center;
+
   padding: 35px 20px;
+
   color: #94a3b8;
 }
 
 #databaseError {
   grid-column: 1 / -1;
+
   text-align: center;
+
   padding: 20px;
+
   color: #fca5a5;
+
   display: none;
 }
 
@@ -380,9 +625,13 @@ header {
 
 #noResults {
   grid-column: 1 / -1;
+
   text-align: center;
+
   padding: 40px 20px;
+
   color: #94a3b8;
+
   display: none;
 }
 
@@ -393,9 +642,14 @@ header {
 
 .overlay {
   display: none;
+
   position: fixed;
+
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+
+  background:
+    rgba(0, 0, 0, 0.7);
+
   z-index: 1999;
 }
 
@@ -406,22 +660,36 @@ header {
 
 .cart-panel {
   display: none;
+
   position: fixed;
+
   right: 0;
   top: 0;
-  width: min(420px, 95%);
+
+  width:
+    min(420px, 95%);
+
   height: 100vh;
+
   background: #111827;
+
   z-index: 2000;
+
   padding: 20px;
+
   overflow-y: auto;
-  border-left: 1px solid #334155;
+
+  border-left:
+    1px solid #334155;
 }
 
 .cart-header {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   margin-bottom: 20px;
 }
 
@@ -431,10 +699,15 @@ header {
 
 .close-button {
   background: #1e293b;
+
   color: white;
+
   border: none;
+
   padding: 8px 12px;
+
   border-radius: 6px;
+
   cursor: pointer;
 }
 
@@ -445,13 +718,17 @@ header {
 
 .cart-item {
   background: #0b1120;
+
   padding: 13px;
+
   border-radius: 9px;
+
   margin-bottom: 10px;
 }
 
 .cart-item-name {
   font-weight: bold;
+
   margin-bottom: 5px;
 }
 
@@ -461,27 +738,41 @@ header {
 
 .quantity-controls {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
   margin-top: 10px;
 }
 
 .quantity-controls button {
   width: 28px;
+
   height: 28px;
+
   border: none;
+
   border-radius: 5px;
+
   cursor: pointer;
+
   font-weight: bold;
 }
 
 .remove-button {
   margin-left: auto;
+
   background: #7f1d1d;
+
   color: white;
+
   padding: 7px 10px;
+
   border: none;
+
   border-radius: 5px;
+
   cursor: pointer;
 }
 
@@ -491,10 +782,15 @@ header {
 ========================= */
 
 .cart-total {
-  border-top: 1px solid #334155;
+  border-top:
+    1px solid #334155;
+
   margin-top: 20px;
+
   padding-top: 15px;
+
   font-size: 20px;
+
   font-weight: bold;
 }
 
@@ -510,12 +806,20 @@ header {
 .checkout-box input,
 .checkout-box textarea {
   width: 100%;
+
   margin-bottom: 10px;
+
   padding: 11px;
+
   border-radius: 7px;
-  border: 1px solid #334155;
+
+  border:
+    1px solid #334155;
+
   background: #0b1120;
+
   color: white;
+
   outline: none;
 }
 
@@ -526,17 +830,25 @@ header {
 
 .checkout-box textarea {
   min-height: 80px;
+
   resize: vertical;
 }
 
 .checkout-button {
   width: 100%;
+
   background: #22d3ee;
+
   color: #07111f;
+
   border: none;
+
   padding: 13px;
+
   border-radius: 8px;
+
   font-weight: bold;
+
   cursor: pointer;
 }
 
@@ -547,32 +859,54 @@ header {
 
 .details-modal {
   display: none;
+
   position: fixed;
+
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+
+  background:
+    rgba(0, 0, 0, 0.75);
+
   z-index: 3000;
+
   align-items: center;
+
   justify-content: center;
+
   padding: 20px;
 }
 
 .details-box {
-  width: min(600px, 100%);
+  width:
+    min(600px, 100%);
+
   max-height: 90vh;
+
   overflow-y: auto;
+
   background: #111827;
-  border: 1px solid #334155;
+
+  border:
+    1px solid #334155;
+
   border-radius: 14px;
+
   padding: 20px;
+
   position: relative;
 }
 
 .details-box img {
   width: 100%;
+
   height: 250px;
+
   object-fit: contain;
+
   background: white;
+
   border-radius: 8px;
+
   margin: 15px 0;
 }
 
@@ -581,19 +915,29 @@ header {
 }
 
 .details-box ul {
-  margin: 12px 0 15px 20px;
+  margin:
+    12px 0 15px 20px;
+
   color: #cbd5e1;
 }
 
 .modal-close {
   position: absolute;
+
   right: 15px;
+
   top: 15px;
+
   background: #1e293b;
+
   color: white;
+
   border: none;
+
   border-radius: 6px;
+
   padding: 7px 10px;
+
   cursor: pointer;
 }
 
@@ -604,27 +948,42 @@ header {
 
 .info-section {
   max-width: 1100px;
+
   margin: 30px auto;
+
   padding: 20px;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px, 1fr)
+    );
+
   gap: 15px;
 }
 
 .info-card {
   background: #111827;
-  border: 1px solid #1f2937;
+
+  border:
+    1px solid #1f2937;
+
   border-radius: 12px;
+
   padding: 20px;
 }
 
 .info-card h3 {
   color: #22d3ee;
+
   margin-bottom: 7px;
 }
 
 .info-card p {
   color: #94a3b8;
+
   font-size: 14px;
 }
 
@@ -635,46 +994,64 @@ header {
 
 footer {
   margin-top: 40px;
+
   padding: 35px 20px;
+
   text-align: center;
+
   background: #060b15;
-  border-top: 1px solid #1f2937;
+
+  border-top:
+    1px solid #1f2937;
 }
 
 footer h2 {
   color: #22d3ee;
+
   margin-bottom: 8px;
 }
 
 footer p {
   color: #94a3b8;
+
   font-size: 14px;
+
   margin: 5px 0;
 }
 
 .footer-buttons {
   margin: 18px 0;
+
   display: flex;
+
   justify-content: center;
+
   flex-wrap: wrap;
+
   gap: 10px;
 }
 
 .footer-buttons a {
   display: inline-block;
+
   text-decoration: none;
+
   padding: 10px 16px;
+
   border-radius: 7px;
+
   font-weight: bold;
 }
 
 .whatsapp-button {
   background: #22c55e;
+
   color: white;
 }
 
 .footer-amazon-button {
   background: #22d3ee;
+
   color: #07111f;
 }
 
@@ -685,20 +1062,36 @@ footer p {
 
 .floating-whatsapp {
   position: fixed;
+
   right: 18px;
+
   bottom: 18px;
+
   width: 54px;
+
   height: 54px;
+
   border-radius: 50%;
+
   background: #22c55e;
+
   color: white;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   text-decoration: none;
+
   font-size: 25px;
+
   z-index: 1500;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.35);
+
+  box-shadow:
+    0 5px 18px
+    rgba(0,0,0,0.35);
 }
 
 
@@ -708,12 +1101,24 @@ footer p {
 
 @media (max-width: 600px) {
 
+  .hero {
+    padding-top: 85px;
+  }
+
   .hero h1 {
     font-size: 31px;
   }
 
   .hero p {
     font-size: 16px;
+  }
+
+  .profile-corner {
+    width: 62px;
+    height: 62px;
+
+    top: 15px;
+    left: 15px;
   }
 
   header {
@@ -726,27 +1131,33 @@ footer p {
 
   .cart-button {
     padding: 9px 12px;
+
     font-size: 13px;
   }
 
   .products {
     grid-template-columns: 1fr;
+
     padding: 15px;
   }
 
   .store-banner-inner {
     flex-direction: column;
+
     align-items: flex-start;
   }
 
-  .store-banner-inner .amazon-store-button {
+  .store-banner-inner
+  .amazon-store-button {
     width: 100%;
+
     text-align: center;
   }
 
   .product-image {
     height: 240px;
   }
+
 }
 
 </style>
@@ -766,7 +1177,10 @@ footer p {
     ZainTechMart
   </a>
 
-  <button class="cart-button" onclick="openCart()">
+  <button
+    class="cart-button"
+    onclick="openCart()"
+  >
     🛒 Cart
     (<span id="cartCount">0</span>)
   </button>
@@ -780,15 +1194,37 @@ footer p {
 
 <section class="hero">
 
+
+  <!-- PROFILE PICTURE -->
+
+  <div class="profile-corner">
+
+    <img
+      src="ZainTech.png"
+      alt="ZainTechMart Profile"
+      onerror="this.style.display='none';"
+    >
+
+  </div>
+
+
   <h1>
+
     Smart Accessories.
-    <span>Better Life.</span>
+    <span>
+      Better Life.
+    </span>
+
   </h1>
 
+
   <p>
+
     Quality mobile accessories and useful Amazon picks —
     all in one place.
+
   </p>
+
 
   <a
     href="https://amzn.to/4i5Lo0R"
@@ -796,8 +1232,11 @@ footer p {
     rel="nofollow sponsored noopener"
     class="amazon-store-button"
   >
+
     🛍️ Visit Our Amazon Store
+
   </a>
+
 
 </section>
 
@@ -831,12 +1270,14 @@ footer p {
     All Products
   </button>
 
+
   <button
     class="category-button"
     onclick="filterProducts('charger', this)"
   >
     Chargers
   </button>
+
 
   <button
     class="category-button"
@@ -845,12 +1286,14 @@ footer p {
     TWS Earbuds
   </button>
 
+
   <button
     class="category-button"
     onclick="filterProducts('cable', this)"
   >
     Cables
   </button>
+
 
   <button
     class="category-button"
@@ -859,12 +1302,14 @@ footer p {
     Car Accessories
   </button>
 
+
   <button
     class="category-button"
     onclick="filterProducts('screen', this)"
   >
     Screen Protectors
   </button>
+
 
   <button
     class="category-button"
@@ -897,6 +1342,7 @@ footer p {
 
     </div>
 
+
     <a
       href="https://amzn.to/4i5Lo0R"
       target="_blank"
@@ -924,7 +1370,9 @@ footer p {
     Loading products...
   </div>
 
+
   <div id="databaseError"></div>
+
 
   <div id="noResults">
 
@@ -947,6 +1395,7 @@ footer p {
 
 <section class="info-section">
 
+
   <div class="info-card">
 
     <h3>
@@ -959,6 +1408,7 @@ footer p {
     </p>
 
   </div>
+
 
   <div class="info-card">
 
@@ -973,6 +1423,7 @@ footer p {
 
   </div>
 
+
   <div class="info-card">
 
     <h3>
@@ -985,6 +1436,7 @@ footer p {
     </p>
 
   </div>
+
 
   <div class="info-card">
 
@@ -999,6 +1451,7 @@ footer p {
 
   </div>
 
+
 </section>
 
 
@@ -1012,9 +1465,11 @@ footer p {
     ZainTechMart
   </h2>
 
+
   <p>
     Smart Accessories. Better Life.
   </p>
+
 
   <div class="footer-buttons">
 
@@ -1027,6 +1482,7 @@ footer p {
       🛍️ Amazon Store
     </a>
 
+
     <a
       href="https://wa.me/923303118422"
       target="_blank"
@@ -1037,9 +1493,11 @@ footer p {
 
   </div>
 
+
   <p>
     © 2026 ZainTechMart. All rights reserved.
   </p>
+
 
   <p>
     As an Amazon Associate, we may earn
@@ -1089,6 +1547,7 @@ footer p {
       🛒 Your Cart
     </h2>
 
+
     <button
       class="close-button"
       onclick="closeCart()"
@@ -1098,17 +1557,21 @@ footer p {
 
   </div>
 
+
   <div id="cartItems"></div>
+
 
   <div class="cart-total">
 
     Total:
     Rs.
+
     <span id="cartTotal">
       0
     </span>
 
   </div>
+
 
   <div class="checkout-box">
 
@@ -1118,16 +1581,19 @@ footer p {
       placeholder="Your Name"
     >
 
+
     <input
       type="tel"
       id="customerPhone"
       placeholder="Phone Number"
     >
 
+
     <textarea
       id="customerAddress"
       placeholder="Delivery Address"
     ></textarea>
+
 
     <button
       class="checkout-button"
@@ -1152,6 +1618,7 @@ footer p {
 
   <div class="details-box">
 
+
     <button
       class="modal-close"
       onclick="closeDetails()"
@@ -1159,7 +1626,9 @@ footer p {
       ✕
     </button>
 
+
     <h2 id="detailsTitle"></h2>
+
 
     <img
       id="detailsImage"
@@ -1167,18 +1636,28 @@ footer p {
       alt=""
     >
 
+
     <h3 id="detailsPrice"></h3>
+
 
     <p
       id="detailsDescription"
-      style="color:#cbd5e1; margin-top:10px;"
+      style="
+        color:#cbd5e1;
+        margin-top:10px;
+      "
     ></p>
 
+
     <h3
-      style="margin-top:15px; color:#22d3ee;"
+      style="
+        margin-top:15px;
+        color:#22d3ee;
+      "
     >
       Features
     </h3>
+
 
     <ul id="detailsFeatures"></ul>
 
@@ -1196,8 +1675,10 @@ footer p {
 const SUPABASE_URL =
   "https://lynpuyxriagxyglygdqf.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_XICT109xIvHO389cu0xi6w_uSKUbVbe";
+
 
 const supabaseClient =
   window.supabase.createClient(
@@ -1212,6 +1693,7 @@ const supabaseClient =
 
 const whatsappNumber =
   "923303118422";
+
 
 const amazonStorefront =
   "https://amzn.to/4i5Lo0R";
@@ -1239,14 +1721,28 @@ const localProducts = [
 
   {
     id: "amazon-1",
-    name: "USB C Cable 5 Pack 6FT",
-    price: "Check Price on Amazon",
-    image: "usb-c-cable.jpeg",
+
+    name:
+      "USB C Cable 5 Pack 6FT",
+
+    price:
+      "Check Price on Amazon",
+
+    image:
+      "usb-c-cable.jpeg",
+
     description:
       "Convenient USB-C cable pack for everyday charging and connectivity.",
-    category: "cable",
-    source: "amazon",
-    link: "https://amzn.to/4h4vS4i",
+
+    category:
+      "cable",
+
+    source:
+      "amazon",
+
+    link:
+      "https://amzn.to/4h4vS4i",
+
     features: [
       "5-pack cable set",
       "6FT length",
@@ -1255,16 +1751,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "local-1",
-    name: "USB-C 20W Power Adapter",
-    price: 3500,
-    image: "usb-c-20w.jpg",
+
+    name:
+      "USB-C 20W Power Adapter",
+
+    price:
+      3500,
+
+    image:
+      "usb-c-20w.jpg",
+
     description:
       "Compact 20W USB-C power adapter for convenient everyday charging.",
-    category: "charger",
-    source: "local",
-    link: "whatsapp",
+
+    category:
+      "charger",
+
+    source:
+      "local",
+
+    link:
+      "whatsapp",
+
     features: [
       "20W charging output",
       "USB-C connection",
@@ -1273,16 +1784,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "local-2",
-    name: "Air31 Earbuds",
-    price: 1799,
-    image: "air31-earbuds.jpeg",
+
+    name:
+      "Air31 Earbuds",
+
+    price:
+      1799,
+
+    image:
+      "air31-earbuds.jpeg",
+
     description:
       "Stylish wireless earbuds for music, calls and everyday use.",
-    category: "earbuds",
-    source: "local",
-    link: "whatsapp",
+
+    category:
+      "earbuds",
+
+    source:
+      "local",
+
+    link:
+      "whatsapp",
+
     features: [
       "Wireless design",
       "Suitable for music and calls",
@@ -1291,16 +1817,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "amazon-2",
-    name: "Car Phone Holder",
-    price: "Check Price on Amazon",
-    image: "car-phone-holder.jpeg",
+
+    name:
+      "Car Phone Holder",
+
+    price:
+      "Check Price on Amazon",
+
+    image:
+      "car-phone-holder.jpeg",
+
     description:
       "A practical phone holder for convenient use while driving.",
-    category: "car",
-    source: "amazon",
-    link: "https://amzn.to/4qTpqjY",
+
+    category:
+      "car",
+
+    source:
+      "amazon",
+
+    link:
+      "https://amzn.to/4qTpqjY",
+
     features: [
       "Car phone holder",
       "Convenient phone placement",
@@ -1309,16 +1850,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "amazon-3",
-    name: "KTGEE Wireless Earbuds",
-    price: "Check Price on Amazon",
-    image: "ktgee-wireless-earbuds.jpg",
+
+    name:
+      "KTGEE Wireless Earbuds",
+
+    price:
+      "Check Price on Amazon",
+
+    image:
+      "ktgee-wireless-earbuds.jpg",
+
     description:
       "Wireless earbuds selected from Amazon for everyday listening.",
-    category: "earbuds",
-    source: "amazon",
-    link: "https://amzn.to/4gFMCxm",
+
+    category:
+      "earbuds",
+
+    source:
+      "amazon",
+
+    link:
+      "https://amzn.to/4gFMCxm",
+
     features: [
       "Wireless earbuds",
       "Portable design",
@@ -1327,16 +1883,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "amazon-4",
-    name: "UNBREAKcable iPhone 17 Pro Screen Protector",
-    price: "Check Price on Amazon",
-    image: "unbreakcable-iphone-17-pro-screen-protector.jpg",
+
+    name:
+      "UNBREAKcable iPhone 17 Pro Screen Protector",
+
+    price:
+      "Check Price on Amazon",
+
+    image:
+      "unbreakcable-iphone-17-pro-screen-protector.jpg",
+
     description:
       "Screen protection option for iPhone 17 Pro available through Amazon.",
-    category: "screen",
-    source: "amazon",
-    link: "https://amzn.to/3TdVSRD",
+
+    category:
+      "screen",
+
+    source:
+      "amazon",
+
+    link:
+      "https://amzn.to/3TdVSRD",
+
     features: [
       "Designed for iPhone 17 Pro",
       "Screen protection",
@@ -1345,16 +1916,31 @@ const localProducts = [
     ]
   },
 
+
   {
     id: "amazon-5",
-    name: "USB Wall Charger",
-    price: "Check Price on Amazon",
-    image: "usb-wall-charger.jpg",
+
+    name:
+      "USB Wall Charger",
+
+    price:
+      "Check Price on Amazon",
+
+    image:
+      "usb-wall-charger.jpg",
+
     description:
       "A practical wall charger option available through Amazon.",
-    category: "charger",
-    source: "amazon",
-    link: "https://amzn.to/4daAOlF",
+
+    category:
+      "charger",
+
+    source:
+      "amazon",
+
+    link:
+      "https://amzn.to/4daAOlF",
+
     features: [
       "USB wall charger",
       "Compact design",
@@ -1370,7 +1956,10 @@ const localProducts = [
    CATEGORY DETECTION
 ========================= */
 
-function detectCategory(name, description) {
+function detectCategory(
+  name,
+  description
+) {
 
   const text =
     (
@@ -1385,7 +1974,9 @@ function detectCategory(name, description) {
     text.includes("airpod") ||
     text.includes("tws")
   ) {
+
     return "earbuds";
+
   }
 
 
@@ -1393,7 +1984,9 @@ function detectCategory(name, description) {
     text.includes("cable") ||
     text.includes("wire")
   ) {
+
     return "cable";
+
   }
 
 
@@ -1403,7 +1996,9 @@ function detectCategory(name, description) {
     text.includes("adapter") ||
     text.includes("power")
   ) {
+
     return "charger";
+
   }
 
 
@@ -1411,7 +2006,9 @@ function detectCategory(name, description) {
     text.includes("car") ||
     text.includes("phone holder")
   ) {
+
     return "car";
+
   }
 
 
@@ -1419,11 +2016,14 @@ function detectCategory(name, description) {
     text.includes("screen") ||
     text.includes("protector")
   ) {
+
     return "screen";
+
   }
 
 
   return "all";
+
 }
 
 
@@ -1437,6 +2037,7 @@ async function loadProducts() {
     document.getElementById(
       "loadingProducts"
     );
+
 
   const errorBox =
     document.getElementById(
@@ -1462,7 +2063,9 @@ async function loadProducts() {
 
 
     if (error) {
+
       throw error;
+
     }
 
 
@@ -1520,6 +2123,7 @@ async function loadProducts() {
     loading.style.display =
       "none";
 
+
     errorBox.style.display =
       "none";
 
@@ -1537,11 +2141,6 @@ async function loadProducts() {
       error
     );
 
-
-    /*
-      Agar database mein koi error aaye,
-      purane products phir bhi show honge.
-    */
 
     allProducts = [
       ...localProducts
@@ -1582,16 +2181,20 @@ function createFeatures(
 
 
   if (name) {
+
     features.push(
       name
     );
+
   }
 
 
   if (description) {
+
     features.push(
       description
     );
+
   }
 
 
@@ -1601,6 +2204,7 @@ function createFeatures(
 
 
   return features;
+
 }
 
 
@@ -1608,9 +2212,13 @@ function createFeatures(
    ESCAPE HTML
 ========================= */
 
-function escapeHTML(value) {
+function escapeHTML(
+  value
+) {
 
-  return String(value ?? "")
+  return String(
+    value ?? ""
+  )
     .replace(
       /&/g,
       "&amp;"
@@ -1639,14 +2247,18 @@ function escapeHTML(value) {
    PRICE DISPLAY
 ========================= */
 
-function formatPrice(price) {
+function formatPrice(
+  price
+) {
 
   if (
     price === null ||
     price === undefined ||
     price === ""
   ) {
+
     return "Contact for Price";
+
   }
 
 
@@ -1680,6 +2292,7 @@ function formatPrice(price) {
 
 
   return String(price);
+
 }
 
 
@@ -1696,26 +2309,24 @@ function renderProducts(
       "productList"
     );
 
+
   const loading =
     document.getElementById(
       "loadingProducts"
     );
+
 
   const errorBox =
     document.getElementById(
       "databaseError"
     );
 
+
   const noResults =
     document.getElementById(
       "noResults"
     );
 
-
-  /*
-    Sirf actual product cards remove
-    karna hain.
-  */
 
   productList
     .querySelectorAll(
@@ -1740,15 +2351,18 @@ function renderProducts(
 
 
       card.dataset.category =
-        product.category || "all";
+        product.category ||
+        "all";
 
 
       card.dataset.source =
-        product.source || "local";
+        product.source ||
+        "local";
 
 
       const isAmazon =
-        product.source === "amazon";
+        product.source ===
+        "amazon";
 
 
       const numericPrice =
@@ -1760,10 +2374,12 @@ function renderProducts(
         numericPrice > 0;
 
 
-      let buyButton = "";
+      let buyButton =
+        "";
 
 
-      let addButton = "";
+      let addButton =
+        "";
 
 
       if (isAmazon) {
@@ -1830,7 +2446,10 @@ function renderProducts(
             <button
               class="add-button"
               disabled
-              style="opacity:0.5; cursor:not-allowed;"
+              style="
+                opacity:0.5;
+                cursor:not-allowed;
+              "
             >
               Price Unavailable
             </button>
@@ -1855,7 +2474,9 @@ function renderProducts(
           src="${escapeHTML(product.image)}"
           alt="${escapeHTML(product.name)}"
           class="product-image"
-          onerror="this.alt='Product image unavailable';"
+          onerror="
+            this.alt='Product image unavailable';
+          "
         >
 
         <div class="product-content">
@@ -1874,19 +2495,27 @@ function renderProducts(
 
           </span>
 
+
           <h3>
             ${escapeHTML(product.name)}
           </h3>
+
 
           <p class="product-description">
             ${escapeHTML(product.description)}
           </p>
 
+
           <div class="price">
+
             ${escapeHTML(
-              formatPrice(product.price)
+              formatPrice(
+                product.price
+              )
             )}
+
           </div>
+
 
           <div class="product-buttons">
 
@@ -1894,9 +2523,14 @@ function renderProducts(
 
             ${addButton}
 
+
             <button
               class="details-button"
-              onclick="showDetailsById('${escapeHTML(product.id)}')"
+              onclick="
+                showDetailsById(
+                  '${escapeHTML(product.id)}'
+                )
+              "
             >
               Details
             </button>
@@ -1907,11 +2541,6 @@ function renderProducts(
 
         `;
 
-
-      /*
-        Error image par hide nahi karna.
-        Background visible rahega.
-      */
 
       const image =
         card.querySelector(
@@ -2029,9 +2658,16 @@ function addToCart(
   else {
 
     cart.push({
-      name: name,
-      price: price,
-      quantity: 1
+
+      name:
+        name,
+
+      price:
+        price,
+
+      quantity:
+        1
+
     });
 
   }
@@ -2059,10 +2695,12 @@ function updateCart() {
       "cartItems"
     );
 
+
   const cartCount =
     document.getElementById(
       "cartCount"
     );
+
 
   const cartTotal =
     document.getElementById(
@@ -2076,6 +2714,7 @@ function updateCart() {
 
   let total =
     0;
+
 
   let itemCount =
     0;
@@ -2123,41 +2762,64 @@ function updateCart() {
 
         itemDiv.innerHTML =
           `
+
           <div class="cart-item-name">
             ${escapeHTML(item.name)}
           </div>
 
+
           <div class="cart-item-price">
+
             Rs.
             ${item.price.toLocaleString()}
+
           </div>
+
 
           <div class="quantity-controls">
 
             <button
-              onclick="changeQuantity(${index}, -1)"
+              onclick="
+                changeQuantity(
+                  ${index},
+                  -1
+                )
+              "
             >
               −
             </button>
+
 
             <span>
               ${item.quantity}
             </span>
 
+
             <button
-              onclick="changeQuantity(${index}, 1)"
+              onclick="
+                changeQuantity(
+                  ${index},
+                  1
+                )
+              "
             >
               +
             </button>
 
+
             <button
               class="remove-button"
-              onclick="removeItem(${index})"
+              onclick="
+                removeItem(
+                  ${index}
+                )
+              "
             >
               Remove
             </button>
 
           </div>
+
           `;
 
 
@@ -2298,11 +2960,19 @@ function showDetailsById(
 
 
   showDetails(
+
     product.name,
-    formatPrice(product.price),
+
+    formatPrice(
+      product.price
+    ),
+
     product.image,
+
     product.description,
+
     product.features || []
+
   );
 
 }
@@ -2525,13 +3195,16 @@ function sendOrder() {
 
 
   window.open(
+
     "https://wa.me/" +
     whatsappNumber +
     "?text=" +
     encodeURIComponent(
       message
     ),
+
     "_blank"
+
   );
 
 }
