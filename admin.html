@@ -32,6 +32,10 @@
       margin-bottom: 8px;
     }
 
+    h2 {
+      margin-bottom: 12px;
+    }
+
     .subtitle {
       color: #aab4c8;
       margin-bottom: 25px;
@@ -47,6 +51,7 @@
 
     input,
     textarea,
+    select,
     button {
       width: 100%;
       padding: 12px;
@@ -58,9 +63,14 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       background: #0d1628;
       color: white;
+    }
+
+    select {
+      cursor: pointer;
     }
 
     textarea {
@@ -86,6 +96,10 @@
 
     .secondary {
       background: #475569;
+    }
+
+    .success {
+      background: #059669;
     }
 
     .hidden {
@@ -133,6 +147,16 @@
       color: #60a5fa;
     }
 
+    .category-badge {
+      display: inline-block;
+      background: #1d4ed8;
+      color: white;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
     label {
       display: block;
       margin-top: 8px;
@@ -161,6 +185,67 @@
       color: #93c5fd;
       font-size: 14px;
       margin-bottom: 10px;
+    }
+
+    .category-item {
+      background: #0d1628;
+      border: 1px solid #263550;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .category-name {
+      font-weight: bold;
+      flex: 1;
+    }
+
+    .category-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .category-actions button {
+      width: auto;
+      margin: 0;
+      padding: 8px 12px;
+    }
+
+    .empty-text {
+      color: #94a3b8;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: 94%;
+        margin: 20px auto;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .category-item {
+        align-items: flex-start;
+      }
+
+      .category-actions {
+        flex-direction: column;
+      }
+
+      .category-actions button {
+        width: 100%;
+      }
+
+      .product-actions {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -213,7 +298,7 @@
       <h1>ZainTechMart Admin Panel</h1>
 
       <p class="subtitle">
-        Manage your products
+        Manage your products and categories
       </p>
 
       <button
@@ -222,6 +307,40 @@
       >
         Logout
       </button>
+
+    </div>
+
+
+    <!-- CATEGORY MANAGEMENT -->
+    <div class="card">
+
+      <h2>
+        Categories
+      </h2>
+
+      <p class="subtitle">
+        Create and manage your shop categories.
+      </p>
+
+      <input
+        type="text"
+        id="newCategoryName"
+        placeholder="Example: Smart Watches"
+      >
+
+      <button
+        class="success"
+        onclick="createCategory()"
+      >
+        Create New Category
+      </button>
+
+      <div
+        id="categoryMessage"
+        class="message hidden"
+      ></div>
+
+      <div id="categoriesList"></div>
 
     </div>
 
@@ -261,6 +380,20 @@
         min="0"
         step="0.01"
       >
+
+
+      <!-- CATEGORY -->
+      <label>
+        Category
+      </label>
+
+      <select id="productCategory">
+
+        <option value="">
+          Select Category
+        </option>
+
+      </select>
 
 
       <label>
@@ -436,7 +569,7 @@
   // SHOW ADMIN PANEL
   // ==============================
 
-  function showAdminPanel() {
+  async function showAdminPanel() {
 
     document
       .getElementById("loginSection")
@@ -446,7 +579,371 @@
       .getElementById("adminSection")
       .classList.remove("hidden");
 
-    loadProducts();
+    await loadCategories();
+    await loadProducts();
+  }
+
+
+  // ==============================
+  // CREATE SLUG
+  // ==============================
+
+  function createSlug(name) {
+
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+
+  // ==============================
+  // CREATE CATEGORY
+  // ==============================
+
+  async function createCategory() {
+
+    const input =
+      document.getElementById("newCategoryName");
+
+    const name =
+      input.value.trim();
+
+    if (!name) {
+
+      alert(
+        "Please enter a category name."
+      );
+
+      return;
+    }
+
+    const slug =
+      createSlug(name);
+
+    if (!slug) {
+
+      alert(
+        "Please enter a valid category name."
+      );
+
+      return;
+    }
+
+    const { error } =
+      await supabaseClient
+        .from("categories")
+        .insert([
+          {
+            name: name,
+            slug: slug
+          }
+        ]);
+
+    if (error) {
+
+      if (error.code === "23505") {
+
+        alert(
+          "This category already exists."
+        );
+
+      } else {
+
+        alert(
+          "Could not create category:\n\n" +
+          error.message
+        );
+      }
+
+      return;
+    }
+
+    input.value = "";
+
+    showCategoryMessage(
+      "Category created successfully."
+    );
+
+    await loadCategories();
+  }
+
+
+  function showCategoryMessage(text) {
+
+    const message =
+      document.getElementById("categoryMessage");
+
+    message.textContent = text;
+
+    message.classList.remove("hidden");
+
+    setTimeout(() => {
+
+      message.classList.add("hidden");
+
+    }, 3000);
+  }
+
+
+  // ==============================
+  // LOAD CATEGORIES
+  // ==============================
+
+  async function loadCategories() {
+
+    const { data, error } =
+      await supabaseClient
+        .from("categories")
+        .select("*")
+        .order("name", {
+          ascending: true
+        });
+
+    if (error) {
+
+      alert(
+        "Could not load categories:\n\n" +
+        error.message
+      );
+
+      return;
+    }
+
+
+    const list =
+      document.getElementById("categoriesList");
+
+    const select =
+      document.getElementById("productCategory");
+
+
+    list.innerHTML = "";
+
+    select.innerHTML =
+      '<option value="">Select Category</option>';
+
+
+    if (!data || data.length === 0) {
+
+      list.innerHTML =
+        '<p class="empty-text">No categories created yet.</p>';
+
+      return;
+    }
+
+
+    data.forEach(category => {
+
+      // Dropdown option
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        category.id;
+
+      option.textContent =
+        category.name;
+
+      select.appendChild(option);
+
+
+      // Category list item
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "category-item";
+
+
+      const name =
+        document.createElement("div");
+
+      name.className =
+        "category-name";
+
+      name.textContent =
+        category.name;
+
+
+      const actions =
+        document.createElement("div");
+
+      actions.className =
+        "category-actions";
+
+
+      const editButton =
+        document.createElement("button");
+
+      editButton.textContent =
+        "Rename";
+
+      editButton.onclick =
+        function() {
+
+          renameCategory(
+            category.id,
+            category.name
+          );
+
+        };
+
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.textContent =
+        "Delete";
+
+      deleteButton.className =
+        "danger";
+
+      deleteButton.onclick =
+        function() {
+
+          deleteCategory(
+            category.id,
+            category.name
+          );
+
+        };
+
+
+      actions.appendChild(
+        editButton
+      );
+
+      actions.appendChild(
+        deleteButton
+      );
+
+
+      item.appendChild(name);
+
+      item.appendChild(actions);
+
+      list.appendChild(item);
+
+    });
+  }
+
+
+  // ==============================
+  // RENAME CATEGORY
+  // ==============================
+
+  async function renameCategory(id, oldName) {
+
+    const newName =
+      prompt(
+        "Enter new category name:",
+        oldName
+      );
+
+    if (newName === null) {
+      return;
+    }
+
+    const name =
+      newName.trim();
+
+    if (!name) {
+
+      alert(
+        "Category name cannot be empty."
+      );
+
+      return;
+    }
+
+    const slug =
+      createSlug(name);
+
+    const { error } =
+      await supabaseClient
+        .from("categories")
+        .update({
+          name: name,
+          slug: slug
+        })
+        .eq("id", id);
+
+    if (error) {
+
+      if (error.code === "23505") {
+
+        alert(
+          "Another category with this name already exists."
+        );
+
+      } else {
+
+        alert(
+          "Could not rename category:\n\n" +
+          error.message
+        );
+      }
+
+      return;
+    }
+
+    await loadCategories();
+    await loadProducts();
+
+    alert(
+      "Category renamed successfully."
+    );
+  }
+
+
+  // ==============================
+  // DELETE CATEGORY
+  // ==============================
+
+  async function deleteCategory(id, name) {
+
+    const confirmed =
+      confirm(
+        "Delete category \"" +
+        name +
+        "\"?\n\nProducts in this category will become uncategorized."
+      );
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    const { error } =
+      await supabaseClient
+        .from("categories")
+        .delete()
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Could not delete category:\n\n" +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadCategories();
+
+    await loadProducts();
+
+
+    alert(
+      "Category deleted successfully."
+    );
   }
 
 
@@ -501,12 +998,33 @@
     message.classList.add("hidden");
 
 
+    // Load categories for displaying names
+
+    const {
+      data: categories
+    } =
+      await supabaseClient
+        .from("categories")
+        .select("id, name");
+
+
+    const categoryMap = {};
+
+    (categories || []).forEach(category => {
+
+      categoryMap[category.id] =
+        category.name;
+
+    });
+
+
     data.forEach(product => {
 
       const div =
         document.createElement("div");
 
-      div.className = "product";
+      div.className =
+        "product";
 
 
       const title =
@@ -521,13 +1039,30 @@
       const price =
         document.createElement("p");
 
-      price.className = "price";
+      price.className =
+        "price";
 
       price.textContent =
         "Price: " +
         (product.price ?? "");
 
       div.appendChild(price);
+
+
+      if (product.category_id &&
+          categoryMap[product.category_id]) {
+
+        const category =
+          document.createElement("span");
+
+        category.className =
+          "category-badge";
+
+        category.textContent =
+          categoryMap[product.category_id];
+
+        div.appendChild(category);
+      }
 
 
       if (product.image) {
@@ -545,7 +1080,10 @@
           product.name || "Product image";
 
         image.onerror = function() {
-          this.style.display = "none";
+
+          this.style.display =
+            "none";
+
         };
 
         div.appendChild(image);
@@ -576,7 +1114,9 @@
 
       editButton.onclick =
         function() {
+
           editProduct(product.id);
+
         };
 
 
@@ -591,7 +1131,9 @@
 
       deleteButton.onclick =
         function() {
+
           deleteProduct(product.id);
+
         };
 
 
@@ -625,9 +1167,11 @@
 
     if (!file) {
 
-      preview.style.display = "none";
+      preview.style.display =
+        "none";
 
-      status.textContent = "";
+      status.textContent =
+        "";
 
       return;
     }
@@ -639,9 +1183,11 @@
         "Please select an image file."
       );
 
-      event.target.value = "";
+      event.target.value =
+        "";
 
-      preview.style.display = "none";
+      preview.style.display =
+        "none";
 
       return;
     }
@@ -659,13 +1205,15 @@
 
         preview.style.display =
           "block";
+
       };
 
 
     reader.readAsDataURL(file);
 
     status.textContent =
-      "Image selected: " + file.name;
+      "Image selected: " +
+      file.name;
   }
 
 
@@ -681,7 +1229,10 @@
 
 
     const extension =
-      file.name.split(".").pop().toLowerCase();
+      file.name
+        .split(".")
+        .pop()
+        .toLowerCase();
 
 
     const fileName =
@@ -749,6 +1300,11 @@
         .getElementById("productPrice")
         .value;
 
+    const categoryId =
+      document
+        .getElementById("productCategory")
+        .value;
+
     const description =
       document
         .getElementById("productDescription")
@@ -768,6 +1324,16 @@
 
       alert(
         "Product name and price are required."
+      );
+
+      return;
+    }
+
+
+    if (!categoryId) {
+
+      alert(
+        "Please select a category."
       );
 
       return;
@@ -800,6 +1366,8 @@
         name: name,
 
         price: Number(price),
+
+        category_id: Number(categoryId),
 
         description: description
 
@@ -837,7 +1405,8 @@
             "Please select a product image."
           );
 
-          status.textContent = "";
+          status.textContent =
+            "";
 
           return;
         }
@@ -859,7 +1428,8 @@
           result.error.message
         );
 
-        status.textContent = "";
+        status.textContent =
+          "";
 
         return;
       }
@@ -874,7 +1444,7 @@
 
       clearForm();
 
-      loadProducts();
+      await loadProducts();
 
     } catch (error) {
 
@@ -883,7 +1453,8 @@
         error.message
       );
 
-      status.textContent = "";
+      status.textContent =
+        "";
     }
   }
 
@@ -932,6 +1503,12 @@
 
 
     document
+      .getElementById("productCategory")
+      .value =
+      data.category_id || "";
+
+
+    document
       .getElementById("productDescription")
       .value =
       data.description || "";
@@ -948,10 +1525,12 @@
 
       preview.style.display =
         "block";
+
     } else {
 
       preview.style.display =
         "none";
+
     }
 
 
@@ -1032,27 +1611,38 @@
 
     document
       .getElementById("productId")
-      .value = "";
+      .value =
+      "";
 
 
     document
       .getElementById("productName")
-      .value = "";
+      .value =
+      "";
 
 
     document
       .getElementById("productPrice")
-      .value = "";
+      .value =
+      "";
+
+
+    document
+      .getElementById("productCategory")
+      .value =
+      "";
 
 
     document
       .getElementById("productDescription")
-      .value = "";
+      .value =
+      "";
 
 
     document
       .getElementById("productImageFile")
-      .value = "";
+      .value =
+      "";
 
 
     document
@@ -1075,13 +1665,15 @@
 
     document
       .getElementById("uploadStatus")
-      .textContent = "";
+      .textContent =
+      "";
   }
 
 
   function cancelEdit() {
 
     clearForm();
+
   }
 
 
@@ -1100,7 +1692,9 @@
     if (data.session) {
 
       showAdminPanel();
+
     }
+
   }
 
 
