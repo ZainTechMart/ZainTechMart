@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="iOGox9a70iLkAr11osvCnmyy4EJM3QshANnJFVL6s2w">
+
+<meta
+  name="google-site-verification"
+  content="iOGox9a70iLkAr11osvCnmyy4EJM3QshANnJFVL6s2w"
+>
 
 <title>ZainTechMart | Smart Accessories</title>
 
@@ -11,132 +16,110 @@
 
 <style>
 
-/* =========================
-   BASIC RESET
-========================= */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: Arial, sans-serif;
   background: #0b1120;
   color: white;
-  line-height: 1.5;
+  min-height: 100vh;
 }
 
+button,
+input {
+  font-family: inherit;
+}
 
-/* =========================
+/* ==============================
    HEADER
-========================= */
+============================== */
 
 header {
-  background: #111827;
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
+  background: #0d1628;
+  border-bottom: 1px solid #263550;
+  padding: 15px 20px;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #1f2937;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .logo {
-  color: #22d3ee;
   font-size: 24px;
   font-weight: bold;
-  text-decoration: none;
+  color: #60a5fa;
+}
+
+.logo span {
+  color: #22d3ee;
 }
 
 .cart-button {
-  background: #22d3ee;
-  color: #07111f;
-  border: none;
+  width: auto;
+  margin: 0;
   padding: 10px 16px;
+  border: none;
   border-radius: 8px;
+  background: #2563eb;
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
-.cart-button:hover {
-  background: #67e8f9;
-}
-
-
-/* =========================
+/* ==============================
    HERO
-========================= */
+============================== */
 
 .hero {
   position: relative;
-  overflow: hidden;
+  max-width: 1200px;
+  margin: auto;
+  min-height: 430px;
+  padding: 145px 20px 60px;
   text-align: center;
-  padding: 90px 20px 55px;
-
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(34,211,238,0.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(124,58,237,0.10),
-      transparent 28%
-    ),
-    linear-gradient(
-      180deg,
-      #111827,
-      #0b1120
-    );
+  overflow: hidden;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: rgba(34,211,238,0.07);
-  top: -100px;
-  left: -90px;
-  filter: blur(5px);
-  pointer-events: none;
+.hero h1 {
+  font-size: clamp(34px, 6vw, 62px);
+  line-height: 1.1;
+  margin-bottom: 18px;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(124,58,237,0.08);
-  right: -70px;
-  bottom: -80px;
-  filter: blur(5px);
-  pointer-events: none;
+.hero h1 span {
+  color: #22d3ee;
 }
 
+.hero p {
+  color: #aab4c8;
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+}
 
-/* =========================
+/* ==============================
    PROFILE
-========================= */
+============================== */
 
 .profile-corner {
   position: absolute;
   top: 20px;
-  left: 20px;
-  width: 78px;
-  height: 78px;
+  right: 20px;
+  left: auto;
+  width: 94px;
+  height: 94px;
   padding: 3px;
   border-radius: 50%;
 
@@ -153,7 +136,9 @@ header {
     0 0 30px rgba(34,211,238,0.25);
 
   z-index: 10;
-  animation: profileFloat 4s ease-in-out infinite;
+
+  animation:
+    profileFloat 4s ease-in-out infinite;
 }
 
 .profile-corner img {
@@ -168,20 +153,19 @@ header {
 
 @keyframes profileFloat {
 
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
 
   50% {
     transform: translateY(-5px);
   }
-
 }
 
-
-/* =========================
-   3D CUSTOMER MESSAGE
-========================= */
+/* ==============================
+   MESSAGE SLIDER
+============================== */
 
 .profile-message-slider {
   position: absolute;
@@ -189,553 +173,165 @@ header {
   left: 20px;
   width: 300px;
   height: 72px;
-  perspective: 900px;
-  z-index: 12;
-  overflow: hidden;
+  perspective: 800px;
+  z-index: 5;
+  text-align: left;
 }
 
-.profile-message-track {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.profile-message {
+.message-card {
   position: absolute;
   width: 100%;
-  min-height: 58px;
-  padding: 10px 13px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  border-radius: 13px;
+  height: 100%;
+  padding: 14px;
+  border-radius: 14px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(15,23,42,0.96),
-      rgba(30,41,59,0.96)
+      rgba(37,99,235,0.20),
+      rgba(124,58,237,0.18)
     );
 
-  border: 1px solid rgba(34,211,238,0.55);
+  border: 1px solid rgba(96,165,250,0.25);
 
   box-shadow:
-    0 8px 25px rgba(0,0,0,0.35),
-    0 0 18px rgba(34,211,238,0.15);
+    0 15px 40px rgba(0,0,0,0.25);
 
-  color: #ffffff;
+  opacity: 0;
+  transform:
+    rotateX(20deg)
+    translateY(15px)
+    scale(.95);
 
+  transition:
+    opacity .5s ease,
+    transform .5s ease;
+}
+
+.message-card.active {
+  opacity: 1;
+  transform:
+    rotateX(0)
+    translateY(0)
+    scale(1);
+}
+
+.message-card strong {
+  color: #67e8f9;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.message-card p {
+  color: #dbeafe;
   font-size: 13px;
-  font-weight: bold;
-  line-height: 1.35;
-
-  backface-visibility: hidden;
-  transform-origin: center center;
-
-  animation: message3D 8s infinite;
 }
 
-.profile-message.urdu {
-  animation-delay: 0s;
-}
-
-.profile-message.english {
-  animation-delay: 4s;
-}
-
-@keyframes message3D {
-
-  0% {
-    opacity: 0;
-    transform:
-      translateX(-80px)
-      rotateY(-70deg)
-      rotateX(15deg)
-      scale(0.75);
-  }
-
-  10% {
-    opacity: 1;
-    transform:
-      translateX(0)
-      rotateY(0deg)
-      rotateX(0deg)
-      scale(1);
-  }
-
-  40% {
-    opacity: 1;
-    transform:
-      translateX(0)
-      rotateY(0deg)
-      rotateX(0deg)
-      scale(1);
-  }
-
-  50% {
-    opacity: 0;
-    transform:
-      translateX(80px)
-      rotateY(70deg)
-      rotateX(-15deg)
-      scale(0.75);
-  }
-
-  100% {
-    opacity: 0;
-    transform:
-      translateX(80px)
-      rotateY(70deg)
-      rotateX(-15deg)
-      scale(0.75);
-  }
-
-}
-
-
-/* =========================
-   HERO CONTENT
-========================= */
-
-.hero h1,
-.hero p,
-.hero .amazon-store-button {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.hero h1 span {
-  color: #22d3ee;
-}
-
-.hero p {
-  color: #cbd5e1;
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-.amazon-store-button {
-  display: inline-block;
-  background: #22d3ee;
-  color: #07111f;
-  text-decoration: none;
-  padding: 13px 22px;
-  border-radius: 9px;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.amazon-store-button:hover {
-  background: #67e8f9;
-  transform: translateY(-2px);
-}
-
-
-/* =========================
+/* ==============================
    SEARCH
-========================= */
+============================== */
 
-.search-container {
-  max-width: 700px;
-  margin: 20px auto 10px;
+.search-area {
+  max-width: 800px;
+  margin: 0 auto 25px;
   padding: 0 20px;
 }
 
-#searchInput {
+.search-box {
   width: 100%;
   padding: 14px 16px;
   border-radius: 10px;
-  border: 1px solid #334155;
-  background: #111827;
+  border: 1px solid #35445f;
+  background: #0d1628;
   color: white;
-  font-size: 16px;
   outline: none;
+  font-size: 16px;
 }
 
-#searchInput:focus {
-  border-color: #22d3ee;
+.search-box:focus {
+  border-color: #2563eb;
 }
 
-#searchInput::placeholder {
-  color: #94a3b8;
-}
-
-
-/* =========================
+/* ==============================
    CATEGORIES
-========================= */
+============================== */
 
 .categories {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  padding: 20px;
 }
 
 .category-button {
-  background: #1e293b;
-  color: white;
-  border: 1px solid #334155;
+  width: auto;
+  margin: 0;
   padding: 10px 16px;
-  border-radius: 8px;
+  border: 1px solid #35445f;
+  border-radius: 25px;
+  background: #151f33;
+  color: #dbeafe;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.category-button:hover,
-.category-button.active {
-  background: #22d3ee;
-  color: #07111f;
-  border-color: #22d3ee;
-}
-
-
-/* =========================
-   AMAZON BANNER
-========================= */
-
-.store-banner {
-  max-width: 1100px;
-  margin: 10px auto 30px;
-  padding: 0 20px;
-}
-
-.store-banner-inner {
-  background: #111827;
-  border: 1px solid #1f3b46;
-  border-radius: 14px;
-  padding: 20px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.store-banner h2 {
-  color: #22d3ee;
-  font-size: 21px;
-  margin-bottom: 5px;
-}
-
-.store-banner p {
-  color: #cbd5e1;
-}
-
-
-/* =========================
-   TRUST SECTION
-========================= */
-
-.trust-section {
-  max-width: 1100px;
-  margin: 35px auto;
-  padding: 20px;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.section-heading h2 {
-  color: #22d3ee;
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.section-heading p {
-  color: #94a3b8;
-}
-
-
-/* =========================
-   TRUST CARDS
-========================= */
-
-.trust-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(200px, 1fr)
-    );
-
-  gap: 15px;
-}
-
-.trust-card {
-  background:
-    linear-gradient(
-      145deg,
-      #111827,
-      #0f172a
-    );
-
-  border: 1px solid #1f2937;
-  border-radius: 14px;
-  padding: 20px;
-
-  transition: 0.25s;
-}
-
-.trust-card:hover {
-  transform: translateY(-4px);
-  border-color: #22d3ee;
-}
-
-.trust-icon {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.trust-card h3 {
-  color: #ffffff;
-  margin-bottom: 7px;
-}
-
-.trust-card p {
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-
-/* =========================
-   SUPPORT CARD
-========================= */
-
-.support-card {
-  margin-top: 18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(34,211,238,0.10),
-      rgba(124,58,237,0.08)
-    );
-
-  border: 1px solid rgba(34,211,238,0.35);
-  border-radius: 14px;
-
-  padding: 20px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 20px;
-}
-
-.support-card h3 {
-  color: #22d3ee;
-  margin-bottom: 5px;
-}
-
-.support-card p {
-  color: #cbd5e1;
-  font-size: 14px;
-}
-
-.support-button {
-  display: inline-block;
-  background: #22c55e;
-  color: white;
-  text-decoration: none;
-  padding: 11px 17px;
-  border-radius: 8px;
   font-weight: bold;
-  white-space: nowrap;
 }
 
-
-/* =========================
-   POLICY CARD
-========================= */
-
-.policy-card {
-  margin-top: 15px;
-
-  background: #111827;
-
-  border: 1px solid #1f2937;
-
-  border-radius: 14px;
-
-  padding: 20px;
+.category-button:hover {
+  border-color: #60a5fa;
 }
 
-.policy-card h3 {
-  color: #22d3ee;
-  margin-bottom: 10px;
-}
-
-.policy-card p {
-  color: #94a3b8;
-  font-size: 14px;
-  margin-bottom: 7px;
-}
-
-.policy-card strong {
-  color: #cbd5e1;
-}
-
-
-/* =========================
-   SHARE + VISITOR
-========================= */
-
-.activity-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap: 15px;
-
-  margin-top: 15px;
-}
-
-.share-card,
-.visitor-card {
-  background: #111827;
-
-  border: 1px solid #1f2937;
-
-  border-radius: 14px;
-
-  padding: 20px;
-}
-
-.share-card {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 15px;
-}
-
-.share-card h3,
-.visitor-card h3 {
-  color: #22d3ee;
-  margin-bottom: 5px;
-}
-
-.share-card p {
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-.share-button {
+.category-button.active {
   background: #2563eb;
   color: white;
-
-  border: none;
-
-  padding: 11px 17px;
-
-  border-radius: 8px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  white-space: nowrap;
+  border-color: #2563eb;
 }
 
-.share-button:hover {
-  background: #3b82f6;
-}
+/* ==============================
+   SHOP
+============================== */
 
-.visitor-card {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap: 15px;
-
-  text-align: center;
-}
-
-.visitor-label {
-  color: #cbd5e1;
-  font-size: 15px;
-}
-
-#visitorCount {
-  color: #22d3ee;
-  font-size: 28px;
-}
-
-
-/* =========================
-   PRODUCTS
-========================= */
-
-.products {
+.shop {
   max-width: 1200px;
   margin: auto;
-  padding: 20px;
+  padding: 0 20px 50px;
+}
 
+.products-grid {
   display: grid;
-
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(240px, 1fr)
-    );
-
-  gap: 22px;
+    repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
 }
 
 .product {
-  background: #111827;
-
-  border: 1px solid #1f2937;
-
+  background: #151f33;
+  border: 1px solid #263550;
   border-radius: 14px;
+  padding: 16px;
 
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
-  transition: 0.25s;
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
 }
 
 .product:hover {
   transform: translateY(-4px);
-  border-color: #22d3ee;
+  border-color: #3b82f6;
 }
 
 .product-image {
   width: 100%;
-  height: 230px;
+  height: 210px;
   object-fit: contain;
-  background: #f8fafc;
-  padding: 12px;
-  display: block;
-}
-
-.product-content {
-  padding: 17px;
+  border-radius: 10px;
+  background: #0d1628;
+  margin-bottom: 14px;
 }
 
 .product h3 {
@@ -744,718 +340,211 @@ header {
 }
 
 .product-description {
-  color: #94a3b8;
+  color: #aab4c8;
   font-size: 14px;
-  min-height: 42px;
-  margin-bottom: 12px;
-}
-
-
-/* =========================
-   BADGES
-========================= */
-
-.amazon-badge {
-  display: inline-block;
-
-  background: #334155;
-  color: #67e8f9;
-
-  font-size: 12px;
-
-  padding: 4px 8px;
-
-  border-radius: 5px;
-
+  line-height: 1.5;
   margin-bottom: 10px;
 }
 
-.local-badge {
-  display: inline-block;
-
-  background: #1e293b;
-  color: #cbd5e1;
-
-  font-size: 12px;
-
-  padding: 4px 8px;
-
-  border-radius: 5px;
-
-  margin-bottom: 10px;
-}
-
-
-/* =========================
-   PRICE
-========================= */
-
-.price {
-  color: #22d3ee;
-
-  font-size: 21px;
-
+.product-price {
+  font-size: 20px;
   font-weight: bold;
-
+  color: #60a5fa;
   margin-bottom: 12px;
 }
 
-
-/* =========================
-   PRODUCT BUTTONS
-========================= */
+.product-category {
+  display: inline-block;
+  width: fit-content;
+  background: #1e3a8a;
+  color: #bfdbfe;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
 
 .product-buttons {
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  display: flex;
   gap: 8px;
+  margin-top: auto;
 }
 
-.product-buttons a,
-.product-buttons button {
-  text-align: center;
-
-  text-decoration: none;
-
+.product-buttons button,
+.product-buttons a {
+  flex: 1;
+  padding: 11px 8px;
   border: none;
-
-  padding: 10px 8px;
-
-  border-radius: 7px;
-
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
   font-weight: bold;
-
-  cursor: pointer;
-
   font-size: 13px;
+  cursor: pointer;
 }
 
-.buy-button {
-  background: #22d3ee;
-  color: #07111f;
-}
-
-.buy-button:hover {
-  background: #67e8f9;
-}
-
-.add-button {
-  background: #1e293b;
+.whatsapp-button {
+  background: #16a34a;
   color: white;
-  border: 1px solid #334155 !important;
 }
 
-.add-button:hover {
-  background: #334155;
+.amazon-button {
+  background: #f59e0b;
+  color: #111827;
 }
 
-.details-button {
-  background: transparent;
-  color: #22d3ee;
-  border: 1px solid #22d3ee !important;
-  grid-column: 1 / -1;
-}
-
-.details-button:hover {
-  background: #22d3ee;
-  color: #07111f;
-}
-
-
-/* =========================
-   LOADING / ERRORS
-========================= */
-
-#loadingProducts {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 35px 20px;
-  color: #94a3b8;
-}
-
-#databaseError {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 20px;
-  color: #fca5a5;
-  display: none;
-}
-
-#noResults {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 40px 20px;
-  color: #94a3b8;
-  display: none;
-}
-
-
-/* =========================
-   CART OVERLAY
-========================= */
-
-.overlay {
-  display: none;
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0,0,0,0.7);
-
-  z-index: 1999;
-}
-
-
-/* =========================
-   CART PANEL
-========================= */
-
-.cart-panel {
-  display: none;
-
-  position: fixed;
-
-  right: 0;
-  top: 0;
-
-  width: min(420px,95%);
-
-  height: 100vh;
-
-  background: #111827;
-
-  z-index: 2000;
-
-  padding: 20px;
-
-  overflow-y: auto;
-
-  border-left: 1px solid #334155;
-}
-
-.cart-header {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  margin-bottom: 20px;
-}
-
-.cart-header h2 {
-  color: #22d3ee;
-}
-
-.close-button {
-  background: #1e293b;
-  color: white;
-
-  border: none;
-
-  padding: 8px 12px;
-
-  border-radius: 6px;
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   CART ITEMS
-========================= */
-
-.cart-item {
-  background: #0b1120;
-
-  padding: 13px;
-
-  border-radius: 9px;
-
-  margin-bottom: 10px;
-}
-
-.cart-item-name {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.cart-item-price {
-  color: #22d3ee;
-}
-
-.quantity-controls {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-top: 10px;
-}
-
-.quantity-controls button {
-  width: 28px;
-  height: 28px;
-
-  border: none;
-
-  border-radius: 5px;
-
-  cursor: pointer;
-
-  font-weight: bold;
-}
-
-.remove-button {
-  margin-left: auto;
-
-  background: #7f1d1d;
-
-  color: white;
-
-  padding: 7px 10px;
-
-  border: none;
-
-  border-radius: 5px;
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   CART TOTAL
-========================= */
-
-.cart-total {
-  border-top: 1px solid #334155;
-
-  margin-top: 20px;
-
-  padding-top: 15px;
-
-  font-size: 20px;
-
-  font-weight: bold;
-}
-
-
-/* =========================
-   CHECKOUT
-========================= */
-
-.checkout-box {
-  margin-top: 20px;
-}
-
-.checkout-box input,
-.checkout-box textarea {
-  width: 100%;
-
-  margin-bottom: 10px;
-
-  padding: 11px;
-
-  border-radius: 7px;
-
-  border: 1px solid #334155;
-
-  background: #0b1120;
-
-  color: white;
-
-  outline: none;
-}
-
-.checkout-box input:focus,
-.checkout-box textarea:focus {
-  border-color: #22d3ee;
-}
-
-.checkout-box textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-.checkout-button {
-  width: 100%;
-
-  background: #22d3ee;
-
-  color: #07111f;
-
-  border: none;
-
-  padding: 13px;
-
-  border-radius: 8px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   DETAILS MODAL
-========================= */
-
-.details-modal {
-  display: none;
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0,0,0,0.75);
-
-  z-index: 3000;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-}
-
-.details-box {
-  width: min(600px,100%);
-
-  max-height: 90vh;
-
-  overflow-y: auto;
-
-  background: #111827;
-
-  border: 1px solid #334155;
-
-  border-radius: 14px;
-
-  padding: 20px;
-
-  position: relative;
-}
-
-.details-box img {
-  width: 100%;
-
-  height: 250px;
-
-  object-fit: contain;
-
-  background: white;
-
-  border-radius: 8px;
-
-  margin: 15px 0;
-}
-
-.details-box h2 {
-  color: #22d3ee;
-}
-
-.details-box ul {
-  margin: 12px 0 15px 20px;
-  color: #cbd5e1;
-}
-
-.modal-close {
-  position: absolute;
-
-  right: 15px;
-  top: 15px;
-
-  background: #1e293b;
-
-  color: white;
-
-  border: none;
-
-  border-radius: 6px;
-
-  padding: 7px 10px;
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   SHARE MODAL
-========================= */
-
-.share-modal {
-  display: none;
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0,0,0,0.78);
-
-  z-index: 4000;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-}
-
-.share-box {
-  width: min(420px,100%);
-
-  background: #111827;
-
-  border: 1px solid #334155;
-
-  border-radius: 16px;
-
-  padding: 25px;
-
-  position: relative;
-
-  text-align: center;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.5);
-}
-
-.share-box h2 {
-  color: #22d3ee;
-
-  margin-bottom: 8px;
-}
-
-.share-box p {
-  color: #94a3b8;
-
-  font-size: 14px;
-
-  margin-bottom: 18px;
-}
-
-.share-option {
-  width: 100%;
-
-  display: block;
-
-  padding: 12px;
-
-  margin-top: 10px;
-
-  border-radius: 8px;
-
-  border: none;
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  font-size: 14px;
-}
-
-.native-share {
+.cart-add-button {
   background: #2563eb;
   color: white;
 }
 
-.copy-share {
-  background: #334155;
-  color: white;
+/* ==============================
+   CATEGORY HEADINGS
+============================== */
+
+.category-section {
+  margin-bottom: 45px;
 }
 
-.whatsapp-share {
-  background: #22c55e;
-  color: white;
+.category-heading {
+  font-size: 25px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #263550;
 }
 
-#copyMessage {
+.category-heading span {
   color: #22d3ee;
-
-  min-height: 20px;
-
-  margin-top: 12px;
-
-  margin-bottom: 0;
 }
 
+/* ==============================
+   CART
+============================== */
 
-/* =========================
-   INFORMATION
-========================= */
-
-.info-section {
-  max-width: 1100px;
-
-  margin: 30px auto;
-
-  padding: 20px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(220px,1fr)
-    );
-
-  gap: 15px;
-}
-
-.info-card {
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: min(380px, 92%);
+  height: 100vh;
   background: #111827;
-
-  border: 1px solid #1f2937;
-
-  border-radius: 12px;
+  border-left: 1px solid #263550;
+  z-index: 1000;
 
   padding: 20px;
+
+  transition: right .3s ease;
+
+  overflow-y: auto;
 }
 
-.info-card h3 {
-  color: #22d3ee;
-
-  margin-bottom: 7px;
+.cart-panel.open {
+  right: 0;
 }
 
-.info-card p {
-  color: #94a3b8;
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
+.close-cart {
+  width: auto;
+  margin: 0;
+  padding: 8px 12px;
+  background: #475569;
+}
+
+.cart-item {
+  border-bottom: 1px solid #263550;
+  padding: 12px 0;
+}
+
+.cart-item h4 {
+  margin-bottom: 5px;
+}
+
+.cart-item p {
+  color: #aab4c8;
   font-size: 14px;
 }
 
+.cart-total {
+  margin-top: 20px;
+  font-size: 21px;
+  font-weight: bold;
+  color: #60a5fa;
+}
 
-/* =========================
+.checkout-button {
+  margin-top: 15px;
+  background: #16a34a;
+}
+
+/* ==============================
+   VISITOR
+============================== */
+
+.visitor-counter {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* ==============================
+   STATUS
+============================== */
+
+.status-message {
+  text-align: center;
+  color: #94a3b8;
+  padding: 30px 10px;
+}
+
+/* ==============================
    FOOTER
-========================= */
+============================== */
 
 footer {
-  margin-top: 40px;
-
-  padding: 35px 20px;
-
+  border-top: 1px solid #263550;
+  background: #0d1628;
   text-align: center;
-
-  background: #060b15;
-
-  border-top: 1px solid #1f2937;
-}
-
-footer h2 {
-  color: #22d3ee;
-
-  margin-bottom: 8px;
-}
-
-footer p {
+  padding: 25px 20px;
   color: #94a3b8;
-
-  font-size: 14px;
-
-  margin: 5px 0;
 }
 
-.footer-buttons {
-  margin: 18px 0;
-
-  display: flex;
-
-  justify-content: center;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
+footer strong {
+  color: #60a5fa;
 }
 
-.footer-buttons a {
-  display: inline-block;
-
-  text-decoration: none;
-
-  padding: 10px 16px;
-
-  border-radius: 7px;
-
-  font-weight: bold;
-}
-
-.whatsapp-button {
-  background: #22c55e;
-  color: white;
-}
-
-.footer-amazon-button {
-  background: #22d3ee;
-  color: #07111f;
-}
-
-
-/* =========================
-   FLOATING WHATSAPP
-========================= */
-
-.floating-whatsapp {
-  position: fixed;
-
-  right: 18px;
-  bottom: 18px;
-
-  width: 54px;
-  height: 54px;
-
-  border-radius: 50%;
-
-  background: #22c55e;
-
-  color: white;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  text-decoration: none;
-
-  font-size: 25px;
-
-  z-index: 1500;
-
-  box-shadow:
-    0 5px 18px rgba(0,0,0,0.35);
-}
-
-
-/* =========================
+/* ==============================
    MOBILE
-========================= */
+============================== */
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
+
+  .header-inner {
+    flex-direction: row;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
 
   .hero {
-    padding-top: 175px;
-  }
-
-  .hero h1 {
-    font-size: 31px;
-  }
-
-  .hero p {
-    font-size: 16px;
+    min-height: 460px;
+    padding:
+      175px 15px 45px;
   }
 
   .profile-corner {
-    width: 62px;
-    height: 62px;
+    width: 76px;
+    height: 76px;
     top: 15px;
-    left: 15px;
+    right: 15px;
+    left: auto;
   }
 
   .profile-message-slider {
@@ -1465,118 +554,82 @@ footer p {
     height: 70px;
   }
 
-  .profile-message {
-    font-size: 12px;
-    padding: 9px 11px;
-    min-height: 55px;
+  .hero h1 {
+    font-size: 34px;
   }
 
-  header {
-    padding: 13px 4%;
+  .hero p {
+    font-size: 15px;
   }
 
-  .logo {
-    font-size: 20px;
+  .products-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
-  .cart-button {
-    padding: 9px 12px;
-    font-size: 13px;
-  }
-
-  .products {
-    grid-template-columns: 1fr;
-    padding: 15px;
-  }
-
-  .store-banner-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .store-banner-inner .amazon-store-button {
-    width: 100%;
-    text-align: center;
+  .product {
+    padding: 10px;
   }
 
   .product-image {
-    height: 240px;
+    height: 150px;
   }
 
-  .support-card {
+  .product h3 {
+    font-size: 15px;
+  }
+
+  .product-description {
+    font-size: 12px;
+  }
+
+  .product-price {
+    font-size: 17px;
+  }
+
+  .product-buttons {
     flex-direction: column;
-    align-items: flex-start;
   }
 
-  .support-button {
-    width: 100%;
-    text-align: center;
+  .category-heading {
+    font-size: 21px;
   }
-
-  .activity-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .share-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .share-button {
-    width: 100%;
-  }
-
-}
-
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  html {
-    scroll-behavior: auto;
-  }
-
-  .profile-corner,
-  .profile-message {
-    animation: none;
-  }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
+<!-- ==============================
      HEADER
-========================= -->
+============================== -->
 
 <header>
 
-  <a href="#" class="logo">
-    ZainTechMart
-  </a>
+  <div class="header-inner">
 
-  <button
-    class="cart-button"
-    onclick="openCart()"
-  >
-    🛒 Cart
-    (<span id="cartCount">0</span>)
-  </button>
+    <div class="logo">
+      Zain<span>TechMart</span>
+    </div>
+
+    <button
+      class="cart-button"
+      onclick="toggleCart()"
+    >
+      🛒 Cart
+      <span id="cartCount">0</span>
+    </button>
+
+  </div>
 
 </header>
 
 
-<!-- =========================
+<!-- ==============================
      HERO
-========================= -->
+============================== -->
 
 <section class="hero">
 
@@ -1593,23 +646,35 @@ footer p {
 
   <div class="profile-message-slider">
 
-    <div class="profile-message-track">
+    <div class="message-card active">
 
-      <div
-        class="profile-message urdu"
-        dir="rtl"
-      >
-        🇵🇰 بہترین چیزیں، مناسب قیمتیں —
-        آپ کا اعتماد ہماری پہچان ہے! 🛍️
-      </div>
+      <strong>Welcome to ZainTechMart</strong>
+
+      <p>
+        Smart accessories for everyday life.
+      </p>
+
+    </div>
 
 
-      <div class="profile-message english">
+    <div class="message-card">
 
-        🇬🇧 Quality Products, Great Prices —
-        Your Trust Is Our Identity! 🛍️
+      <strong>Quality & Value</strong>
 
-      </div>
+      <p>
+        Useful products at practical prices.
+      </p>
+
+    </div>
+
+
+    <div class="message-card">
+
+      <strong>Shop Smart</strong>
+
+      <p>
+        Discover accessories for your tech life.
+      </p>
 
     </div>
 
@@ -1617,537 +682,105 @@ footer p {
 
 
   <h1>
-
     Smart Accessories.
     <span>Better Life.</span>
-
   </h1>
 
-
   <p>
-
-    Quality mobile accessories and useful Amazon picks —
-    all in one place.
-
+    Discover useful tech accessories, everyday gadgets
+    and carefully selected products.
   </p>
-
-
-  <a
-    href="https://amzn.to/4i5Lo0R"
-    target="_blank"
-    rel="nofollow sponsored noopener"
-    class="amazon-store-button"
-  >
-    🛍️ Visit Our Amazon Store
-  </a>
 
 </section>
 
 
-<!-- =========================
+<!-- ==============================
      SEARCH
-========================= -->
+============================== -->
 
-<div class="search-container">
+<div class="search-area">
 
   <input
-    type="text"
     id="searchInput"
-    placeholder="🔎 Search products..."
+    class="search-box"
+    type="search"
+    placeholder="Search products..."
     oninput="searchProducts()"
   >
 
 </div>
 
 
-<!-- =========================
+<!-- ==============================
      CATEGORIES
-========================= -->
+============================== -->
 
-<div class="categories">
+<div
+  class="categories"
+  id="categoryList"
+>
 
   <button
     class="category-button active"
+    data-category="all"
     onclick="filterProducts('all', this)"
   >
     All Products
   </button>
 
-  <button
-    class="category-button"
-    onclick="filterProducts('charger', this)"
-  >
-    Chargers
-  </button>
+</div>
 
-  <button
-    class="category-button"
-    onclick="filterProducts('earbuds', this)"
-  >
-    TWS Earbuds
-  </button>
 
-  <button
-    class="category-button"
-    onclick="filterProducts('cable', this)"
-  >
-    Cables
-  </button>
+<!-- ==============================
+     SHOP
+============================== -->
 
-  <button
-    class="category-button"
-    onclick="filterProducts('car', this)"
-  >
-    Car Accessories
-  </button>
+<main class="shop">
 
-  <button
-    class="category-button"
-    onclick="filterProducts('screen', this)"
+  <div
+    id="productsMessage"
+    class="status-message"
   >
-    Screen Protectors
-  </button>
+    Loading products...
+  </div>
 
-  <button
-    class="category-button"
-    onclick="filterProducts('amazon', this)"
-  >
-    Amazon Picks
-  </button>
+  <div
+    id="productsContainer"
+  ></div>
+
+</main>
+
+
+<!-- ==============================
+     VISITOR COUNTER
+============================== -->
+
+<div class="visitor-counter">
+
+  Visitors:
+  <strong id="visitorCount">—</strong>
 
 </div>
 
 
-<!-- =========================
-     AMAZON STORE BANNER
-========================= -->
-
-<section class="store-banner">
-
-  <div class="store-banner-inner">
-
-    <div>
-
-      <h2>
-        🛍️ More Products on Amazon
-      </h2>
-
-      <p>
-        Explore our complete Amazon Storefront
-        for more useful products.
-      </p>
-
-    </div>
-
-    <a
-      href="https://amzn.to/4i5Lo0R"
-      target="_blank"
-      rel="nofollow sponsored noopener"
-      class="amazon-store-button"
-    >
-      Shop Full Store
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     TRUST SECTION
-========================= -->
-
-<section class="trust-section">
-
-  <div class="section-heading">
-
-    <h2>
-      🛡️ Why Shop With Us?
-    </h2>
-
-    <p>
-      Simple, clear and honest shopping.
-    </p>
-
-  </div>
-
-
-  <div class="trust-grid">
-
-
-    <div class="trust-card">
-
-      <div class="trust-icon">
-        🔎
-      </div>
-
-      <h3>
-        Carefully Selected
-      </h3>
-
-      <p>
-        We aim to list useful mobile accessories
-        and products that are relevant to everyday needs.
-      </p>
-
-    </div>
-
-
-    <div class="trust-card">
-
-      <div class="trust-icon">
-        💰
-      </div>
-
-      <h3>
-        Clear Pricing
-      </h3>
-
-      <p>
-        Direct products show their available price.
-        Amazon products can be checked through their listing.
-      </p>
-
-    </div>
-
-
-    <div class="trust-card">
-
-      <div class="trust-icon">
-        💬
-      </div>
-
-      <h3>
-        Direct Support
-      </h3>
-
-      <p>
-        Questions about products or orders can be
-        discussed directly through WhatsApp.
-      </p>
-
-    </div>
-
-
-    <div class="trust-card">
-
-      <div class="trust-icon">
-        📱
-      </div>
-
-      <h3>
-        Easy Ordering
-      </h3>
-
-      <p>
-        Direct products can be ordered through
-        WhatsApp with your name, phone and address.
-      </p>
-
-    </div>
-
-
-  </div>
-
-
-  <!-- SUPPORT -->
-
-  <div class="support-card">
-
-    <div>
-
-      <h3>
-        💬 Need Help?
-      </h3>
-
-      <p>
-        Product, price ya order ke bare mein
-        directly WhatsApp par pooch sakte hain.
-      </p>
-
-    </div>
-
-
-    <a
-      href="https://wa.me/923303118422?text=Assalam-o-Alaikum%2C%20I%20need%20help%20with%20ZainTechMart."
-      target="_blank"
-      class="support-button"
-    >
-      Chat on WhatsApp
-    </a>
-
-  </div>
-
-
-  <!-- DELIVERY / RETURN -->
-
-  <div class="policy-card">
-
-    <h3>
-      📋 Delivery & Return Information
-    </h3>
-
-    <p>
-      <strong>Delivery:</strong>
-      Direct orders ki delivery details aur charges
-      order confirm karne se pehle WhatsApp par confirm kiye jate hain.
-    </p>
-
-    <p>
-      <strong>Return / Replacement:</strong>
-      Return ya replacement product ke mutabiq ho sakti hai.
-      Order se pehle applicable terms WhatsApp par confirm kar lein.
-    </p>
-
-    <p>
-      <strong>Amazon Products:</strong>
-      Amazon products ke liye price, delivery aur return policy
-      Amazon listing par check karein.
-    </p>
-
-  </div>
-
-
-  <!-- SHARE + VISITOR -->
-
-  <div class="activity-grid">
-
-
-    <div class="share-card">
-
-      <div>
-
-        <h3>
-          🔗 Share ZainTechMart
-        </h3>
-
-        <p>
-          Apne friends aur family ke sath shop share karein.
-        </p>
-
-      </div>
-
-
-      <button
-        class="share-button"
-        onclick="openShareBox()"
-      >
-        Share Shop
-      </button>
-
-    </div>
-
-
-    <div class="visitor-card">
-
-      <span class="visitor-label">
-        👥 Visitors
-      </span>
-
-      <strong id="visitorCount">
-        —
-      </strong>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
-<section
-  class="products"
-  id="productList"
->
-
-  <div id="loadingProducts">
-    Loading products...
-  </div>
-
-  <div id="databaseError"></div>
-
-  <div id="noResults">
-
-    <h3>
-      No products found
-    </h3>
-
-    <p>
-      Try another search or category.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     INFORMATION
-========================= -->
-
-<section class="info-section">
-
-
-  <div class="info-card">
-
-    <h3>
-      🛍️ Amazon Picks
-    </h3>
-
-    <p>
-      Explore selected products through
-      our Amazon Storefront.
-    </p>
-
-  </div>
-
-
-  <div class="info-card">
-
-    <h3>
-      💬 WhatsApp Orders
-    </h3>
-
-    <p>
-      Products available directly can be
-      ordered through WhatsApp.
-    </p>
-
-  </div>
-
-
-  <div class="info-card">
-
-    <h3>
-      📱 Mobile Friendly
-    </h3>
-
-    <p>
-      ZainTechMart is designed to work
-      smoothly on mobile phones.
-    </p>
-
-  </div>
-
-
-  <div class="info-card">
-
-    <h3>
-      🔎 Easy Shopping
-    </h3>
-
-    <p>
-      Search products or use categories
-      to quickly find what you need.
-    </p>
-
-  </div>
-
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <h2>
-    ZainTechMart
-  </h2>
-
-  <p>
-    Smart Accessories. Better Life.
-  </p>
-
-
-  <div class="footer-buttons">
-
-    <a
-      href="https://amzn.to/4i5Lo0R"
-      target="_blank"
-      rel="nofollow sponsored noopener"
-      class="footer-amazon-button"
-    >
-      🛍️ Amazon Store
-    </a>
-
-
-    <a
-      href="https://wa.me/923303118422"
-      target="_blank"
-      class="whatsapp-button"
-    >
-      💬 WhatsApp
-    </a>
-
-  </div>
-
-
-  <p>
-    © 2026 ZainTechMart. All rights reserved.
-  </p>
-
-
-  <p>
-    As an Amazon Associate, we may earn
-    from qualifying purchases.
-  </p>
-
-</footer>
-
-
-<!-- =========================
-     FLOATING WHATSAPP
-========================= -->
-
-<a
-  href="https://wa.me/923303118422"
-  target="_blank"
-  class="floating-whatsapp"
-  aria-label="Contact us on WhatsApp"
->
-  💬
-</a>
-
-
-<!-- =========================
-     CART OVERLAY
-========================= -->
-
-<div
-  class="overlay"
-  id="cartOverlay"
-  onclick="closeCart()"
-></div>
-
-
-<!-- =========================
+<!-- ==============================
      CART PANEL
-========================= -->
+============================== -->
 
 <div
-  class="cart-panel"
   id="cartPanel"
+  class="cart-panel"
 >
 
   <div class="cart-header">
 
-    <h2>
-      🛒 Your Cart
-    </h2>
+    <h2>Your Cart</h2>
 
     <button
-      class="close-button"
-      onclick="closeCart()"
+      class="close-cart"
+      onclick="toggleCart()"
     >
-      ✕
+      Close
     </button>
 
   </div>
@@ -2155,185 +788,50 @@ footer p {
 
   <div id="cartItems"></div>
 
-
-  <div class="cart-total">
-
-    Total:
-    Rs.
-
-    <span id="cartTotal">
-      0
-    </span>
-
+  <div
+    id="cartTotal"
+    class="cart-total"
+  >
+    Total: 0
   </div>
 
 
-  <div class="checkout-box">
-
-    <input
-      type="text"
-      id="customerName"
-      placeholder="Your Name"
-    >
-
-    <input
-      type="tel"
-      id="customerPhone"
-      placeholder="Phone Number"
-    >
-
-    <textarea
-      id="customerAddress"
-      placeholder="Delivery Address"
-    ></textarea>
-
-
-    <button
-      class="checkout-button"
-      onclick="sendOrder()"
-    >
-      Send Order on WhatsApp
-    </button>
-
-  </div>
+  <button
+    class="checkout-button"
+    onclick="checkoutWhatsApp()"
+  >
+    Order on WhatsApp
+  </button>
 
 </div>
 
 
-<!-- =========================
-     DETAILS MODAL
-========================= -->
+<!-- ==============================
+     FOOTER
+============================== -->
 
-<div
-  class="details-modal"
-  id="detailsModal"
->
+<footer>
 
-  <div class="details-box">
+  <strong>ZainTechMart</strong>
 
-    <button
-      class="modal-close"
-      onclick="closeDetails()"
-    >
-      ✕
-    </button>
+  <br><br>
 
+  Smart Accessories. Better Life.
 
-    <h2 id="detailsTitle"></h2>
-
-
-    <img
-      id="detailsImage"
-      src=""
-      alt=""
-    >
-
-
-    <h3 id="detailsPrice"></h3>
-
-
-    <p
-      id="detailsDescription"
-      style="
-        color:#cbd5e1;
-        margin-top:10px;
-      "
-    ></p>
-
-
-    <h3
-      style="
-        margin-top:15px;
-        color:#22d3ee;
-      "
-    >
-      Features
-    </h3>
-
-
-    <ul id="detailsFeatures"></ul>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     SHARE MODAL
-========================= -->
-
-<div
-  class="share-modal"
-  id="shareModal"
->
-
-  <div class="share-box">
-
-    <button
-      class="modal-close"
-      onclick="closeShareBox()"
-    >
-      ✕
-    </button>
-
-
-    <h2>
-      🔗 Share ZainTechMart
-    </h2>
-
-
-    <p>
-      Apne friends aur family ke sath
-      ZainTechMart share karein.
-    </p>
-
-
-    <button
-      class="share-option native-share"
-      onclick="nativeShare()"
-    >
-      📱 Share
-    </button>
-
-
-    <button
-      class="share-option copy-share"
-      onclick="copyShopLink()"
-    >
-      📋 Copy Shop Link
-    </button>
-
-
-    <a
-      id="whatsappShareLink"
-      href="#"
-      target="_blank"
-      class="share-option whatsapp-share"
-    >
-      💬 Share on WhatsApp
-    </a>
-
-
-    <p id="copyMessage"></p>
-
-  </div>
-
-</div>
+</footer>
 
 
 <script>
 
-/* =========================
-   SUPABASE SETTINGS
-========================= */
+/* ==============================
+   SUPABASE CONFIGURATION
+============================== */
 
 const SUPABASE_URL =
   "https://lynpuyxriagxyglygdqf.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_XICT109xIvHO389cu0xi6w_uSKUbVbe";
-
 
 const supabaseClient =
   window.supabase.createClient(
@@ -2342,39 +840,23 @@ const supabaseClient =
   );
 
 
-/* =========================
-   GENERAL SETTINGS
-========================= */
+/* ==============================
+   SHOP CONFIGURATION
+============================== */
 
 const whatsappNumber =
   "923303118422";
 
-
 const amazonStorefront =
   "https://amzn.to/4i5Lo0R";
-
 
 const shopUrl =
   "https://zaintechmart.github.io/ZainTechMart/";
 
 
-/* =========================
-   CART
-========================= */
-
-let cart = [];
-
-
-/* =========================
-   PRODUCTS
-========================= */
-
-let allProducts = [];
-
-
-/* =========================
+/* ==============================
    STATIC PRODUCTS
-========================= */
+============================== */
 
 const localProducts = [
 
@@ -2385,29 +867,25 @@ const localProducts = [
       "USB C Cable 5 Pack 6FT",
 
     price:
-      "Check Price on Amazon",
+      "",
 
     image:
       "usb-c-cable.jpeg",
 
     description:
-      "Convenient USB-C cable pack for everyday charging and connectivity.",
+      "Useful USB-C cable pack for everyday charging and connectivity.",
 
     category:
       "cable",
+
+    categoryName:
+      "Cables",
 
     source:
       "amazon",
 
     link:
-      "https://amzn.to/4h4vS4i",
-
-    features: [
-      "5-pack cable set",
-      "6FT length",
-      "USB-C connection",
-      "Useful for everyday charging"
-    ]
+      "https://amzn.to/4h4vS4i"
   },
 
 
@@ -2424,23 +902,19 @@ const localProducts = [
       "usb-c-20w.jpg",
 
     description:
-      "Compact 20W USB-C power adapter for convenient everyday charging.",
+      "20W USB-C power adapter for compatible devices.",
 
     category:
       "charger",
+
+    categoryName:
+      "Chargers",
 
     source:
       "local",
 
     link:
-      "whatsapp",
-
-    features: [
-      "20W charging output",
-      "USB-C connection",
-      "Compact design",
-      "Suitable for everyday use"
-    ]
+      "whatsapp"
   },
 
 
@@ -2457,23 +931,19 @@ const localProducts = [
       "air31-earbuds.jpeg",
 
     description:
-      "Stylish wireless earbuds for music, calls and everyday use.",
+      "Wireless TWS earbuds for everyday listening.",
 
     category:
       "earbuds",
+
+    categoryName:
+      "TWS Earbuds",
 
     source:
       "local",
 
     link:
-      "whatsapp",
-
-    features: [
-      "Wireless design",
-      "Suitable for music and calls",
-      "Portable charging case",
-      "Everyday use"
-    ]
+      "whatsapp"
   },
 
 
@@ -2484,29 +954,25 @@ const localProducts = [
       "Car Phone Holder",
 
     price:
-      "Check Price on Amazon",
+      "",
 
     image:
-      "car-phone-holder.jpeg",
+      "",
 
     description:
-      "A practical phone holder for convenient use while driving.",
+      "Convenient phone holder for use in the car.",
 
     category:
       "car",
+
+    categoryName:
+      "Car Accessories",
 
     source:
       "amazon",
 
     link:
-      "https://amzn.to/4qTpqjY",
-
-    features: [
-      "Car phone holder",
-      "Convenient phone placement",
-      "Useful for navigation",
-      "Check Amazon listing for exact specifications"
-    ]
+      "https://amzn.to/4qTpqjY"
   },
 
 
@@ -2517,29 +983,25 @@ const localProducts = [
       "KTGEE Wireless Earbuds",
 
     price:
-      "Check Price on Amazon",
+      "",
 
     image:
-      "ktgee-wireless-earbuds.jpg",
+      "",
 
     description:
-      "Wireless earbuds selected from Amazon for everyday listening.",
+      "Wireless earbuds selected from Amazon.",
 
     category:
       "earbuds",
+
+    categoryName:
+      "TWS Earbuds",
 
     source:
       "amazon",
 
     link:
-      "https://amzn.to/4gFMCxm",
-
-    features: [
-      "Wireless earbuds",
-      "Portable design",
-      "Suitable for everyday listening",
-      "Check Amazon listing for exact specifications"
-    ]
+      "https://amzn.to/4gFMCxm"
   },
 
 
@@ -2550,29 +1012,25 @@ const localProducts = [
       "UNBREAKcable iPhone 17 Pro Screen Protector",
 
     price:
-      "Check Price on Amazon",
+      "",
 
     image:
-      "unbreakcable-iphone-17-pro-screen-protector.jpg",
+      "",
 
     description:
-      "Screen protection option for iPhone 17 Pro available through Amazon.",
+      "Screen protector selected from Amazon.",
 
     category:
       "screen",
+
+    categoryName:
+      "Screen Protectors",
 
     source:
       "amazon",
 
     link:
-      "https://amzn.to/3TdVSRD",
-
-    features: [
-      "Designed for iPhone 17 Pro",
-      "Screen protection",
-      "Amazon listing available",
-      "Check Amazon listing for exact specifications"
-    ]
+      "https://amzn.to/3TdVSRD"
   },
 
 
@@ -2583,42 +1041,63 @@ const localProducts = [
       "USB Wall Charger",
 
     price:
-      "Check Price on Amazon",
+      "",
 
     image:
-      "usb-wall-charger.jpg",
+      "",
 
     description:
-      "A practical wall charger option available through Amazon.",
+      "USB wall charger selected from Amazon.",
 
     category:
       "charger",
+
+    categoryName:
+      "Chargers",
 
     source:
       "amazon",
 
     link:
-      "https://amzn.to/4daAOlF",
-
-    features: [
-      "USB wall charger",
-      "Compact design",
-      "Useful for everyday charging",
-      "Check Amazon listing for exact specifications"
-    ]
+      "https://amzn.to/4daAOlF"
   }
 
 ];
 
 
-/* =========================
-   CATEGORY DETECTION
-========================= */
+/* ==============================
+   GLOBAL DATA
+============================== */
 
-function detectCategory(
-  name,
-  description
-) {
+let allProducts = [];
+
+let allCategories = [];
+
+let activeCategory =
+  "all";
+
+let cart = [];
+
+
+/* ==============================
+   CATEGORY SLUG
+============================== */
+
+function createSlug(name) {
+
+  return String(name || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+
+/* ==============================
+   OLD CATEGORY FALLBACK
+============================== */
+
+function detectCategory(name, description) {
 
   const text =
     (
@@ -2675,49 +1154,311 @@ function detectCategory(
 }
 
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* ==============================
+   LOAD CATEGORIES
+============================== */
 
-async function loadProducts() {
+async function loadCategories() {
 
-  const loading =
-    document.getElementById(
-      "loadingProducts"
-    );
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("categories")
+      .select("id,name,slug")
+      .order("name", {
+        ascending: true
+      });
 
 
-  const errorBox =
-    document.getElementById(
-      "databaseError"
-    );
+  if (error) {
 
-
-  try {
-
-    const {
-      data,
+    console.error(
+      "Category loading error:",
       error
-    } =
-      await supabaseClient
-        .from("products")
-        .select("*")
-        .order(
-          "created_at",
-          {
-            ascending: false
-          }
-        );
+    );
+
+    allCategories = [];
+
+    renderCategoryButtons();
+
+    return;
+  }
 
 
-    if (error) {
-      throw error;
+  allCategories =
+    data || [];
+
+  renderCategoryButtons();
+}
+
+
+/* ==============================
+   RENDER CATEGORY BUTTONS
+============================== */
+
+function renderCategoryButtons() {
+
+  const container =
+    document.getElementById(
+      "categoryList"
+    );
+
+  container.innerHTML = "";
+
+
+  const allButton =
+    document.createElement("button");
+
+  allButton.className =
+    "category-button";
+
+
+  if (activeCategory === "all") {
+
+    allButton.classList.add(
+      "active"
+    );
+  }
+
+
+  allButton.textContent =
+    "All Products";
+
+
+  allButton.onclick =
+    function() {
+
+      filterProducts(
+        "all",
+        this
+      );
+
+    };
+
+
+  container.appendChild(
+    allButton
+  );
+
+
+  allCategories.forEach(category => {
+
+    const button =
+      document.createElement("button");
+
+    button.className =
+      "category-button";
+
+
+    if (
+      activeCategory ===
+      category.slug
+    ) {
+
+      button.classList.add(
+        "active"
+      );
     }
 
 
-    const databaseProducts =
-      (data || []).map(
-        product => ({
+    button.textContent =
+      category.name;
+
+
+    button.onclick =
+      function() {
+
+        filterProducts(
+          category.slug,
+          this
+        );
+
+      };
+
+
+    container.appendChild(
+      button
+    );
+
+  });
+
+
+  // Amazon Picks remains available
+
+  const amazonButton =
+    document.createElement("button");
+
+  amazonButton.className =
+    "category-button";
+
+
+  if (
+    activeCategory ===
+    "amazon"
+  ) {
+
+    amazonButton.classList.add(
+      "active"
+    );
+  }
+
+
+  amazonButton.textContent =
+    "Amazon Picks";
+
+
+  amazonButton.onclick =
+    function() {
+
+      filterProducts(
+        "amazon",
+        this
+      );
+
+    };
+
+
+  container.appendChild(
+    amazonButton
+  );
+}
+
+
+/* ==============================
+   LOAD PRODUCTS
+============================== */
+
+async function loadProducts() {
+
+  const message =
+    document.getElementById(
+      "productsMessage"
+    );
+
+
+  message.textContent =
+    "Loading products...";
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("products")
+      .select("*")
+      .order("created_at", {
+        ascending: false
+      });
+
+
+  if (error) {
+
+    console.error(
+      "Product loading error:",
+      error
+    );
+
+    allProducts =
+      [...localProducts];
+
+    renderProducts(
+      getFilteredProducts()
+    );
+
+    return;
+  }
+
+
+  const databaseProducts =
+    (data || []).map(
+      product => {
+
+        let categorySlug =
+          "all";
+
+        let categoryName =
+          "Uncategorized";
+
+
+        // New category system
+
+        if (
+          product.category_id
+        ) {
+
+          const category =
+            allCategories.find(
+              item =>
+                Number(item.id) ===
+                Number(product.category_id)
+            );
+
+
+          if (category) {
+
+            categorySlug =
+              category.slug;
+
+            categoryName =
+              category.name;
+
+          }
+
+        }
+
+
+        // Old products without category_id
+
+        if (
+          !product.category_id
+        ) {
+
+          const oldCategory =
+            detectCategory(
+              product.name,
+              product.description
+            );
+
+
+          categorySlug =
+            oldCategory;
+
+
+          const oldNames = {
+
+            charger:
+              "Chargers",
+
+            earbuds:
+              "TWS Earbuds",
+
+            cable:
+              "Cables",
+
+            car:
+              "Car Accessories",
+
+            screen:
+              "Screen Protectors",
+
+            all:
+              "Uncategorized"
+
+          };
+
+
+          categoryName =
+            oldNames[
+              oldCategory
+            ] ||
+            "Uncategorized";
+        }
+
+
+        return {
 
           id:
             "db-" +
@@ -2739,541 +1480,752 @@ async function loadProducts() {
             product.description || "",
 
           category:
-            detectCategory(
-              product.name,
-              product.description
-            ),
+            categorySlug,
+
+          categoryName:
+            categoryName,
 
           source:
             "local",
 
           link:
-            "whatsapp",
+            "whatsapp"
 
-          features:
-            createFeatures(
-              product.name,
-              product.description
-            )
+        };
 
-        })
-      );
+      }
+    );
 
 
-    allProducts = [
+  allProducts =
+    [
       ...databaseProducts,
       ...localProducts
     ];
 
 
-    loading.style.display =
-      "none";
-
-
-    errorBox.style.display =
-      "none";
-
-
-    renderProducts(
-      allProducts
-    );
-
-  }
-
-  catch (error) {
-
-    console.error(
-      "Supabase products error:",
-      error
-    );
-
-
-    allProducts = [
-      ...localProducts
-    ];
-
-
-    loading.style.display =
-      "none";
-
-
-    errorBox.style.display =
-      "block";
-
-
-    errorBox.innerHTML =
-      "Database products could not be loaded. Existing products are still available.";
-
-
-    renderProducts(
-      allProducts
-    );
-
-  }
-
-}
-
-
-/* =========================
-   CREATE FEATURES
-========================= */
-
-function createFeatures(
-  name,
-  description
-) {
-
-  const features = [];
-
-
-  if (name) {
-    features.push(name);
-  }
-
-
-  if (description) {
-    features.push(description);
-  }
-
-
-  features.push(
-    "Available directly through ZainTechMart"
+  renderProducts(
+    getFilteredProducts()
   );
-
-
-  return features;
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
+/* ==============================
+   FILTER PRODUCTS
+============================== */
 
-function escapeHTML(
-  value
+function getFilteredProducts() {
+
+  if (
+    activeCategory ===
+    "all"
+  ) {
+
+    return [
+      ...allProducts
+    ];
+  }
+
+
+  if (
+    activeCategory ===
+    "amazon"
+  ) {
+
+    return allProducts.filter(
+      product =>
+        product.source ===
+        "amazon"
+    );
+  }
+
+
+  return allProducts.filter(
+    product =>
+      product.category ===
+      activeCategory
+  );
+}
+
+
+function filterProducts(
+  category,
+  clickedButton
 ) {
 
-  return String(
-    value ?? ""
-  )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  activeCategory =
+    category;
 
+
+  document
+    .querySelectorAll(
+      ".category-button"
+    )
+    .forEach(button => {
+
+      button.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  if (clickedButton) {
+
+    clickedButton.classList.add(
+      "active"
+    );
+  }
+
+
+  document.getElementById(
+    "searchInput"
+  ).value = "";
+
+
+  renderProducts(
+    getFilteredProducts()
+  );
 }
 
 
-/* =========================
-   PRICE DISPLAY
-========================= */
+/* ==============================
+   SEARCH
+============================== */
 
-function formatPrice(
-  price
-) {
+function searchProducts() {
 
-  if (
-    price === null ||
-    price === undefined ||
-    price === ""
-  ) {
+  const query =
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .value
+      .toLowerCase()
+      .trim();
 
-    return "Contact for Price";
 
+  let products =
+    getFilteredProducts();
+
+
+  if (query) {
+
+    products =
+      products.filter(
+        product => {
+
+          const text =
+            (
+              product.name +
+              " " +
+              product.description +
+              " " +
+              product.categoryName
+            ).toLowerCase();
+
+
+          return text.includes(
+            query
+          );
+
+        }
+      );
   }
 
 
-  if (
-    typeof price === "number"
-  ) {
-
-    return (
-      "Rs. " +
-      price.toLocaleString()
-    );
-
-  }
-
-
-  const numericPrice =
-    Number(price);
-
-
-  if (
-    !isNaN(numericPrice) &&
-    numericPrice > 0
-  ) {
-
-    return (
-      "Rs. " +
-      numericPrice.toLocaleString()
-    );
-
-  }
-
-
-  return String(price);
-
+  renderProducts(
+    products
+  );
 }
 
 
-/* =========================
+/* ==============================
    RENDER PRODUCTS
-========================= */
+============================== */
 
 function renderProducts(
   products
 ) {
 
-  const productList =
+  const container =
     document.getElementById(
-      "productList"
+      "productsContainer"
     );
 
-
-  const loading =
+  const message =
     document.getElementById(
-      "loadingProducts"
+      "productsMessage"
     );
 
 
-  const noResults =
-    document.getElementById(
-      "noResults"
-    );
+  container.innerHTML =
+    "";
 
 
-  productList
-    .querySelectorAll(
-      ".product"
-    )
-    .forEach(
-      card => card.remove()
+  if (
+    !products ||
+    products.length === 0
+  ) {
+
+    message.textContent =
+      "No products found.";
+
+    return;
+  }
+
+
+  message.textContent =
+    "";
+
+
+  /*
+    When "All Products" is selected,
+    group products by category.
+  */
+
+  if (
+    activeCategory ===
+    "all"
+  ) {
+
+    renderGroupedProducts(
+      products,
+      container
     );
+
+    return;
+  }
+
+
+  const grid =
+    document.createElement(
+      "div"
+    );
+
+    grid.className =
+      "products-grid";
 
 
   products.forEach(
     product => {
 
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "product";
-
-
-      card.dataset.category =
-        product.category ||
-        "all";
-
-
-      card.dataset.source =
-        product.source ||
-        "local";
-
-
-      const isAmazon =
-        product.source ===
-        "amazon";
-
-
-      const numericPrice =
-        Number(product.price);
-
-
-      const hasNumericPrice =
-        !isNaN(numericPrice) &&
-        numericPrice > 0;
-
-
-      let buyButton = "";
-      let addButton = "";
-
-
-      if (isAmazon) {
-
-        buyButton =
-          `
-          <a
-            href="${escapeHTML(product.link)}"
-            target="_blank"
-            rel="nofollow sponsored noopener"
-            class="buy-button"
-          >
-            View on Amazon
-          </a>
-          `;
-
-      }
-
-      else {
-
-        const message =
-          encodeURIComponent(
-            "Assalam-o-Alaikum, I want to buy " +
-            product.name +
-            (
-              hasNumericPrice
-                ? ". Price: Rs. " +
-                  numericPrice.toLocaleString()
-                : ""
-            )
-          );
-
-
-        buyButton =
-          `
-          <a
-            href="https://wa.me/${whatsappNumber}?text=${message}"
-            target="_blank"
-            class="buy-button"
-          >
-            Buy Now
-          </a>
-          `;
-
-
-        if (hasNumericPrice) {
-
-          addButton =
-            `
-            <button
-              class="add-button"
-              onclick="addToCartById('${escapeHTML(product.id)}')"
-            >
-              Add to Cart
-            </button>
-            `;
-
-        }
-
-        else {
-
-          addButton =
-            `
-            <button
-              class="add-button"
-              disabled
-              style="
-                opacity:0.5;
-                cursor:not-allowed;
-              "
-            >
-              Price Unavailable
-            </button>
-            `;
-
-        }
-
-      }
-
-
-      if (isAmazon) {
-        addButton = "";
-      }
-
-
-      card.innerHTML =
-        `
-
-        <img
-          src="${escapeHTML(product.image)}"
-          alt="${escapeHTML(product.name)}"
-          class="product-image"
-          onerror="
-            this.alt='Product image unavailable';
-          "
-        >
-
-        <div class="product-content">
-
-          <span class="${
-            isAmazon
-              ? "amazon-badge"
-              : "local-badge"
-          }">
-
-            ${
-              isAmazon
-                ? "Amazon Pick"
-                : "Available Directly"
-            }
-
-          </span>
-
-
-          <h3>
-            ${escapeHTML(product.name)}
-          </h3>
-
-
-          <p class="product-description">
-            ${escapeHTML(product.description)}
-          </p>
-
-
-          <div class="price">
-
-            ${escapeHTML(
-              formatPrice(
-                product.price
-              )
-            )}
-
-          </div>
-
-
-          <div class="product-buttons">
-
-            ${buyButton}
-
-            ${addButton}
-
-
-            <button
-              class="details-button"
-              onclick="
-                showDetailsById(
-                  '${escapeHTML(product.id)}'
-                )
-              "
-            >
-              Details
-            </button>
-
-          </div>
-
-        </div>
-
-        `;
-
-
-      const image =
-        card.querySelector(
-          ".product-image"
-        );
-
-
-      image.addEventListener(
-        "error",
-        function() {
-
-          this.style.objectFit =
-            "contain";
-
-        }
-      );
-
-
-      productList.insertBefore(
-        card,
-        loading
+      grid.appendChild(
+        createProductCard(
+          product
+        )
       );
 
     }
   );
 
 
-  loading.style.display =
-    "none";
-
-
-  noResults.style.display =
-    products.length === 0
-      ? "block"
-      : "none";
-
+  container.appendChild(
+    grid
+  );
 }
 
 
-/* =========================
-   ADD TO CART BY ID
-========================= */
+/* ==============================
+   GROUPED PRODUCTS
+============================== */
 
-function addToCartById(
-  productId
+function renderGroupedProducts(
+  products,
+  container
 ) {
 
-  const product =
-    allProducts.find(
-      item =>
-        String(item.id) ===
-        String(productId)
+  const groups = {};
+
+
+  products.forEach(
+    product => {
+
+      const key =
+        product.category ||
+        "all";
+
+
+      if (!groups[key]) {
+
+        groups[key] = [];
+
+      }
+
+
+      groups[key].push(
+        product
+      );
+
+    }
+  );
+
+
+  const orderedKeys = [];
+
+
+  allCategories.forEach(
+    category => {
+
+      if (
+        groups[
+          category.slug
+        ]
+      ) {
+
+        orderedKeys.push(
+          category.slug
+        );
+
+      }
+
+    }
+  );
+
+
+  Object.keys(groups)
+    .forEach(key => {
+
+      if (
+        !orderedKeys.includes(
+          key
+        )
+      ) {
+
+        orderedKeys.push(
+          key
+        );
+
+      }
+
+    });
+
+
+  orderedKeys.forEach(
+    key => {
+
+      const productsInGroup =
+        groups[key];
+
+
+      if (
+        !productsInGroup ||
+        productsInGroup.length === 0
+      ) {
+        return;
+      }
+
+
+      const section =
+        document.createElement(
+          "section"
+        );
+
+      section.className =
+        "category-section";
+
+
+      const heading =
+        document.createElement(
+          "h2"
+        );
+
+      heading.className =
+        "category-heading";
+
+
+      let headingName =
+        productsInGroup[0]
+          .categoryName ||
+        "Products";
+
+
+      if (
+        key === "amazon"
+      ) {
+
+        headingName =
+          "Amazon Picks";
+
+      }
+
+
+      if (
+        key === "all"
+      ) {
+
+        headingName =
+          "Other Products";
+
+      }
+
+
+      heading.innerHTML =
+        headingName +
+        " <span>›</span>";
+
+
+      section.appendChild(
+        heading
+      );
+
+
+      const grid =
+        document.createElement(
+          "div"
+        );
+
+      grid.className =
+        "products-grid";
+
+
+      productsInGroup.forEach(
+        product => {
+
+          grid.appendChild(
+            createProductCard(
+              product
+            )
+          );
+
+        }
+      );
+
+
+      section.appendChild(
+        grid
+      );
+
+      container.appendChild(
+        section
+      );
+
+    }
+  );
+}
+
+
+/* ==============================
+   CREATE PRODUCT CARD
+============================== */
+
+function createProductCard(
+  product
+) {
+
+  const card =
+    document.createElement(
+      "article"
     );
 
+  card.className =
+    "product";
 
-  if (!product) {
 
-    alert(
-      "Product not found."
+  if (product.image) {
+
+    const image =
+      document.createElement(
+        "img"
+      );
+
+    image.className =
+      "product-image";
+
+    image.src =
+      product.image;
+
+    image.alt =
+      product.name ||
+      "Product image";
+
+
+    image.onerror =
+      function() {
+
+        this.style.display =
+          "none";
+
+      };
+
+
+    card.appendChild(
+      image
     );
-
-    return;
-
   }
 
 
-  const price =
-    Number(product.price);
+  const title =
+    document.createElement(
+      "h3"
+    );
+
+  title.textContent =
+    product.name ||
+    "Product";
+
+
+  card.appendChild(
+    title
+  );
 
 
   if (
-    isNaN(price) ||
-    price <= 0
+    product.categoryName &&
+    product.category !== "all"
   ) {
 
-    alert(
-      "Price is not available for this product."
+    const badge =
+      document.createElement(
+        "span"
+      );
+
+    badge.className =
+      "product-category";
+
+    badge.textContent =
+      product.categoryName;
+
+
+    card.appendChild(
+      badge
+    );
+  }
+
+
+  if (
+    product.description
+  ) {
+
+    const description =
+      document.createElement(
+        "p"
+      );
+
+    description.className =
+      "product-description";
+
+    description.textContent =
+      product.description;
+
+
+    card.appendChild(
+      description
+    );
+  }
+
+
+  if (
+    product.price !== "" &&
+    product.price !== null &&
+    product.price !== undefined
+  ) {
+
+    const price =
+      document.createElement(
+        "div"
+      );
+
+    price.className =
+      "product-price";
+
+    price.textContent =
+      "Rs. " +
+      Number(
+        product.price
+      ).toLocaleString();
+
+
+    card.appendChild(
+      price
+    );
+  }
+
+
+  const buttons =
+    document.createElement(
+      "div"
     );
 
-    return;
+  buttons.className =
+    "product-buttons";
+
+
+  /*
+    AMAZON PRODUCT
+  */
+
+  if (
+    product.source ===
+    "amazon"
+  ) {
+
+    const amazonLink =
+      document.createElement(
+        "a"
+      );
+
+    amazonLink.className =
+      "amazon-button";
+
+    amazonLink.href =
+      product.link;
+
+    amazonLink.target =
+      "_blank";
+
+    amazonLink.rel =
+      "noopener noreferrer";
+
+    amazonLink.textContent =
+      "View on Amazon";
+
+
+    buttons.appendChild(
+      amazonLink
+    );
 
   }
 
 
-  addToCart(
-    product.name,
-    price
-  );
-
-}
-
-
-/* =========================
-   ADD TO CART
-========================= */
-
-function addToCart(
-  name,
-  price
-) {
-
-  const existingItem =
-    cart.find(
-      item =>
-        item.name === name
-    );
-
-
-  if (existingItem) {
-
-    existingItem.quantity++;
-
-  }
+  /*
+    LOCAL PRODUCT
+  */
 
   else {
 
+    const whatsappButton =
+      document.createElement(
+        "button"
+      );
+
+    whatsappButton.className =
+      "whatsapp-button";
+
+    whatsappButton.textContent =
+      "WhatsApp";
+
+
+    whatsappButton.onclick =
+      function() {
+
+        orderProduct(
+          product
+        );
+
+      };
+
+
+    buttons.appendChild(
+      whatsappButton
+    );
+
+
+    const cartButton =
+      document.createElement(
+        "button"
+      );
+
+    cartButton.className =
+      "cart-add-button";
+
+    cartButton.textContent =
+      "Add Cart";
+
+
+    cartButton.onclick =
+      function() {
+
+        addToCart(
+          product
+        );
+
+      };
+
+
+    buttons.appendChild(
+      cartButton
+    );
+
+  }
+
+
+  card.appendChild(
+    buttons
+  );
+
+
+  return card;
+}
+
+
+/* ==============================
+   WHATSAPP ORDER
+============================== */
+
+function orderProduct(
+  product
+) {
+
+  const message =
+    "Assalam o Alaikum, I want to order:\n\n" +
+    product.name +
+    "\nPrice: Rs. " +
+    product.price +
+    "\n\nShop: " +
+    shopUrl;
+
+
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(
+      message
+    );
+
+
+  window.open(
+    url,
+    "_blank"
+  );
+}
+
+
+/* ==============================
+   CART
+============================== */
+
+function addToCart(
+  product
+) {
+
+  const existing =
+    cart.find(
+      item =>
+        item.id ===
+        product.id
+    );
+
+
+  if (existing) {
+
+    existing.quantity++;
+
+  } else {
+
     cart.push({
 
+      id:
+        product.id,
+
       name:
-        name,
+        product.name,
 
       price:
-        price,
+        Number(
+          product.price
+        ) || 0,
 
       quantity:
         1
@@ -3287,370 +2239,90 @@ function addToCart(
 
 
   alert(
-    name +
-    " added to cart."
+    "Product added to cart."
   );
-
 }
 
 
-/* =========================
-   UPDATE CART
-========================= */
-
 function updateCart() {
 
-  const cartItems =
+  const count =
+    cart.reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        item.quantity,
+      0
+    );
+
+
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    count;
+
+
+  const container =
     document.getElementById(
       "cartItems"
     );
 
 
-  const cartCount =
-    document.getElementById(
-      "cartCount"
-    );
-
-
-  const cartTotal =
-    document.getElementById(
-      "cartTotal"
-    );
-
-
-  cartItems.innerHTML =
+  container.innerHTML =
     "";
-
-
-  let total = 0;
-  let itemCount = 0;
 
 
   if (
     cart.length === 0
   ) {
 
-    cartItems.innerHTML =
-      `
-      <p style="color:#94a3b8;">
-        Your cart is empty.
-      </p>
-      `;
-
-  }
-
-  else {
-
-    cart.forEach(
-      (
-        item,
-        index
-      ) => {
-
-        total +=
-          item.price *
-          item.quantity;
-
-
-        itemCount +=
-          item.quantity;
-
-
-        const itemDiv =
-          document.createElement(
-            "div"
-          );
-
-
-        itemDiv.className =
-          "cart-item";
-
-
-        itemDiv.innerHTML =
-          `
-
-          <div class="cart-item-name">
-            ${escapeHTML(item.name)}
-          </div>
-
-
-          <div class="cart-item-price">
-
-            Rs.
-            ${item.price.toLocaleString()}
-
-          </div>
-
-
-          <div class="quantity-controls">
-
-            <button
-              onclick="
-                changeQuantity(
-                  ${index},
-                  -1
-                )
-              "
-            >
-              −
-            </button>
-
-
-            <span>
-              ${item.quantity}
-            </span>
-
-
-            <button
-              onclick="
-                changeQuantity(
-                  ${index},
-                  1
-                )
-              "
-            >
-              +
-            </button>
-
-
-            <button
-              class="remove-button"
-              onclick="
-                removeItem(
-                  ${index}
-                )
-              "
-            >
-              Remove
-            </button>
-
-          </div>
-
-          `;
-
-
-        cartItems.appendChild(
-          itemDiv
-        );
-
-      }
-    );
-
-  }
-
-
-  cartCount.textContent =
-    itemCount;
-
-
-  cartTotal.textContent =
-    total.toLocaleString();
-
-}
-
-
-/* =========================
-   CHANGE QUANTITY
-========================= */
-
-function changeQuantity(
-  index,
-  amount
-) {
-
-  cart[index].quantity +=
-    amount;
-
-
-  if (
-    cart[index].quantity <= 0
-  ) {
-
-    cart.splice(
-      index,
-      1
-    );
-
-  }
-
-
-  updateCart();
-
-}
-
-
-/* =========================
-   REMOVE ITEM
-========================= */
-
-function removeItem(
-  index
-) {
-
-  cart.splice(
-    index,
-    1
-  );
-
-
-  updateCart();
-
-}
-
-
-/* =========================
-   OPEN CART
-========================= */
-
-function openCart() {
-
-  document.getElementById(
-    "cartPanel"
-  ).style.display =
-    "block";
-
-
-  document.getElementById(
-    "cartOverlay"
-  ).style.display =
-    "block";
-
-}
-
-
-/* =========================
-   CLOSE CART
-========================= */
-
-function closeCart() {
-
-  document.getElementById(
-    "cartPanel"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "cartOverlay"
-  ).style.display =
-    "none";
-
-}
-
-
-/* =========================
-   DETAILS
-========================= */
-
-function showDetailsById(
-  productId
-) {
-
-  const product =
-    allProducts.find(
-      item =>
-        String(item.id) ===
-        String(productId)
-    );
-
-
-  if (!product) {
-
-    alert(
-      "Product details not found."
-    );
+    container.innerHTML =
+      '<p class="status-message">Your cart is empty.</p>';
+
+    document.getElementById(
+      "cartTotal"
+    ).textContent =
+      "Total: 0";
 
     return;
-
   }
 
 
-  showDetails(
-
-    product.name,
-
-    formatPrice(
-      product.price
-    ),
-
-    product.image,
-
-    product.description,
-
-    product.features || []
-
-  );
-
-}
+  let total =
+    0;
 
 
-/* =========================
-   SHOW DETAILS
-========================= */
+  cart.forEach(
+    item => {
 
-function showDetails(
-  name,
-  price,
-  image,
-  description,
-  features
-) {
-
-  document.getElementById(
-    "detailsTitle"
-  ).textContent =
-    name;
+      total +=
+        item.price *
+        item.quantity;
 
 
-  document.getElementById(
-    "detailsPrice"
-  ).textContent =
-    price;
-
-
-  document.getElementById(
-    "detailsImage"
-  ).src =
-    image;
-
-
-  document.getElementById(
-    "detailsImage"
-  ).alt =
-    name;
-
-
-  document.getElementById(
-    "detailsDescription"
-  ).textContent =
-    description;
-
-
-  const featureList =
-    document.getElementById(
-      "detailsFeatures"
-    );
-
-
-  featureList.innerHTML =
-    "";
-
-
-  features.forEach(
-    feature => {
-
-      const li =
+      const div =
         document.createElement(
-          "li"
+          "div"
         );
 
+      div.className =
+        "cart-item";
 
-      li.textContent =
-        feature;
+
+      div.innerHTML =
+        `
+          <h4>${escapeHtml(item.name)}</h4>
+          <p>
+            Rs. ${item.price.toLocaleString()}
+            × ${item.quantity}
+          </p>
+        `;
 
 
-      featureList.appendChild(
-        li
+      container.appendChild(
+        div
       );
 
     }
@@ -3658,32 +2330,29 @@ function showDetails(
 
 
   document.getElementById(
-    "detailsModal"
-  ).style.display =
-    "flex";
-
+    "cartTotal"
+  ).textContent =
+    "Total: Rs. " +
+    total.toLocaleString();
 }
 
 
-/* =========================
-   CLOSE DETAILS
-========================= */
+function toggleCart() {
 
-function closeDetails() {
-
-  document.getElementById(
-    "detailsModal"
-  ).style.display =
-    "none";
-
+  document
+    .getElementById(
+      "cartPanel"
+    )
+    .classList
+    .toggle("open");
 }
 
 
-/* =========================
-   SEND ORDER
-========================= */
+/* ==============================
+   CART CHECKOUT
+============================== */
 
-function sendOrder() {
+function checkoutWhatsApp() {
 
   if (
     cart.length === 0
@@ -3694,79 +2363,15 @@ function sendOrder() {
     );
 
     return;
-
-  }
-
-
-  const name =
-    document
-      .getElementById(
-        "customerName"
-      )
-      .value
-      .trim();
-
-
-  const phone =
-    document
-      .getElementById(
-        "customerPhone"
-      )
-      .value
-      .trim();
-
-
-  const address =
-    document
-      .getElementById(
-        "customerAddress"
-      )
-      .value
-      .trim();
-
-
-  if (
-    !name ||
-    !phone ||
-    !address
-  ) {
-
-    alert(
-      "Please enter your name, phone number and delivery address."
-    );
-
-    return;
-
   }
 
 
   let message =
-    "Assalam-o-Alaikum, I want to place an order from ZainTechMart.\n\n";
+    "Assalam o Alaikum, I want to order:\n\n";
 
 
-  message +=
-    "Customer Name: " +
-    name +
-    "\n";
-
-
-  message +=
-    "Phone: " +
-    phone +
-    "\n";
-
-
-  message +=
-    "Address: " +
-    address +
-    "\n\n";
-
-
-  message +=
-    "Order:\n";
-
-
-  let total = 0;
+  let total =
+    0;
 
 
   cart.forEach(
@@ -3777,18 +2382,17 @@ function sendOrder() {
         item.quantity;
 
 
+      total +=
+        itemTotal;
+
+
       message +=
-        "- " +
         item.name +
-        " x" +
+        " × " +
         item.quantity +
         " = Rs. " +
         itemTotal.toLocaleString() +
         "\n";
-
-
-      total +=
-        itemTotal;
 
     }
   );
@@ -3799,350 +2403,51 @@ function sendOrder() {
     total.toLocaleString();
 
 
-  window.open(
+  message +=
+    "\n\nShop: " +
+    shopUrl;
 
+
+  const url =
     "https://wa.me/" +
     whatsappNumber +
     "?text=" +
     encodeURIComponent(
       message
-    ),
-
-    "_blank"
-
-  );
-
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-function searchProducts() {
-
-  const search =
-    document
-      .getElementById(
-        "searchInput"
-      )
-      .value
-      .toLowerCase()
-      .trim();
-
-
-  const products =
-    document.querySelectorAll(
-      ".product"
     );
 
 
-  let visibleCount =
-    0;
-
-
-  products.forEach(
-    product => {
-
-      const text =
-        product.textContent
-          .toLowerCase();
-
-
-      if (
-        text.includes(search)
-      ) {
-
-        product.style.display =
-          "";
-
-        visibleCount++;
-
-      }
-
-      else {
-
-        product.style.display =
-          "none";
-
-      }
-
-    }
+  window.open(
+    url,
+    "_blank"
   );
-
-
-  document.getElementById(
-    "noResults"
-  ).style.display =
-    visibleCount === 0
-      ? "block"
-      : "none";
-
 }
 
 
-/* =========================
-   CATEGORY FILTER
-========================= */
+/* ==============================
+   ESCAPE HTML
+============================== */
 
-function filterProducts(
-  category,
-  clickedButton
+function escapeHtml(
+  text
 ) {
 
-  document
-    .querySelectorAll(
-      ".category-button"
-    )
-    .forEach(
-      button => {
-
-        button.classList.remove(
-          "active"
-        );
-
-      }
+  const div =
+    document.createElement(
+      "div"
     );
 
-
-  if (clickedButton) {
-
-    clickedButton.classList.add(
-      "active"
-    );
-
-  }
+  div.textContent =
+    text;
 
 
-  document.getElementById(
-    "searchInput"
-  ).value =
-    "";
-
-
-  const products =
-    document.querySelectorAll(
-      ".product"
-    );
-
-
-  let visibleCount =
-    0;
-
-
-  products.forEach(
-    product => {
-
-      const productCategory =
-        product.dataset.category;
-
-
-      const productSource =
-        product.dataset.source;
-
-
-      let show = false;
-
-
-      if (
-        category === "all"
-      ) {
-
-        show = true;
-
-      }
-
-      else if (
-        category === "amazon"
-      ) {
-
-        show =
-          productSource ===
-          "amazon";
-
-      }
-
-      else {
-
-        show =
-          productCategory ===
-          category;
-
-      }
-
-
-      if (show) {
-
-        product.style.display =
-          "";
-
-        visibleCount++;
-
-      }
-
-      else {
-
-        product.style.display =
-          "none";
-
-      }
-
-    }
-  );
-
-
-  document.getElementById(
-    "noResults"
-  ).style.display =
-    visibleCount === 0
-      ? "block"
-      : "none";
-
+  return div.innerHTML;
 }
 
 
-/* =========================
-   SHARE SHOP
-========================= */
-
-function openShareBox() {
-
-  const shareModal =
-    document.getElementById(
-      "shareModal"
-    );
-
-
-  const whatsappShareLink =
-    document.getElementById(
-      "whatsappShareLink"
-    );
-
-
-  const shareText =
-    "ZainTechMart 🛍️\n" +
-    "Smart Accessories. Better Life.\n\n" +
-    shopUrl;
-
-
-  whatsappShareLink.href =
-    "https://wa.me/?text=" +
-    encodeURIComponent(
-      shareText
-    );
-
-
-  document.getElementById(
-    "copyMessage"
-  ).textContent =
-    "";
-
-
-  shareModal.style.display =
-    "flex";
-
-}
-
-
-/* =========================
-   CLOSE SHARE BOX
-========================= */
-
-function closeShareBox() {
-
-  document.getElementById(
-    "shareModal"
-  ).style.display =
-    "none";
-
-}
-
-
-/* =========================
-   NATIVE SHARE
-========================= */
-
-async function nativeShare() {
-
-  if (
-    navigator.share
-  ) {
-
-    try {
-
-      await navigator.share({
-
-        title:
-          "ZainTechMart",
-
-        text:
-          "Smart Accessories. Better Life.",
-
-        url:
-          shopUrl
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(
-        "Share cancelled."
-      );
-
-    }
-
-  }
-
-  else {
-
-    copyShopLink();
-
-  }
-
-}
-
-
-/* =========================
-   COPY SHOP LINK
-========================= */
-
-async function copyShopLink() {
-
-  const message =
-    document.getElementById(
-      "copyMessage"
-    );
-
-
-  try {
-
-    await navigator.clipboard.writeText(
-      shopUrl
-    );
-
-
-    message.textContent =
-      "✅ Shop link copied!";
-
-  }
-
-  catch (error) {
-
-    window.prompt(
-      "Copy this shop link:",
-      shopUrl
-    );
-
-  }
-
-}
-
-
-/* =========================
+/* ==============================
    VISITOR COUNTER
-========================= */
+============================== */
 
 async function updateVisitorCounter() {
 
@@ -4157,151 +2462,148 @@ async function updateVisitorCounter() {
   }
 
 
-  const storageKey =
-    "zaintechmart_visitor_counted_v1";
-
-
-  let count;
-
-
   try {
 
-    if (
-      !localStorage.getItem(
-        storageKey
-      )
-    ) {
+    /*
+      Increment the visitor count
+      once when the shop loads.
+    */
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.rpc(
-          "increment_visitor_count"
-        );
-
-
-      if (error) {
-        throw error;
-      }
-
-
-      count =
-        Number(data);
-
-
-      localStorage.setItem(
-        storageKey,
-        "1"
+    const {
+      data: newCount,
+      error: incrementError
+    } =
+      await supabaseClient.rpc(
+        "increment_visitor_count"
       );
 
+
+    if (!incrementError) {
+
+      visitorCountEl.textContent =
+        Number(
+          newCount
+        ).toLocaleString();
+
+      return;
     }
 
-    else {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from("site_stats")
-          .select("visitor_count")
-          .eq("id",1)
-          .single();
+    /*
+      Fallback:
+      read current count.
+    */
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("site_stats")
+        .select(
+          "visitor_count"
+        )
+        .eq(
+          "id",
+          1
+        )
+        .single();
 
 
-      if (error) {
-        throw error;
-      }
-
-
-      count =
-        Number(
-          data.visitor_count
-        );
-
+    if (error) {
+      throw error;
     }
 
 
     visitorCountEl.textContent =
-      Number.isFinite(count)
-        ? count.toLocaleString()
-        : "—";
+      Number(
+        data.visitor_count
+      ).toLocaleString();
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     console.error(
       "Visitor counter error:",
       error
     );
 
-
     visitorCountEl.textContent =
       "—";
-
   }
-
 }
 
 
-/* =========================
-   CLOSE DETAILS BY BACKGROUND
-========================= */
+/* ==============================
+   MESSAGE SLIDER
+============================== */
 
-document
-  .getElementById(
-    "detailsModal"
-  )
-  .addEventListener(
-    "click",
-    function(event) {
+function startMessageSlider() {
 
-      if (
-        event.target === this
-      ) {
+  const cards =
+    document.querySelectorAll(
+      ".message-card"
+    );
 
-        closeDetails();
 
-      }
+  if (
+    cards.length === 0
+  ) {
+    return;
+  }
 
-    }
+
+  let index =
+    0;
+
+
+  setInterval(
+    function() {
+
+      cards[
+        index
+      ].classList.remove(
+        "active"
+      );
+
+
+      index =
+        (
+          index + 1
+        ) %
+        cards.length;
+
+
+      cards[
+        index
+      ].classList.add(
+        "active"
+      );
+
+    },
+    3500
   );
+}
 
 
-/* =========================
-   CLOSE SHARE BY BACKGROUND
-========================= */
+/* ==============================
+   START SHOP
+============================== */
 
-document
-  .getElementById(
-    "shareModal"
-  )
-  .addEventListener(
-    "click",
-    function(event) {
+async function startShop() {
 
-      if (
-        event.target === this
-      ) {
+  startMessageSlider();
 
-        closeShareBox();
+  updateCart();
 
-      }
+  await loadCategories();
 
-    }
-  );
+  await loadProducts();
+
+  updateVisitorCounter();
+}
 
 
-/* =========================
-   INITIAL LOAD
-========================= */
-
-updateCart();
-
-loadProducts();
-updateVisitorCounter();
+startShop();
 
 </script>
 
