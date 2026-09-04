@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="iOGox9a70iLkAr11osvCnmyy4EJM3QshANnJFVL6s2w" />
+
 <title>ZainTechMart | Smart Accessories</title>
 
 <!-- SUPABASE -->
@@ -197,7 +198,9 @@ header {
 }
 
 
-/* PROFILE ANIMATION */
+/* =========================
+   PROFILE ANIMATION
+========================= */
 
 @keyframes profileFloat {
 
@@ -213,7 +216,144 @@ header {
 }
 
 
-/* HERO CONTENT ABOVE DECORATIONS */
+/* =========================
+   3D CUSTOMER MESSAGE
+========================= */
+
+.profile-message-slider {
+  position: absolute;
+
+  top: 105px;
+  left: 20px;
+
+  width: 300px;
+  height: 72px;
+
+  perspective: 900px;
+
+  z-index: 12;
+
+  overflow: hidden;
+}
+
+.profile-message-track {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+}
+
+.profile-message {
+  position: absolute;
+
+  width: 100%;
+  min-height: 58px;
+
+  padding: 10px 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15,23,42,0.96),
+      rgba(30,41,59,0.96)
+    );
+
+  border:
+    1px solid rgba(34,211,238,0.55);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.35),
+    0 0 18px rgba(34,211,238,0.15);
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  line-height: 1.35;
+
+  backface-visibility: hidden;
+
+  transform-origin: center center;
+
+  animation:
+    message3D 8s infinite;
+}
+
+.profile-message.urdu {
+  animation-delay: 0s;
+}
+
+.profile-message.english {
+  animation-delay: 4s;
+}
+
+
+/* 3D sliding effect */
+
+@keyframes message3D {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-80px)
+      rotateY(-70deg)
+      rotateX(15deg)
+      scale(0.75);
+  }
+
+  10% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      rotateY(0deg)
+      rotateX(0deg)
+      scale(1);
+  }
+
+  40% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      rotateY(0deg)
+      rotateX(0deg)
+      scale(1);
+  }
+
+  50% {
+    opacity: 0;
+    transform:
+      translateX(80px)
+      rotateY(70deg)
+      rotateX(-15deg)
+      scale(0.75);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translateX(80px)
+      rotateY(70deg)
+      rotateX(-15deg)
+      scale(0.75);
+  }
+
+}
+
+
+/* =========================
+   HERO CONTENT ABOVE DECORATIONS
+========================= */
 
 .hero h1,
 .hero p,
@@ -223,7 +363,9 @@ header {
 }
 
 
-/* HERO TITLE */
+/* =========================
+   HERO TITLE
+========================= */
 
 .hero h1 {
   font-size: 42px;
@@ -1102,7 +1244,7 @@ footer p {
 @media (max-width: 600px) {
 
   .hero {
-    padding-top: 85px;
+    padding-top: 175px;
   }
 
   .hero h1 {
@@ -1120,6 +1262,27 @@ footer p {
     top: 15px;
     left: 15px;
   }
+
+
+  /* MOBILE 3D MESSAGE */
+
+  .profile-message-slider {
+    top: 88px;
+    left: 15px;
+
+    width: calc(100% - 30px);
+
+    height: 70px;
+  }
+
+  .profile-message {
+    font-size: 12px;
+
+    padding: 9px 11px;
+
+    min-height: 55px;
+  }
+
 
   header {
     padding: 13px 4%;
@@ -1204,6 +1367,40 @@ footer p {
       alt="ZainTechMart Profile"
       onerror="this.style.display='none';"
     >
+
+  </div>
+
+
+  <!-- =========================
+       3D CUSTOMER MESSAGE SLIDER
+  ========================= -->
+
+  <div class="profile-message-slider">
+
+    <div class="profile-message-track">
+
+
+      <!-- URDU MESSAGE -->
+
+      <div class="profile-message urdu" dir="rtl">
+
+        🇵🇰 بہترین چیزیں، مناسب قیمتیں —
+        آپ کا اعتماد ہماری پہچان ہے! 🛍️
+
+      </div>
+
+
+      <!-- ENGLISH MESSAGE -->
+
+      <div class="profile-message english">
+
+        🇬🇧 Quality Products, Great Prices —
+        Your Trust Is Our Identity! 🛍️
+
+      </div>
+
+
+    </div>
 
   </div>
 
@@ -2313,12 +2510,6 @@ function renderProducts(
   const loading =
     document.getElementById(
       "loadingProducts"
-    );
-
-
-  const errorBox =
-    document.getElementById(
-      "databaseError"
     );
 
 
