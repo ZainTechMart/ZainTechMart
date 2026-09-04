@@ -30,7 +30,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font-family: inherit;
 }
 
@@ -164,16 +165,11 @@ header {
 }
 
 /* ==============================
-   DECORATED MESSAGE SLIDER
+   MESSAGE SLIDER
 ============================== */
 
 .profile-message-slider {
   position: absolute;
-
-  /*
-    Profile picture is on the right.
-    Message card stays on its left.
-  */
   top: 27px;
   right: 135px;
 
@@ -186,11 +182,14 @@ header {
   border-radius: 18px;
 
   text-align: center;
-}
 
-/* ==============================
-   MESSAGE CARD
-============================== */
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity .6s ease,
+    visibility .6s ease;
+}
 
 .message-card {
   position: absolute;
@@ -234,10 +233,7 @@ header {
     opacity .8s ease;
 }
 
-/* ==============================
-   ENGLISH
-   LEFT → RIGHT
-============================== */
+/* English: left → right */
 
 .message-card.english {
   transform:
@@ -253,10 +249,7 @@ header {
     scale(1);
 }
 
-/* ==============================
-   URDU
-   RIGHT → LEFT
-============================== */
+/* Urdu: right → left */
 
 .message-card.urdu {
   direction: rtl;
@@ -279,10 +272,6 @@ header {
     translateX(0)
     scale(1);
 }
-
-/* ==============================
-   MESSAGE TEXT
-============================== */
 
 .message-card strong {
   color: #67e8f9;
@@ -384,7 +373,7 @@ header {
 .shop {
   max-width: 1200px;
   margin: auto;
-  padding: 0 20px 50px;
+  padding: 0 20px 30px;
 }
 
 .products-grid {
@@ -506,22 +495,205 @@ header {
 }
 
 /* ==============================
+   TOOLS
+============================== */
+
+.tools-section {
+  max-width: 1000px;
+  margin: 10px auto 50px;
+  padding: 0 20px;
+}
+
+.tools-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #22d3ee;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: #151f33;
+  border: 1px solid #263550;
+  border-radius: 16px;
+  padding: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+}
+
+.tool-card h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #67e8f9;
+}
+
+/* Calculator */
+
+.calculator-display {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #35445f;
+  border-radius: 10px;
+
+  background: #0d1628;
+  color: white;
+
+  font-size: 24px;
+  text-align: right;
+}
+
+.calculator-buttons {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+.calculator-buttons button {
+  margin: 0;
+
+  padding: 14px 5px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #263550;
+  color: white;
+
+  font-size: 17px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.calculator-buttons button:hover {
+  background: #2563eb;
+}
+
+.calculator-buttons .operator {
+  background: #1e40af;
+}
+
+.calculator-buttons .clear {
+  background: #991b1b;
+}
+
+/* Currency converter */
+
+.converter-input,
+.converter-select {
+  width: 100%;
+
+  padding: 13px;
+
+  margin-bottom: 10px;
+
+  border: 1px solid #35445f;
+  border-radius: 9px;
+
+  background: #0d1628;
+  color: white;
+
+  outline: none;
+
+  font-size: 16px;
+}
+
+.converter-row {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 10px;
+}
+
+.converter-button {
+  width: 100%;
+
+  margin: 5px 0 12px;
+
+  padding: 13px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.converter-button:hover {
+  background: #1d4ed8;
+}
+
+.converter-result {
+  min-height: 50px;
+
+  padding: 12px;
+
+  border-radius: 9px;
+
+  background: #0d1628;
+  border: 1px solid #263550;
+
+  color: #67e8f9;
+
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.converter-note {
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  text-align: center;
+
+  margin-top: 8px;
+}
+
+/* ==============================
    CART
 ============================== */
 
 .cart-panel {
   position: fixed;
+
   top: 0;
   right: -400px;
+
   width: min(380px, 92%);
   height: 100vh;
+
   background: #111827;
+
   border-left: 1px solid #263550;
+
   z-index: 1000;
 
   padding: 20px;
 
-  transition: right .3s ease;
+  transition:
+    right .3s ease;
 
   overflow-y: auto;
 }
@@ -532,20 +704,35 @@ header {
 
 .cart-header {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   margin-bottom: 20px;
 }
 
 .close-cart {
   width: auto;
+
   margin: 0;
+
   padding: 8px 12px;
+
   background: #475569;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
 }
 
 .cart-item {
   border-bottom: 1px solid #263550;
+
   padding: 12px 0;
 }
 
@@ -555,19 +742,38 @@ header {
 
 .cart-item p {
   color: #aab4c8;
+
   font-size: 14px;
 }
 
 .cart-total {
   margin-top: 20px;
+
   font-size: 21px;
+
   font-weight: bold;
+
   color: #60a5fa;
 }
 
 .checkout-button {
+  width: 100%;
+
   margin-top: 15px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
   background: #16a34a;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
 }
 
 /* ==============================
@@ -576,8 +782,11 @@ header {
 
 .visitor-counter {
   text-align: center;
+
   color: #94a3b8;
+
   padding: 20px;
+
   font-size: 14px;
 }
 
@@ -587,7 +796,9 @@ header {
 
 .status-message {
   text-align: center;
+
   color: #94a3b8;
+
   padding: 30px 10px;
 }
 
@@ -597,9 +808,13 @@ header {
 
 footer {
   border-top: 1px solid #263550;
+
   background: #0d1628;
+
   text-align: center;
+
   padding: 25px 20px;
+
   color: #94a3b8;
 }
 
@@ -609,12 +824,19 @@ footer strong {
 
 .amazon-storefront-button {
   display: inline-block;
+
   margin-top: 15px;
+
   padding: 11px 18px;
+
   border-radius: 8px;
+
   background: #f59e0b;
+
   color: #111827;
+
   text-decoration: none;
+
   font-weight: bold;
 }
 
@@ -648,19 +870,14 @@ footer strong {
     left: auto;
   }
 
-  /*
-    Mobile:
-    message card is placed
-    on the LEFT of profile picture.
-  */
-
   .profile-message-slider {
-
     top: 15px;
+
     left: 15px;
     right: 100px;
 
     width: auto;
+
     height: 76px;
 
     border-radius: 16px;
@@ -668,16 +885,19 @@ footer strong {
 
   .message-card {
     padding: 9px 10px;
+
     border-radius: 16px;
   }
 
   .message-card strong {
     font-size: 12px;
+
     margin-bottom: 3px;
   }
 
   .message-card p {
     font-size: 11px;
+
     line-height: 1.3;
   }
 
@@ -696,6 +916,7 @@ footer strong {
   .products-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
+
     gap: 12px;
   }
 
@@ -726,9 +947,30 @@ footer strong {
   .category-heading {
     font-size: 21px;
   }
-}
 
+  .tools-section {
+    padding: 0 12px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    padding: 15px;
+  }
+
+  .tools-title {
+    font-size: 24px;
+  }
+
+  .calculator-buttons button {
+    padding: 13px 4px;
+  }
+
+}
 </style>
+
 </head>
 
 <body>
@@ -777,9 +1019,7 @@ footer strong {
   </div>
 
 
-  <!-- ==============================
-       DECORATED MESSAGE SLIDER
-  ============================== -->
+  <!-- MESSAGE SLIDER -->
 
   <div class="profile-message-slider">
 
@@ -807,7 +1047,7 @@ footer strong {
       </strong>
 
       <p>
-        روزمرہ زندگی کے لیے بہترین اور کارآمد ٹیک ایکسیسریز۔
+        آپ کی بہتر خریداری کے لیے ٹیکنالوجی کا بہترین انتخاب۔
       </p>
 
     </div>
@@ -916,6 +1156,285 @@ footer strong {
 
 
 <!-- ==============================
+     TOOLS
+============================== -->
+
+<section class="tools-section">
+
+  <h2 class="tools-title">
+    🧰 Useful Tools
+  </h2>
+
+  <div class="tools-grid">
+
+    <!-- CALCULATOR -->
+
+    <div class="tool-card">
+
+      <h3>
+        🧮 Calculator
+      </h3>
+
+      <input
+        id="calculatorDisplay"
+        class="calculator-display"
+        type="text"
+        value="0"
+        readonly
+      >
+
+      <div class="calculator-buttons">
+
+        <button
+          class="clear"
+          onclick="calculatorClear()"
+        >
+          C
+        </button>
+
+        <button
+          onclick="calculatorInput('(')"
+        >
+          (
+        </button>
+
+        <button
+          onclick="calculatorInput(')')"
+        >
+          )
+        </button>
+
+        <button
+          class="operator"
+          onclick="calculatorInput('/')"
+        >
+          ÷
+        </button>
+
+
+        <button
+          onclick="calculatorInput('7')"
+        >
+          7
+        </button>
+
+        <button
+          onclick="calculatorInput('8')"
+        >
+          8
+        </button>
+
+        <button
+          onclick="calculatorInput('9')"
+        >
+          9
+        </button>
+
+        <button
+          class="operator"
+          onclick="calculatorInput('*')"
+        >
+          ×
+        </button>
+
+
+        <button
+          onclick="calculatorInput('4')"
+        >
+          4
+        </button>
+
+        <button
+          onclick="calculatorInput('5')"
+        >
+          5
+        </button>
+
+        <button
+          onclick="calculatorInput('6')"
+        >
+          6
+        </button>
+
+        <button
+          class="operator"
+          onclick="calculatorInput('-')"
+        >
+          −
+        </button>
+
+
+        <button
+          onclick="calculatorInput('1')"
+        >
+          1
+        </button>
+
+        <button
+          onclick="calculatorInput('2')"
+        >
+          2
+        </button>
+
+        <button
+          onclick="calculatorInput('3')"
+        >
+          3
+        </button>
+
+        <button
+          class="operator"
+          onclick="calculatorInput('+')"
+        >
+          +
+        </button>
+
+
+        <button
+          onclick="calculatorInput('0')"
+        >
+          0
+        </button>
+
+        <button
+          onclick="calculatorInput('.')"
+        >
+          .
+        </button>
+
+        <button
+          onclick="calculatorBackspace()"
+        >
+          ⌫
+        </button>
+
+        <button
+          class="operator"
+          onclick="calculatorCalculate()"
+        >
+          =
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- CURRENCY CONVERTER -->
+
+    <div class="tool-card">
+
+      <h3>
+        💱 Currency Converter
+      </h3>
+
+      <input
+        id="currencyAmount"
+        class="converter-input"
+        type="number"
+        min="0"
+        step="any"
+        value="1"
+        placeholder="Enter amount"
+      >
+
+
+      <div class="converter-row">
+
+        <select
+          id="fromCurrency"
+          class="converter-select"
+        >
+
+          <option value="PKR">
+            🇵🇰 PKR
+          </option>
+
+          <option value="USD">
+            🇺🇸 USD
+          </option>
+
+          <option value="EUR">
+            🇪🇺 EUR
+          </option>
+
+          <option value="GBP">
+            🇬🇧 GBP
+          </option>
+
+          <option value="SAR">
+            🇸🇦 SAR
+          </option>
+
+          <option value="AED">
+            🇦🇪 AED
+          </option>
+
+        </select>
+
+
+        <select
+          id="toCurrency"
+          class="converter-select"
+        >
+
+          <option value="USD">
+            🇺🇸 USD
+          </option>
+
+          <option value="PKR">
+            🇵🇰 PKR
+          </option>
+
+          <option value="EUR">
+            🇪🇺 EUR
+          </option>
+
+          <option value="GBP">
+            🇬🇧 GBP
+          </option>
+
+          <option value="SAR">
+            🇸🇦 SAR
+          </option>
+
+          <option value="AED">
+            🇦🇪 AED
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="converter-button"
+        onclick="convertCurrency()"
+      >
+        Convert
+      </button>
+
+
+      <div
+        id="currencyResult"
+        class="converter-result"
+      >
+        Result will appear here
+      </div>
+
+
+      <div class="converter-note">
+        Exchange rates are fetched online and may change.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==============================
      VISITOR COUNTER
 ============================== -->
 
@@ -938,7 +1457,9 @@ footer strong {
 
   <div class="cart-header">
 
-    <h2>Your Cart</h2>
+    <h2>
+      Your Cart
+    </h2>
 
     <button
       class="close-cart"
@@ -951,6 +1472,7 @@ footer strong {
 
 
   <div id="cartItems"></div>
+
 
   <div
     id="cartTotal"
@@ -976,7 +1498,9 @@ footer strong {
 
 <footer>
 
-  <strong>ZainTechMart</strong>
+  <strong>
+    ZainTechMart
+  </strong>
 
   <br><br>
 
@@ -1037,204 +1561,101 @@ const localProducts = [
 
   {
     id: "amazon-1",
-
-    name:
-      "USB C Cable 5 Pack 6FT",
-
-    price:
-      "",
-
-    image:
-      "usb-c-cable.jpeg",
-
+    name: "USB C Cable 5 Pack 6FT",
+    price: "",
+    image: "usb-c-cable.jpeg",
     description:
       "Useful USB-C cable pack for everyday charging and connectivity.",
-
-    category:
-      "cable",
-
-    categoryName:
-      "Cables",
-
-    source:
-      "amazon",
-
-    link:
-      "https://amzn.to/4h4vS4i"
+    category: "cable",
+    categoryName: "Cables",
+    source: "amazon",
+    link: "https://amzn.to/4h4vS4i"
   },
 
 
   {
     id: "local-1",
-
-    name:
-      "USB-C 20W Power Adapter",
-
-    price:
-      3500,
-
-    image:
-      "usb-c-20w.jpg",
-
+    name: "USB-C 20W Power Adapter",
+    price: 3500,
+    image: "usb-c-20w.jpg",
     description:
       "20W USB-C power adapter for compatible devices.",
-
-    category:
-      "charger",
-
-    categoryName:
-      "Chargers",
-
-    source:
-      "local",
-
-    link:
-      "whatsapp"
+    category: "charger",
+    categoryName: "Chargers",
+    source: "local",
+    link: "whatsapp"
   },
 
 
   {
     id: "local-2",
-
-    name:
-      "Air31 Earbuds",
-
-    price:
-      1799,
-
-    image:
-      "air31-earbuds.jpeg",
-
+    name: "Air31 Earbuds",
+    price: 1799,
+    image: "air31-earbuds.jpeg",
     description:
       "Wireless TWS earbuds for everyday listening.",
-
-    category:
-      "earbuds",
-
-    categoryName:
-      "TWS Earbuds",
-
-    source:
-      "local",
-
-    link:
-      "whatsapp"
+    category: "earbuds",
+    categoryName: "TWS Earbuds",
+    source: "local",
+    link: "whatsapp"
   },
 
 
   {
     id: "amazon-2",
-
-    name:
-      "Car Phone Holder",
-
-    price:
-      "",
-
-    image:
-      "car-phone-holder.jpeg",
-
+    name: "Car Phone Holder",
+    price: "",
+    image: "car-phone-holder.jpeg",
     description:
       "Convenient phone holder for use in the car.",
-
-    category:
-      "car",
-
-    categoryName:
-      "Car Accessories",
-
-    source:
-      "amazon",
-
-    link:
-      "https://amzn.to/4qTpqjY"
+    category: "car",
+    categoryName: "Car Accessories",
+    source: "amazon",
+    link: "https://amzn.to/4qTpqjY"
   },
 
 
   {
     id: "amazon-3",
-
-    name:
-      "KTGEE Wireless Earbuds",
-
-    price:
-      "",
-
-    image:
-      "ktgee-wireless-earbuds.jpg",
-
+    name: "KTGEE Wireless Earbuds",
+    price: "",
+    image: "ktgee-wireless-earbuds.jpg",
     description:
       "Wireless earbuds selected from Amazon.",
-
-    category:
-      "earbuds",
-
-    categoryName:
-      "TWS Earbuds",
-
-    source:
-      "amazon",
-
-    link:
-      "https://amzn.to/4gFMCxm"
+    category: "earbuds",
+    categoryName: "TWS Earbuds",
+    source: "amazon",
+    link: "https://amzn.to/4gFMCxm"
   },
 
 
   {
     id: "amazon-4",
-
     name:
       "UNBREAKcable iPhone 17 Pro Screen Protector",
-
-    price:
-      "",
-
+    price: "",
     image:
       "unbreakcable-iphone-17-pro-screen-protector.jpg",
-
     description:
       "Screen protector selected from Amazon.",
-
-    category:
-      "screen",
-
-    categoryName:
-      "Screen Protectors",
-
-    source:
-      "amazon",
-
-    link:
-      "https://amzn.to/3TdVSRD"
+    category: "screen",
+    categoryName: "Screen Protectors",
+    source: "amazon",
+    link: "https://amzn.to/3TdVSRD"
   },
 
 
   {
     id: "amazon-5",
-
-    name:
-      "USB Wall Charger",
-
-    price:
-      "",
-
-    image:
-      "usb-wall-charger.jpg",
-
+    name: "USB Wall Charger",
+    price: "",
+    image: "usb-wall-charger.jpg",
     description:
       "USB wall charger selected from Amazon.",
-
-    category:
-      "charger",
-
-    categoryName:
-      "Chargers",
-
-    source:
-      "amazon",
-
-    link:
-      "https://amzn.to/4daAOlF"
+    category: "charger",
+    categoryName: "Chargers",
+    source: "amazon",
+    link: "https://amzn.to/4daAOlF"
   }
 
 ];
@@ -1248,8 +1669,7 @@ let allProducts = [];
 
 let allCategories = [];
 
-let activeCategory =
-  "all";
+let activeCategory = "all";
 
 let cart = [];
 
@@ -1265,6 +1685,7 @@ function createSlug(name) {
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+
 }
 
 
@@ -1272,7 +1693,10 @@ function createSlug(name) {
    OLD CATEGORY FALLBACK
 ============================== */
 
-function detectCategory(name, description) {
+function detectCategory(
+  name,
+  description
+) {
 
   const text =
     (
@@ -1287,7 +1711,9 @@ function detectCategory(name, description) {
     text.includes("airpod") ||
     text.includes("tws")
   ) {
+
     return "earbuds";
+
   }
 
 
@@ -1295,7 +1721,9 @@ function detectCategory(name, description) {
     text.includes("cable") ||
     text.includes("wire")
   ) {
+
     return "cable";
+
   }
 
 
@@ -1305,7 +1733,9 @@ function detectCategory(name, description) {
     text.includes("adapter") ||
     text.includes("power")
   ) {
+
     return "charger";
+
   }
 
 
@@ -1313,7 +1743,9 @@ function detectCategory(name, description) {
     text.includes("car") ||
     text.includes("phone holder")
   ) {
+
     return "car";
+
   }
 
 
@@ -1321,11 +1753,14 @@ function detectCategory(name, description) {
     text.includes("screen") ||
     text.includes("protector")
   ) {
+
     return "screen";
+
   }
 
 
   return "all";
+
 }
 
 
@@ -1359,6 +1794,7 @@ async function loadCategories() {
     renderCategoryButtons();
 
     return;
+
   }
 
 
@@ -1366,6 +1802,7 @@ async function loadCategories() {
     data || [];
 
   renderCategoryButtons();
+
 }
 
 
@@ -1384,17 +1821,22 @@ function renderCategoryButtons() {
 
 
   const allButton =
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
 
   allButton.className =
     "category-button";
 
 
-  if (activeCategory === "all") {
+  if (
+    activeCategory === "all"
+  ) {
 
     allButton.classList.add(
       "active"
     );
+
   }
 
 
@@ -1418,50 +1860,57 @@ function renderCategoryButtons() {
   );
 
 
-  allCategories.forEach(category => {
+  allCategories.forEach(
+    category => {
 
-    const button =
-      document.createElement("button");
-
-    button.className =
-      "category-button";
-
-
-    if (
-      activeCategory ===
-      category.slug
-    ) {
-
-      button.classList.add(
-        "active"
-      );
-    }
-
-
-    button.textContent =
-      category.name;
-
-
-    button.onclick =
-      function() {
-
-        filterProducts(
-          category.slug,
-          this
+      const button =
+        document.createElement(
+          "button"
         );
 
-      };
+      button.className =
+        "category-button";
 
 
-    container.appendChild(
-      button
-    );
+      if (
+        activeCategory ===
+        category.slug
+      ) {
 
-  });
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+
+      button.textContent =
+        category.name;
+
+
+      button.onclick =
+        function() {
+
+          filterProducts(
+            category.slug,
+            this
+          );
+
+        };
+
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
 
 
   const amazonButton =
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
 
   amazonButton.className =
     "category-button";
@@ -1475,6 +1924,7 @@ function renderCategoryButtons() {
     amazonButton.classList.add(
       "active"
     );
+
   }
 
 
@@ -1496,6 +1946,7 @@ function renderCategoryButtons() {
   container.appendChild(
     amazonButton
   );
+
 }
 
 
@@ -1542,6 +1993,7 @@ async function loadProducts() {
     );
 
     return;
+
   }
 
 
@@ -1564,7 +2016,9 @@ async function loadProducts() {
             allCategories.find(
               item =>
                 Number(item.id) ===
-                Number(product.category_id)
+                Number(
+                  product.category_id
+                )
             );
 
 
@@ -1624,6 +2078,7 @@ async function loadProducts() {
               oldCategory
             ] ||
             "Uncategorized";
+
         }
 
 
@@ -1676,6 +2131,7 @@ async function loadProducts() {
   renderProducts(
     getFilteredProducts()
   );
+
 }
 
 
@@ -1693,6 +2149,7 @@ function getFilteredProducts() {
     return [
       ...allProducts
     ];
+
   }
 
 
@@ -1706,6 +2163,7 @@ function getFilteredProducts() {
         product.source ===
         "amazon"
     );
+
   }
 
 
@@ -1714,6 +2172,7 @@ function getFilteredProducts() {
       product.category ===
       activeCategory
   );
+
 }
 
 
@@ -1730,20 +2189,25 @@ function filterProducts(
     .querySelectorAll(
       ".category-button"
     )
-    .forEach(button => {
+    .forEach(
+      button => {
 
-      button.classList.remove(
-        "active"
-      );
+        button.classList.remove(
+          "active"
+        );
 
-    });
+      }
+    );
 
 
-  if (clickedButton) {
+  if (
+    clickedButton
+  ) {
 
     clickedButton.classList.add(
       "active"
     );
+
   }
 
 
@@ -1755,6 +2219,7 @@ function filterProducts(
   renderProducts(
     getFilteredProducts()
   );
+
 }
 
 
@@ -1800,12 +2265,14 @@ function searchProducts() {
 
         }
       );
+
   }
 
 
   renderProducts(
     products
   );
+
 }
 
 
@@ -1841,6 +2308,7 @@ function renderProducts(
       "No products found.";
 
     return;
+
   }
 
 
@@ -1859,6 +2327,7 @@ function renderProducts(
     );
 
     return;
+
   }
 
 
@@ -1887,6 +2356,7 @@ function renderProducts(
   container.appendChild(
     grid
   );
+
 }
 
 
@@ -1948,21 +2418,23 @@ function renderGroupedProducts(
 
 
   Object.keys(groups)
-    .forEach(key => {
+    .forEach(
+      key => {
 
-      if (
-        !orderedKeys.includes(
-          key
-        )
-      ) {
+        if (
+          !orderedKeys.includes(
+            key
+          )
+        ) {
 
-        orderedKeys.push(
-          key
-        );
+          orderedKeys.push(
+            key
+          );
+
+        }
 
       }
-
-    });
+    );
 
 
   orderedKeys.forEach(
@@ -1976,7 +2448,9 @@ function renderGroupedProducts(
         !productsInGroup ||
         productsInGroup.length === 0
       ) {
+
         return;
+
       }
 
 
@@ -2060,12 +2534,14 @@ function renderGroupedProducts(
         grid
       );
 
+
       container.appendChild(
         section
       );
 
     }
   );
+
 }
 
 
@@ -2086,7 +2562,9 @@ function createProductCard(
     "product";
 
 
-  if (product.image) {
+  if (
+    product.image
+  ) {
 
     const image =
       document.createElement(
@@ -2116,6 +2594,7 @@ function createProductCard(
     card.appendChild(
       image
     );
+
   }
 
 
@@ -2154,6 +2633,7 @@ function createProductCard(
     card.appendChild(
       badge
     );
+
   }
 
 
@@ -2176,6 +2656,7 @@ function createProductCard(
     card.appendChild(
       description
     );
+
   }
 
 
@@ -2203,6 +2684,7 @@ function createProductCard(
     card.appendChild(
       price
     );
+
   }
 
 
@@ -2247,7 +2729,6 @@ function createProductCard(
 
   }
 
-
   else {
 
     const whatsappButton =
@@ -2279,7 +2760,7 @@ function createProductCard(
 
     const cartButton =
       document.createElement(
-      "button"
+        "button"
       );
 
     cartButton.className =
@@ -2312,6 +2793,7 @@ function createProductCard(
 
 
   return card;
+
 }
 
 
@@ -2345,6 +2827,7 @@ function orderProduct(
     url,
     "_blank"
   );
+
 }
 
 
@@ -2364,11 +2847,15 @@ function addToCart(
     );
 
 
-  if (existing) {
+  if (
+    existing
+  ) {
 
     existing.quantity++;
 
-  } else {
+  }
+
+  else {
 
     cart.push({
 
@@ -2397,6 +2884,7 @@ function addToCart(
   alert(
     "Product added to cart."
   );
+
 }
 
 
@@ -2437,12 +2925,15 @@ function updateCart() {
     container.innerHTML =
       '<p class="status-message">Your cart is empty.</p>';
 
+
     document.getElementById(
       "cartTotal"
     ).textContent =
       "Total: 0";
 
+
     return;
+
   }
 
 
@@ -2490,6 +2981,7 @@ function updateCart() {
   ).textContent =
     "Total: Rs. " +
     total.toLocaleString();
+
 }
 
 
@@ -2500,7 +2992,10 @@ function toggleCart() {
       "cartPanel"
     )
     .classList
-    .toggle("open");
+    .toggle(
+      "open"
+    );
+
 }
 
 
@@ -2519,6 +3014,7 @@ function checkoutWhatsApp() {
     );
 
     return;
+
   }
 
 
@@ -2577,6 +3073,7 @@ function checkoutWhatsApp() {
     url,
     "_blank"
   );
+
 }
 
 
@@ -2598,6 +3095,7 @@ function escapeHtml(
 
 
   return div.innerHTML;
+
 }
 
 
@@ -2613,8 +3111,12 @@ async function updateVisitorCounter() {
     );
 
 
-  if (!visitorCountEl) {
+  if (
+    !visitorCountEl
+  ) {
+
     return;
+
   }
 
 
@@ -2629,7 +3131,9 @@ async function updateVisitorCounter() {
       );
 
 
-    if (!incrementError) {
+    if (
+      !incrementError
+    ) {
 
       visitorCountEl.textContent =
         Number(
@@ -2637,6 +3141,7 @@ async function updateVisitorCounter() {
         ).toLocaleString();
 
       return;
+
     }
 
 
@@ -2656,8 +3161,12 @@ async function updateVisitorCounter() {
         .single();
 
 
-    if (error) {
+    if (
+      error
+    ) {
+
       throw error;
+
     }
 
 
@@ -2666,7 +3175,11 @@ async function updateVisitorCounter() {
         data.visitor_count
       ).toLocaleString();
 
-  } catch (error) {
+  }
+
+  catch (
+    error
+  ) {
 
     console.error(
       "Visitor counter error:",
@@ -2675,15 +3188,327 @@ async function updateVisitorCounter() {
 
     visitorCountEl.textContent =
       "—";
+
   }
+
 }
 
 
 /* ==============================
-   NEW MESSAGE SLIDER
+   CALCULATOR
+============================== */
+
+function calculatorInput(
+  value
+) {
+
+  const display =
+    document.getElementById(
+      "calculatorDisplay"
+    );
+
+
+  if (
+    display.value === "0" ||
+    display.value === "Error"
+  ) {
+
+    display.value =
+      value;
+
+  }
+
+  else {
+
+    display.value +=
+      value;
+
+  }
+
+}
+
+
+function calculatorClear() {
+
+  document.getElementById(
+    "calculatorDisplay"
+  ).value =
+    "0";
+
+}
+
+
+function calculatorBackspace() {
+
+  const display =
+    document.getElementById(
+      "calculatorDisplay"
+    );
+
+
+  if (
+    display.value === "Error" ||
+    display.value.length <= 1
+  ) {
+
+    display.value =
+      "0";
+
+  }
+
+  else {
+
+    display.value =
+      display.value.slice(
+        0,
+        -1
+      );
+
+  }
+
+}
+
+
+function calculatorCalculate() {
+
+  const display =
+    document.getElementById(
+      "calculatorDisplay"
+    );
+
+
+  const expression =
+    display.value;
+
+
+  /*
+    Allow only basic mathematical
+    characters.
+  */
+
+  if (
+    !/^[0-9+\-*/().\s]+$/.test(
+      expression
+    )
+  ) {
+
+    display.value =
+      "Error";
+
+    return;
+
+  }
+
+
+  try {
+
+    const result =
+      Function(
+        '"use strict"; return (' +
+        expression +
+        ')'
+      )();
+
+
+    if (
+      !Number.isFinite(
+        result
+      )
+    ) {
+
+      display.value =
+        "Error";
+
+      return;
+
+    }
+
+
+    display.value =
+      String(
+        result
+      );
+
+  }
+
+  catch (
+    error
+  ) {
+
+    display.value =
+      "Error";
+
+  }
+
+}
+
+
+/* ==============================
+   CURRENCY CONVERTER
+============================== */
+
+async function convertCurrency() {
+
+  const amount =
+    Number(
+      document.getElementById(
+        "currencyAmount"
+      ).value
+    );
+
+
+  const from =
+    document.getElementById(
+      "fromCurrency"
+    ).value;
+
+
+  const to =
+    document.getElementById(
+      "toCurrency"
+    ).value;
+
+
+  const resultBox =
+    document.getElementById(
+      "currencyResult"
+    );
+
+
+  if (
+    !amount ||
+    amount <= 0
+  ) {
+
+    resultBox.textContent =
+      "Enter a valid amount.";
+
+    return;
+
+  }
+
+
+  if (
+    from === to
+  ) {
+
+    resultBox.textContent =
+      amount.toLocaleString(
+        undefined,
+        {
+          maximumFractionDigits: 4
+        }
+      ) +
+      " " +
+      to;
+
+    return;
+
+  }
+
+
+  resultBox.textContent =
+    "Converting...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        "https://open.er-api.com/v6/latest/" +
+        from
+      );
+
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "Currency service unavailable"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      data.result !== "success" ||
+      !data.rates ||
+      !data.rates[to]
+    ) {
+
+      throw new Error(
+        "Currency rate unavailable"
+      );
+
+    }
+
+
+    const rate =
+      Number(
+        data.rates[to]
+      );
+
+
+    const converted =
+      amount *
+      rate;
+
+
+    resultBox.textContent =
+      amount.toLocaleString(
+        undefined,
+        {
+          maximumFractionDigits: 4
+        }
+      ) +
+      " " +
+      from +
+      " = " +
+      converted.toLocaleString(
+        undefined,
+        {
+          maximumFractionDigits: 4
+        }
+      ) +
+      " " +
+      to;
+
+  }
+
+  catch (
+    error
+  ) {
+
+    console.error(
+      "Currency conversion error:",
+      error
+    );
+
+
+    resultBox.textContent =
+      "Unable to get exchange rate. Please try again.";
+
+  }
+
+}
+
+
+/* ==============================
+   MESSAGE SLIDER
 ============================== */
 
 function startMessageSlider() {
+
+  const slider =
+    document.querySelector(
+      ".profile-message-slider"
+    );
+
 
   const cards =
     document.querySelectorAll(
@@ -2692,37 +3517,54 @@ function startMessageSlider() {
 
 
   if (
+    !slider ||
     cards.length === 0
   ) {
+
     return;
+
   }
 
 
   /*
-    Messages are arranged in pairs:
-
     Pair 1:
-    English 1 → Urdu 1
+    English → Urdu
+
+    Each message:
+    3.5 seconds
 
     Then:
-    10 minute break
+    5 minute complete hide
 
     Pair 2:
-    English 2 → Urdu 2
+    English → Urdu
 
     Then:
-    10 minute break
+    5 minute complete hide
 
-    Then repeat.
+    Repeat.
   */
+
+  const pairs = [
+
+    [
+      0,
+      1
+    ],
+
+    [
+      2,
+      3
+    ]
+
+  ];
+
 
   let currentPair =
     0;
 
 
-  function showCard(
-    cardIndex
-  ) {
+  function hideAllCards() {
 
     cards.forEach(
       card => {
@@ -2734,69 +3576,99 @@ function startMessageSlider() {
       }
     );
 
-
-    cards[
-      cardIndex
-    ].classList.add(
-      "active"
-    );
   }
 
 
-  function runPair() {
+  function showCard(
+    index
+  ) {
 
-    const englishIndex =
-      currentPair * 2;
+    slider.style.visibility =
+      "visible";
 
-    const urduIndex =
-      currentPair * 2 + 1;
+    slider.style.opacity =
+      "1";
+
+
+    hideAllCards();
+
+
+    cards[
+      index
+    ].classList.add(
+      "active"
+    );
+
+  }
+
+
+  function startPair() {
+
+    const pair =
+      pairs[
+        currentPair
+      ];
 
 
     /*
-      Start with English.
+      English
     */
 
     showCard(
-      englishIndex
+      pair[0]
     );
 
 
     /*
-      After 3.5 seconds,
-      show Urdu.
+      After 3.5 seconds:
+      Urdu
     */
 
     setTimeout(
       function() {
 
         showCard(
-          urduIndex
+          pair[1]
         );
 
 
         /*
-          After Urdu has displayed
-          for 3.5 seconds, begin
-          the 10 minute break.
+          After another 3.5 seconds:
+          hide entire message box.
         */
 
         setTimeout(
           function() {
 
-            currentPair =
-              (
-                currentPair + 1
-              ) % 2;
+            hideAllCards();
+
+
+            slider.style.opacity =
+              "0";
+
+
+            slider.style.visibility =
+              "hidden";
 
 
             /*
-              After 10 minutes,
-              start the next pair.
+              Next pair
+            */
+
+            currentPair =
+              (
+                currentPair + 1
+              ) %
+              pairs.length;
+
+
+            /*
+              Wait 5 minutes.
             */
 
             setTimeout(
-              runPair,
-              10 * 60 * 1000
+              startPair,
+              5 * 60 * 1000
             );
 
           },
@@ -2806,14 +3678,12 @@ function startMessageSlider() {
       },
       3500
     );
+
   }
 
 
-  /*
-    First pair starts immediately.
-  */
+  startPair();
 
-  runPair();
 }
 
 
@@ -2832,6 +3702,7 @@ async function startShop() {
   await loadProducts();
 
   updateVisitorCounter();
+
 }
 
 
