@@ -57,6 +57,7 @@ body{
     Arial,
     Helvetica,
     sans-serif;
+
   background:
     radial-gradient(
       circle at 15% 10%,
@@ -69,8 +70,13 @@ body{
       transparent 30%
     ),
     var(--bg);
+
   color:var(--text);
   min-height:100vh;
+}
+
+body.modal-open{
+  overflow:hidden;
 }
 
 button,
@@ -927,6 +933,8 @@ header{
     transform .25s ease,
     border-color .25s ease,
     box-shadow .25s ease;
+
+  cursor:pointer;
 }
 
 .product:hover{
@@ -937,6 +945,13 @@ header{
 
   box-shadow:
     0 20px 45px rgba(0,0,0,.30);
+}
+
+.product:focus-visible{
+  outline:
+    2px solid var(--cyan);
+
+  outline-offset:3px;
 }
 
 .product-image-wrap{
@@ -1122,6 +1137,9 @@ header{
   font-weight:900;
 
   transition:.2s;
+
+  position:relative;
+  z-index:2;
 }
 
 .product-buttons button:hover,
@@ -1148,6 +1166,422 @@ header{
     #2563eb;
 
   color:white;
+}
+
+.view-details-hint{
+  margin-top:8px;
+
+  color:#64748b;
+
+  text-align:center;
+
+  font-size:9px;
+
+  font-weight:700;
+}
+
+
+/* =========================================================
+   PRODUCT DETAILS MODAL
+========================================================= */
+
+.product-modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:2000;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  opacity:0;
+  visibility:hidden;
+
+  pointer-events:none;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+.product-modal.open{
+  opacity:1;
+
+  visibility:visible;
+
+  pointer-events:auto;
+}
+
+.product-modal-backdrop{
+  position:absolute;
+
+  inset:0;
+
+  background:
+    rgba(0,0,0,.78);
+
+  backdrop-filter:
+    blur(8px);
+}
+
+.product-modal-content{
+  position:relative;
+
+  z-index:2;
+
+  width:
+    min(950px,100%);
+
+  max-height:
+    min(720px,92vh);
+
+  overflow-y:auto;
+
+  border:
+    1px solid rgba(96,165,250,.22);
+
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111b2d,
+      #08111f
+    );
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.60);
+
+  transform:
+    translateY(20px) scale(.97);
+
+  transition:
+    transform .3s ease;
+}
+
+.product-modal.open
+.product-modal-content{
+  transform:
+    translateY(0) scale(1);
+}
+
+.product-modal-close{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  z-index:10;
+
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid rgba(148,163,184,.18);
+
+  border-radius:50%;
+
+  background:
+    rgba(7,11,20,.75);
+
+  color:white;
+
+  font-size:17px;
+
+  transition:.2s;
+}
+
+.product-modal-close:hover{
+  background:#ef4444;
+
+  transform:rotate(90deg);
+}
+
+.product-detail-grid{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.05fr)
+    minmax(0,1fr);
+
+  gap:0;
+}
+
+.product-detail-image-area{
+  min-height:560px;
+
+  padding:35px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(34,211,238,.08),
+      transparent 60%
+    );
+}
+
+.product-detail-image-box{
+  width:100%;
+  height:100%;
+
+  min-height:480px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid rgba(148,163,184,.09);
+
+  border-radius:20px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #17243a,
+      #0b1220
+    );
+
+  overflow:hidden;
+}
+
+.product-detail-image{
+  width:100%;
+  height:100%;
+
+  max-height:500px;
+
+  object-fit:contain;
+
+  padding:25px;
+}
+
+.product-detail-info{
+  padding:
+    55px 42px 42px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+.detail-source{
+  display:inline-flex;
+
+  width:max-content;
+
+  margin-bottom:14px;
+
+  padding:
+    7px 10px;
+
+  border-radius:8px;
+
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:.6px;
+}
+
+.detail-source.local{
+  background:
+    rgba(34,197,94,.12);
+
+  color:#86efac;
+
+  border:
+    1px solid rgba(34,197,94,.18);
+}
+
+.detail-source.amazon{
+  background:
+    rgba(245,158,11,.12);
+
+  color:#fcd34d;
+
+  border:
+    1px solid rgba(245,158,11,.18);
+}
+
+.detail-category{
+  color:#67e8f9;
+
+  font-size:11px;
+
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.2px;
+
+  margin-bottom:9px;
+}
+
+.detail-title{
+  font-size:
+    clamp(28px,4vw,43px);
+
+  line-height:1.1;
+
+  letter-spacing:-1.5px;
+
+  margin-bottom:17px;
+}
+
+.detail-price{
+  margin-bottom:20px;
+
+  font-size:29px;
+
+  font-weight:900;
+
+  color:white;
+}
+
+.detail-price span{
+  color:#64748b;
+
+  font-size:12px;
+}
+
+.detail-description-title{
+  color:#cbd5e1;
+
+  font-size:12px;
+
+  font-weight:900;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  margin-bottom:8px;
+}
+
+.detail-description{
+  color:#94a3b8;
+
+  font-size:14px;
+
+  line-height:1.75;
+
+  margin-bottom:25px;
+}
+
+.detail-features{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:9px;
+
+  margin-bottom:25px;
+}
+
+.detail-feature{
+  padding:10px;
+
+  border:
+    1px solid rgba(148,163,184,.10);
+
+  border-radius:10px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  color:#cbd5e1;
+
+  font-size:10px;
+
+  font-weight:700;
+}
+
+.detail-actions{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:10px;
+}
+
+.detail-action{
+  min-height:48px;
+
+  border:none;
+
+  border-radius:11px;
+
+  font-size:12px;
+
+  font-weight:900;
+
+  text-decoration:none;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  transition:.2s;
+}
+
+.detail-action:hover{
+  transform:translateY(-2px);
+}
+
+.detail-whatsapp{
+  background:#16a34a;
+  color:white;
+}
+
+.detail-cart{
+  background:#2563eb;
+  color:white;
+}
+
+.detail-amazon{
+  background:#f59e0b;
+  color:#111827;
+}
+
+.detail-close{
+  background:#172236;
+  color:#e2e8f0;
+
+  border:
+    1px solid var(--border);
+}
+
+.detail-note{
+  margin-top:13px;
+
+  color:#64748b;
+
+  font-size:10px;
+
+  text-align:center;
+
+  line-height:1.5;
 }
 
 
@@ -1681,6 +2115,25 @@ footer{
     display:block;
   }
 
+  .product-detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product-detail-image-area{
+    min-height:350px;
+
+    padding:20px;
+  }
+
+  .product-detail-image-box{
+    min-height:320px;
+  }
+
+  .product-detail-info{
+    padding:
+      30px 25px 28px;
+  }
+
 }
 
 @media(max-width:700px){
@@ -1903,6 +2356,102 @@ footer{
     gap:7px;
   }
 
+
+  /* PRODUCT DETAILS MOBILE */
+
+  .product-modal{
+    padding:10px;
+  }
+
+  .product-modal-content{
+    max-height:94vh;
+
+    border-radius:18px;
+  }
+
+  .product-modal-close{
+    top:10px;
+    right:10px;
+
+    width:36px;
+    height:36px;
+  }
+
+  .product-detail-image-area{
+    min-height:260px;
+
+    padding:15px 15px 5px;
+  }
+
+  .product-detail-image-box{
+    min-height:245px;
+
+    border-radius:14px;
+  }
+
+  .product-detail-image{
+    max-height:240px;
+
+    padding:15px;
+  }
+
+  .product-detail-info{
+    padding:
+      22px 18px 22px;
+  }
+
+  .detail-source{
+    margin-bottom:10px;
+  }
+
+  .detail-category{
+    font-size:9px;
+  }
+
+  .detail-title{
+    font-size:26px;
+
+    margin-bottom:12px;
+  }
+
+  .detail-price{
+    font-size:23px;
+
+    margin-bottom:14px;
+  }
+
+  .detail-description{
+    font-size:12px;
+
+    line-height:1.65;
+
+    margin-bottom:17px;
+  }
+
+  .detail-features{
+    grid-template-columns:1fr 1fr;
+
+    margin-bottom:17px;
+  }
+
+  .detail-feature{
+    padding:8px;
+
+    font-size:9px;
+  }
+
+  .detail-actions{
+    grid-template-columns:1fr 1fr;
+
+    gap:7px;
+  }
+
+  .detail-action{
+    min-height:44px;
+
+    font-size:10px;
+  }
+
 }
 
 @media(max-width:380px){
@@ -1929,6 +2478,10 @@ footer{
 
   .product-image-wrap{
     height:135px;
+  }
+
+  .detail-actions{
+    grid-template-columns:1fr;
   }
 
 }
@@ -2027,8 +2580,6 @@ footer{
   <div class="hero-glow"></div>
 
 
-  <!-- PROFILE -->
-
   <div class="profile-corner">
 
     <img
@@ -2039,8 +2590,6 @@ footer{
 
   </div>
 
-
-  <!-- MESSAGE SLIDER -->
 
   <div class="profile-message-slider">
 
@@ -2236,8 +2785,6 @@ footer{
 
 
 
-  <!-- SEARCH -->
-
   <div class="search-area">
 
     <div class="search-wrapper">
@@ -2259,8 +2806,6 @@ footer{
   </div>
 
 
-
-  <!-- CATEGORIES -->
 
   <div
     class="categories"
@@ -2304,6 +2849,147 @@ footer{
 
 
 <!-- =======================================================
+     PRODUCT DETAILS MODAL
+======================================================= -->
+
+<div
+  id="productModal"
+  class="product-modal"
+  aria-hidden="true"
+>
+
+  <div
+    class="product-modal-backdrop"
+    onclick="closeProductDetails()"
+  ></div>
+
+
+  <div
+    class="product-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailName"
+  >
+
+    <button
+      class="product-modal-close"
+      onclick="closeProductDetails()"
+      aria-label="Close product details"
+    >
+      ✕
+    </button>
+
+
+    <div class="product-detail-grid">
+
+
+      <!-- IMAGE -->
+
+      <div class="product-detail-image-area">
+
+        <div class="product-detail-image-box">
+
+          <img
+            id="detailImage"
+            class="product-detail-image"
+            src=""
+            alt=""
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- DETAILS -->
+
+      <div class="product-detail-info">
+
+        <div
+          id="detailSource"
+          class="detail-source"
+        >
+        </div>
+
+
+        <div
+          id="detailCategory"
+          class="detail-category"
+        >
+        </div>
+
+
+        <h2
+          id="detailName"
+          class="detail-title"
+        >
+        </h2>
+
+
+        <div
+          id="detailPrice"
+          class="detail-price"
+        >
+        </div>
+
+
+        <div class="detail-description-title">
+          Product Details
+        </div>
+
+
+        <p
+          id="detailDescription"
+          class="detail-description"
+        >
+        </p>
+
+
+        <div class="detail-features">
+
+          <div class="detail-feature">
+            ✓ Carefully selected
+          </div>
+
+          <div class="detail-feature">
+            ✓ Everyday useful
+          </div>
+
+          <div class="detail-feature">
+            ✓ Easy ordering
+          </div>
+
+          <div class="detail-feature">
+            ✓ Customer support
+          </div>
+
+        </div>
+
+
+        <div
+          id="detailActions"
+          class="detail-actions"
+        >
+        </div>
+
+
+        <div
+          id="detailNote"
+          class="detail-note"
+        >
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =======================================================
      TOOLS
 ======================================================= -->
 
@@ -2312,7 +2998,10 @@ footer{
   id="tools"
 >
 
-  <div class="section-header" style="padding:0;margin-bottom:20px;">
+  <div
+    class="section-header"
+    style="padding:0;margin-bottom:20px;"
+  >
 
     <div>
 
@@ -2375,15 +3064,11 @@ footer{
           C
         </button>
 
-        <button
-          onclick="calculatorInput('(')"
-        >
+        <button onclick="calculatorInput('(')">
           (
         </button>
 
-        <button
-          onclick="calculatorInput(')')"
-        >
+        <button onclick="calculatorInput(')')">
           )
         </button>
 
@@ -2480,7 +3165,7 @@ footer{
 
 
 
-    <!-- CURRENCY CONVERTER -->
+    <!-- CURRENCY -->
 
     <div class="tool-card">
 
@@ -2523,49 +3208,17 @@ footer{
           class="converter-select"
         >
 
-          <option value="PKR">
-            🇵🇰 PKR
-          </option>
-
-          <option value="USD">
-            🇺🇸 USD
-          </option>
-
-          <option value="EUR">
-            🇪🇺 EUR
-          </option>
-
-          <option value="GBP">
-            🇬🇧 GBP
-          </option>
-
-          <option value="SAR">
-            🇸🇦 SAR
-          </option>
-
-          <option value="AED">
-            🇦🇪 AED
-          </option>
-
-          <option value="INR">
-            🇮🇳 INR
-          </option>
-
-          <option value="CAD">
-            🇨🇦 CAD
-          </option>
-
-          <option value="AUD">
-            🇦🇺 AUD
-          </option>
-
-          <option value="JPY">
-            🇯🇵 JPY
-          </option>
-
-          <option value="CNY">
-            🇨🇳 CNY
-          </option>
+          <option value="PKR">🇵🇰 PKR</option>
+          <option value="USD">🇺🇸 USD</option>
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="GBP">🇬🇧 GBP</option>
+          <option value="SAR">🇸🇦 SAR</option>
+          <option value="AED">🇦🇪 AED</option>
+          <option value="INR">🇮🇳 INR</option>
+          <option value="CAD">🇨🇦 CAD</option>
+          <option value="AUD">🇦🇺 AUD</option>
+          <option value="JPY">🇯🇵 JPY</option>
+          <option value="CNY">🇨🇳 CNY</option>
 
         </select>
 
@@ -2575,49 +3228,17 @@ footer{
           class="converter-select"
         >
 
-          <option value="USD">
-            🇺🇸 USD
-          </option>
-
-          <option value="PKR">
-            🇵🇰 PKR
-          </option>
-
-          <option value="EUR">
-            🇪🇺 EUR
-          </option>
-
-          <option value="GBP">
-            🇬🇧 GBP
-          </option>
-
-          <option value="SAR">
-            🇸🇦 SAR
-          </option>
-
-          <option value="AED">
-            🇦🇪 AED
-          </option>
-
-          <option value="INR">
-            🇮🇳 INR
-          </option>
-
-          <option value="CAD">
-            🇨🇦 CAD
-          </option>
-
-          <option value="AUD">
-            🇦🇺 AUD
-          </option>
-
-          <option value="JPY">
-            🇯🇵 JPY
-          </option>
-
-          <option value="CNY">
-            🇨🇳 CNY
-          </option>
+          <option value="USD">🇺🇸 USD</option>
+          <option value="PKR">🇵🇰 PKR</option>
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="GBP">🇬🇧 GBP</option>
+          <option value="SAR">🇸🇦 SAR</option>
+          <option value="AED">🇦🇪 AED</option>
+          <option value="INR">🇮🇳 INR</option>
+          <option value="CAD">🇨🇦 CAD</option>
+          <option value="AUD">🇦🇺 AUD</option>
+          <option value="JPY">🇯🇵 JPY</option>
+          <option value="CNY">🇨🇳 CNY</option>
 
         </select>
 
@@ -3758,6 +4379,61 @@ function createProductCard(
   card.className =
     "product";
 
+  card.setAttribute(
+    "role",
+    "button"
+  );
+
+  card.setAttribute(
+    "tabindex",
+    "0"
+  );
+
+  card.setAttribute(
+    "aria-label",
+    "View details for " +
+    (product.name || "product")
+  );
+
+
+  /*
+    MAIN PROFESSIONAL FEATURE:
+    Clicking the product card opens
+    the product details modal.
+  */
+
+  card.addEventListener(
+    "click",
+    function(){
+
+      openProductDetails(
+        product
+      );
+
+    }
+  );
+
+
+  card.addEventListener(
+    "keydown",
+    function(event){
+
+      if(
+        event.key === "Enter" ||
+        event.key === " "
+      ){
+
+        event.preventDefault();
+
+        openProductDetails(
+          product
+        );
+
+      }
+
+    }
+  );
+
 
   const imageWrap =
     document.createElement(
@@ -3784,7 +4460,6 @@ function createProductCard(
     image.alt =
       product.name ||
       "Product image";
-
 
     image.loading =
       "lazy";
@@ -3933,6 +4608,26 @@ function createProductCard(
     );
 
   }
+  else{
+
+    const price =
+      document.createElement(
+        "div"
+      );
+
+    price.className =
+      "product-price";
+
+    price.innerHTML =
+      "View Price " +
+      "<span>ON AMAZON</span>";
+
+
+    content.appendChild(
+      price
+    );
+
+  }
 
 
   const buttons =
@@ -3967,6 +4662,16 @@ function createProductCard(
       "View on Amazon";
 
 
+    amazonLink.addEventListener(
+      "click",
+      function(event){
+
+        event.stopPropagation();
+
+      }
+    );
+
+
     buttons.appendChild(
       amazonLink
     );
@@ -3987,14 +4692,18 @@ function createProductCard(
       "💬 WhatsApp";
 
 
-    whatsappButton.onclick =
-      function(){
+    whatsappButton.addEventListener(
+      "click",
+      function(event){
+
+        event.stopPropagation();
 
         orderProduct(
           product
         );
 
-      };
+      }
+    );
 
 
     buttons.appendChild(
@@ -4014,14 +4723,18 @@ function createProductCard(
       "🛒 Add Cart";
 
 
-    cartButton.onclick =
-      function(){
+    cartButton.addEventListener(
+      "click",
+      function(event){
+
+        event.stopPropagation();
 
         addToCart(
           product
         );
 
-      };
+      }
+    );
 
 
     buttons.appendChild(
@@ -4036,6 +4749,23 @@ function createProductCard(
   );
 
 
+  const hint =
+    document.createElement(
+      "div"
+    );
+
+  hint.className =
+    "view-details-hint";
+
+  hint.textContent =
+    "Tap product for full details →";
+
+
+  content.appendChild(
+    hint
+  );
+
+
   card.appendChild(
     content
   );
@@ -4047,6 +4777,350 @@ function createProductCard(
 
 
 /* =========================================================
+   PRODUCT DETAILS
+========================================================= */
+
+function openProductDetails(
+  product
+){
+
+  if(!product){
+    return;
+  }
+
+
+  const modal =
+    document.getElementById(
+      "productModal"
+    );
+
+
+  const image =
+    document.getElementById(
+      "detailImage"
+    );
+
+
+  const source =
+    document.getElementById(
+      "detailSource"
+    );
+
+
+  const category =
+    document.getElementById(
+      "detailCategory"
+    );
+
+
+  const name =
+    document.getElementById(
+      "detailName"
+    );
+
+
+  const price =
+    document.getElementById(
+      "detailPrice"
+    );
+
+
+  const description =
+    document.getElementById(
+      "detailDescription"
+    );
+
+
+  const actions =
+    document.getElementById(
+      "detailActions"
+    );
+
+
+  const note =
+    document.getElementById(
+      "detailNote"
+    );
+
+
+  /* IMAGE */
+
+  if(product.image){
+
+    image.src =
+      product.image;
+
+    image.alt =
+      product.name ||
+      "Product image";
+
+    image.style.display =
+      "block";
+
+  }
+  else{
+
+    image.removeAttribute(
+      "src"
+    );
+
+    image.style.display =
+      "none";
+
+  }
+
+
+  /* SOURCE */
+
+  source.className =
+    "detail-source " +
+    (
+      product.source === "amazon"
+        ? "amazon"
+        : "local"
+    );
+
+
+  source.textContent =
+    product.source === "amazon"
+      ? "🟠 AMAZON PICK"
+      : "🟢 ZAINTECHMART PRODUCT";
+
+
+  /* CATEGORY */
+
+  category.textContent =
+    product.categoryName ||
+    "Product";
+
+
+  /* NAME */
+
+  name.textContent =
+    product.name ||
+    "Product";
+
+
+  /* PRICE */
+
+  if(
+    product.price !== "" &&
+    product.price !== null &&
+    product.price !== undefined
+  ){
+
+    price.innerHTML =
+      "Rs. " +
+      Number(
+        product.price
+      ).toLocaleString() +
+      " " +
+      "<span>PKR</span>";
+
+  }
+  else{
+
+    price.innerHTML =
+      "Check latest price " +
+      "<span>ON AMAZON</span>";
+
+  }
+
+
+  /* DESCRIPTION */
+
+  description.textContent =
+    product.description ||
+    "A useful product selected for ZainTechMart customers.";
+
+
+  /* CLEAR OLD ACTIONS */
+
+  actions.innerHTML =
+    "";
+
+
+  /* AMAZON */
+
+  if(
+    product.source === "amazon"
+  ){
+
+    const amazonLink =
+      document.createElement(
+        "a"
+      );
+
+    amazonLink.className =
+      "detail-action detail-amazon";
+
+    amazonLink.href =
+      product.link;
+
+    amazonLink.target =
+      "_blank";
+
+    amazonLink.rel =
+      "noopener noreferrer";
+
+    amazonLink.textContent =
+      "🛒 View on Amazon";
+
+
+    actions.appendChild(
+      amazonLink
+    );
+
+
+    const closeButton =
+      document.createElement(
+        "button"
+      );
+
+    closeButton.className =
+      "detail-action detail-close";
+
+    closeButton.textContent =
+      "✕ Close";
+
+
+    closeButton.onclick =
+      closeProductDetails;
+
+
+    actions.appendChild(
+      closeButton
+    );
+
+
+    note.textContent =
+      "Price and availability may change on Amazon.";
+
+  }
+
+  /* LOCAL */
+
+  else{
+
+    const whatsappButton =
+      document.createElement(
+        "button"
+      );
+
+    whatsappButton.className =
+      "detail-action detail-whatsapp";
+
+    whatsappButton.textContent =
+      "💬 Order on WhatsApp";
+
+
+    whatsappButton.onclick =
+      function(){
+
+        orderProduct(
+          product
+        );
+
+      };
+
+
+    actions.appendChild(
+      whatsappButton
+    );
+
+
+    const cartButton =
+      document.createElement(
+        "button"
+      );
+
+    cartButton.className =
+      "detail-action detail-cart";
+
+    cartButton.textContent =
+      "🛒 Add to Cart";
+
+
+    cartButton.onclick =
+      function(){
+
+        addToCart(
+          product
+        );
+
+      };
+
+
+    actions.appendChild(
+      cartButton
+    );
+
+
+    note.textContent =
+      "Click Add to Cart or order directly through WhatsApp.";
+
+  }
+
+
+  /* OPEN */
+
+  modal.classList.add(
+    "open"
+  );
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "modal-open"
+  );
+
+}
+
+
+function closeProductDetails(){
+
+  const modal =
+    document.getElementById(
+      "productModal"
+    );
+
+
+  modal.classList.remove(
+    "open"
+  );
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
+}
+
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key === "Escape"
+    ){
+
+      closeProductDetails();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
    WHATSAPP ORDER
 ========================================================= */
 
@@ -4054,11 +5128,24 @@ function orderProduct(
   product
 ){
 
+  const priceText =
+    (
+      product.price !== "" &&
+      product.price !== null &&
+      product.price !== undefined
+    )
+      ? "Rs. " +
+        Number(
+          product.price
+        ).toLocaleString()
+      : "Amazon price";
+
+
   const message =
     "Assalam o Alaikum, I want to order:\n\n" +
     product.name +
-    "\nPrice: Rs. " +
-    product.price +
+    "\nPrice: " +
+    priceText +
     "\n\nShop: " +
     shopUrl;
 
@@ -4087,6 +5174,24 @@ function orderProduct(
 function addToCart(
   product
 ){
+
+  if(
+    product.source === "amazon"
+  ){
+
+    if(product.link){
+
+      window.open(
+        product.link,
+        "_blank"
+      );
+
+    }
+
+    return;
+
+  }
+
 
   const existing =
     cart.find(
