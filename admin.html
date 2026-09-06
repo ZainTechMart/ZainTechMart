@@ -157,6 +157,24 @@
       margin-top: 5px;
     }
 
+    .status-badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-top: 5px;
+      background: #475569;
+      color: white;
+    }
+
+    .status-active {
+      background: #059669;
+    }
+
+    .status-coming {
+      background: #d97706;
+    }
+
     label {
       display: block;
       margin-top: 8px;
@@ -199,9 +217,19 @@
       gap: 10px;
     }
 
+    .category-info {
+      flex: 1;
+    }
+
     .category-name {
       font-weight: bold;
-      flex: 1;
+      margin-bottom: 5px;
+    }
+
+    .category-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .category-actions {
@@ -220,6 +248,13 @@
       margin-top: 10px;
     }
 
+    .small-note {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: -5px;
+      margin-bottom: 12px;
+    }
+
     @media (max-width: 600px) {
 
       .container {
@@ -233,9 +268,11 @@
 
       .category-item {
         align-items: flex-start;
+        flex-direction: column;
       }
 
       .category-actions {
+        width: 100%;
         flex-direction: column;
       }
 
@@ -327,6 +364,26 @@
         id="newCategoryName"
         placeholder="Example: Smart Watches"
       >
+
+      <label>
+        Category Status
+      </label>
+
+      <select id="newCategoryStatus">
+
+        <option value="active">
+          Active
+        </option>
+
+        <option value="coming_soon">
+          Coming Soon
+        </option>
+
+      </select>
+
+      <p class="small-note">
+        Choose Coming Soon for categories that are not available yet.
+      </p>
 
       <button
         class="success"
@@ -607,8 +664,14 @@
     const input =
       document.getElementById("newCategoryName");
 
+    const statusSelect =
+      document.getElementById("newCategoryStatus");
+
     const name =
       input.value.trim();
+
+    const categoryStatus =
+      statusSelect.value;
 
     if (!name) {
 
@@ -637,7 +700,8 @@
         .insert([
           {
             name: name,
-            slug: slug
+            slug: slug,
+            status: categoryStatus
           }
         ]);
 
@@ -661,6 +725,9 @@
     }
 
     input.value = "";
+
+    statusSelect.value =
+      "active";
 
     showCategoryMessage(
       "Category created successfully."
@@ -697,6 +764,9 @@
       await supabaseClient
         .from("categories")
         .select("*")
+        .order("sort_order", {
+          ascending: true
+        })
         .order("name", {
           ascending: true
         });
@@ -736,7 +806,13 @@
 
     data.forEach(category => {
 
-      // Dropdown option
+      const categoryStatus =
+        category.status || "active";
+
+
+      // ==============================
+      // PRODUCT DROPDOWN
+      // ==============================
 
       const option =
         document.createElement("option");
@@ -745,18 +821,32 @@
         category.id;
 
       option.textContent =
-        category.name;
+        category.name +
+        (
+          categoryStatus === "coming_soon"
+            ? " — Coming Soon"
+            : ""
+        );
 
       select.appendChild(option);
 
 
-      // Category list item
+      // ==============================
+      // CATEGORY LIST ITEM
+      // ==============================
 
       const item =
         document.createElement("div");
 
       item.className =
         "category-item";
+
+
+      const info =
+        document.createElement("div");
+
+      info.className =
+        "category-info";
 
 
       const name =
@@ -769,12 +859,78 @@
         category.name;
 
 
+      const meta =
+        document.createElement("div");
+
+      meta.className =
+        "category-meta";
+
+
+      const statusBadge =
+        document.createElement("span");
+
+      statusBadge.className =
+        "status-badge " +
+        (
+          categoryStatus === "coming_soon"
+            ? "status-coming"
+            : "status-active"
+        );
+
+      statusBadge.textContent =
+        categoryStatus === "coming_soon"
+          ? "Coming Soon"
+          : "Active";
+
+
+      meta.appendChild(
+        statusBadge
+      );
+
+
+      info.appendChild(name);
+      info.appendChild(meta);
+
+
       const actions =
         document.createElement("div");
 
       actions.className =
         "category-actions";
 
+
+      // ==============================
+      // STATUS BUTTON
+      // ==============================
+
+      const statusButton =
+        document.createElement("button");
+
+      statusButton.textContent =
+        categoryStatus === "coming_soon"
+          ? "Set Active"
+          : "Set Coming Soon";
+
+      statusButton.className =
+        categoryStatus === "coming_soon"
+          ? "success"
+          : "secondary";
+
+      statusButton.onclick =
+        function() {
+
+          updateCategoryStatus(
+            category.id,
+            category.name,
+            categoryStatus
+          );
+
+        };
+
+
+      // ==============================
+      // RENAME BUTTON
+      // ==============================
 
       const editButton =
         document.createElement("button");
@@ -792,6 +948,10 @@
 
         };
 
+
+      // ==============================
+      // DELETE BUTTON
+      // ==============================
 
       const deleteButton =
         document.createElement("button");
@@ -814,6 +974,10 @@
 
 
       actions.appendChild(
+        statusButton
+      );
+
+      actions.appendChild(
         editButton
       );
 
@@ -822,13 +986,67 @@
       );
 
 
-      item.appendChild(name);
+      item.appendChild(info);
 
       item.appendChild(actions);
 
       list.appendChild(item);
 
     });
+  }
+
+
+  // ==============================
+  // UPDATE CATEGORY STATUS
+  // ==============================
+
+  async function updateCategoryStatus(
+    id,
+    name,
+    currentStatus
+  ) {
+
+    const newStatus =
+      currentStatus === "coming_soon"
+        ? "active"
+        : "coming_soon";
+
+
+    const { error } =
+      await supabaseClient
+        .from("categories")
+        .update({
+          status: newStatus
+        })
+        .eq("id", id);
+
+
+    if (error) {
+
+      alert(
+        "Could not update category status:\n\n" +
+        error.message
+      );
+
+      return;
+    }
+
+
+    await loadCategories();
+
+    await loadProducts();
+
+
+    alert(
+      "\"" +
+      name +
+      "\" is now " +
+      (
+        newStatus === "coming_soon"
+          ? "Coming Soon."
+          : "Active."
+      )
+    );
   }
 
 
