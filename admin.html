@@ -1894,7 +1894,123 @@
 
   }
 
+  // ==============================
+  // STORE VISITORS SHOW / HIDE
+  // ==============================
 
+  async function loadVisitorSetting() {
+
+    const container =
+      document.getElementById("visitorSetting");
+
+    if (!container) {
+      return;
+    }
+
+    const { data, error } =
+      await supabaseClient
+        .from("store_settings")
+        .select("visitors_visible")
+        .eq("id", 1)
+        .maybeSingle();
+
+    if (error) {
+
+      container.innerHTML =
+        "<p style='color:#b00020;'>Could not load visitor setting.</p>";
+
+      return;
+    }
+
+    const visible =
+      data
+        ? data.visitors_visible
+        : true;
+
+    container.innerHTML = `
+      <div style="
+        margin-top:20px;
+        padding:18px;
+        border:1px solid #eee;
+        border-radius:14px;
+        background:#fff;
+      ">
+
+        <h3 style="margin-top:0;">
+          👀 Store Visitors
+        </h3>
+
+        <p style="margin-bottom:12px;">
+          Choose whether the visitor counter should appear on the store.
+        </p>
+
+        <button
+          type="button"
+          onclick="setVisitorVisibility(true)"
+          style="
+            margin-right:8px;
+            padding:10px 16px;
+            border:0;
+            border-radius:8px;
+            cursor:pointer;
+          "
+        >
+          SHOW
+        </button>
+
+        <button
+          type="button"
+          onclick="setVisitorVisibility(false)"
+          style="
+            padding:10px 16px;
+            border:0;
+            border-radius:8px;
+            cursor:pointer;
+          "
+        >
+          HIDE
+        </button>
+
+        <p style="margin-bottom:0;margin-top:12px;">
+          Current status:
+          <strong>
+            ${visible ? "SHOWING" : "HIDDEN"}
+          </strong>
+        </p>
+
+      </div>
+    `;
+  }
+
+
+  async function setVisitorVisibility(visible) {
+
+    const { error } =
+      await supabaseClient
+        .from("store_settings")
+        .update({
+          visitors_visible: visible
+        })
+        .eq("id", 1);
+
+    if (error) {
+
+      alert(
+        "Could not update visitor setting:\n\n" +
+        error.message
+      );
+
+      return;
+    }
+
+    alert(
+      visible
+        ? "Store Visitors is now visible."
+        : "Store Visitors is now hidden."
+    );
+
+    loadVisitorSetting();
+  }
   // ==============================
   // CHECK EXISTING SESSION
   // ==============================
