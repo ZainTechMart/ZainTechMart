@@ -4118,63 +4118,122 @@
 
           counterEl.textContent =
             Number(
-              data
-            ).toLocaleString();
+// =====================================================
+// VISITOR COUNTER
+// =====================================================
 
-          return;
+async function loadVisitorVisibility(){
 
-        }
+  const section =
+    document.getElementById("visitorSection");
+
+  if(!section){
+    return false;
+  }
+
+  const { data, error } =
+    await supabaseClient
+      .from("store_settings")
+      .select("visitors_visible")
+      .eq("id", 1)
+      .single();
+
+  if(error){
+    console.error(
+      "Visitor setting error:",
+      error.message
+    );
+
+    section.classList.add("hidden");
+
+    return false;
+  }
+
+  if(data.visitors_visible === true){
+
+    section.classList.remove("hidden");
+
+    return true;
+
+  }else{
+
+    section.classList.add("hidden");
+
+    return false;
+  }
+}
 
 
-        // Fallback
+async function updateVisitorCounter(){
 
-        const result =
-          await supabaseClient
-            .from("site_stats")
-            .select("visitor_count")
-            .eq("id",1)
-            .single();
+  const counterEl =
+    document.getElementById("visitorCount");
 
+  if(!counterEl){
+    return;
+  }
 
-        if(
-          !result.error &&
-          result.data
-        ){
+  try{
 
-          counterEl.textContent =
-            Number(
-              result.data.visitor_count || 0
-            ).toLocaleString();
+    const { data, error } =
+      await supabaseClient.rpc(
+        "increment_visitor_count"
+      );
 
-        }
+    if(
+      !error &&
+      data !== null &&
+      data !== undefined
+    ){
 
-      }catch(error){
+      counterEl.textContent =
+        Number(data).toLocaleString();
 
-        console.warn(
-          "Visitor counter error:",
-          error
-        );
+      return;
+    }
 
-      }
+    const result =
+      await supabaseClient
+        .from("site_stats")
+        .select("visitor_count")
+        .eq("id", 1)
+        .single();
+
+    if(
+      !result.error &&
+      result.data
+    ){
+
+      counterEl.textContent =
+        Number(
+          result.data.visitor_count || 0
+        ).toLocaleString();
 
     }
 
+  }catch(error){
 
-    async function initializeVisitorCounter(){
+    console.warn(
+      "Visitor counter error:",
+      error
+    );
 
-      const visible =
-        await loadVisitorVisibility();
+  }
+}
 
 
-      if(visible){
+async function initializeVisitorCounter(){
 
-        await updateVisitorCounter();
+  const visible =
+    await loadVisitorVisibility();
 
-      }
+  if(visible){
+
+    await updateVisitorCounter();
+
+  }
 
     }
-
-
     // =====================================================
     // CALCULATOR
     // =====================================================
