@@ -2011,28 +2011,85 @@
 
     loadVisitorSetting();
   }
-  // ==============================
-  // CHECK EXISTING SESSION
-  // ==============================
 
-  async function checkSession() {
+// ==============================
+// CHECK EXISTING SESSION
+// ==============================
 
-    const { data } =
+async function checkSession() {
+
+  try {
+
+    const { data, error } =
       await supabaseClient
         .auth
         .getSession();
 
+    if (error) {
 
-    if (data.session) {
+      console.error(
+        "Session check error:",
+        error.message
+      );
 
-      showAdminPanel();
-
+      return;
     }
+
+    const session =
+      data?.session;
+
+    if (!session) {
+
+      return;
+    }
+
+    const { data: adminProfile, error: adminError } =
+      await supabaseClient
+        .from("admin_profiles")
+        .select("user_id, role, is_active")
+        .eq("user_id", session.user.id)
+        .eq("role", "admin")
+        .eq("is_active", true)
+        .maybeSingle();
+
+    if (adminError) {
+
+      console.error(
+        "Admin verification error:",
+        adminError.message
+      );
+
+      await supabaseClient.auth.signOut();
+
+      return;
+    }
+
+    if (!adminProfile) {
+
+      console.warn(
+        "Authenticated user is not an active admin."
+      );
+
+      await supabaseClient.auth.signOut();
+
+      return;
+    }
+
+    showAdminPanel();
+
+  } catch (error) {
+
+    console.error(
+      "Unexpected session error:",
+      error
+    );
+
+    await supabaseClient.auth.signOut();
 
   }
 
-
-  checkSession();
+  }
+ checkSession();
 loadVisitorSetting();
 
 </script>
