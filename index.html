@@ -2302,6 +2302,31 @@
 
   <script>
 
+function shareShop(){
+
+  const shopUrl =
+    "https://zaintechmart.github.io/ZainTechMart/";
+
+  if(navigator.share){
+
+    navigator.share({
+      title: "ZainTechMart",
+      text: "Check out ZainTechMart - Smart Accessories & Useful Gadgets",
+      url: shopUrl
+    });
+
+  }else{
+
+    navigator.clipboard.writeText(shopUrl);
+
+    alert("Shop link copied!");
+
+  }
+
+}
+
+  </script>
+
     // =====================================================
     // SUPABASE CONFIGURATION
     // =====================================================
