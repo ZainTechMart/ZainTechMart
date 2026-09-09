@@ -588,21 +588,62 @@
     showAdminPanel();
   }
 
+function showLoginMessage(text) {
 
-  function showLoginMessage(text) {
+  const message =
+    document.getElementById("loginMessage");
 
-    const message =
-      document.getElementById("loginMessage");
+  message.textContent = text;
 
-    message.textContent = text;
+  message.classList.remove("hidden");
+}
 
-    message.classList.remove("hidden");
+
+// ==============================
+// FORGOT PASSWORD
+// ==============================
+
+async function forgotPassword() {
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  if (!email) {
+
+    showLoginMessage(
+      "Please enter your admin email first."
+    );
+
+    return;
   }
 
+  const { error } =
+    await supabaseClient.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo:
+          "https://zaintechmart.github.io/ZainTechMart/admin.html"
+      }
+    );
 
-  // ==============================
-  // LOGOUT
-  // ==============================
+  if (error) {
+
+    showLoginMessage(
+      error.message
+    );
+
+    return;
+  }
+
+  showLoginMessage(
+    "Password reset link has been sent to your email."
+  );
+}
+
+
+// ==============================
+// LOGOUT
+// ==============================
 
   async function logout() {
 
