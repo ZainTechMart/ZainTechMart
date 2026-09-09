@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en">
+<head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-  <title>ZainTechMart | Admin Panel</title>
+«»
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <title>ZainTechMart | Admin Panel</title>  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  <style>
 
-  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -103,7 +101,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     .message {
@@ -283,44 +281,43 @@
       .product-actions {
         flex-direction: column;
       }
+
     }
-  </style>
-</head>
 
-<body>
+  </style></head><body><div class="container">  <!-- LOGIN -->  <div id="loginSection" class="card"><h1>ZainTechMart Admin</h1>
 
-<div class="container">
+<p class="subtitle">
+  Admin login
+</p>
 
-  <!-- LOGIN -->
-  <div id="loginSection" class="card">
+<div
+  id="loginMessage"
+  class="message hidden"
+></div>
 
-    <h1>ZainTechMart Admin</h1>
+<label>
+  Email
+</label>
 
-    <p class="subtitle">
-      Admin login
-    </p>
+<input
+  type="email"
+  id="loginEmail"
+  placeholder="Admin email"
+  autocomplete="email"
+>
 
-    <div id="loginMessage" class="message hidden"></div>
+<label>
+  Password
+</label>
 
-    <label>Email</label>
+<input
+  type="password"
+  id="loginPassword"
+  placeholder="Password"
+  autocomplete="current-password"
+>
 
-    <input
-      type="email"
-      id="loginEmail"
-      placeholder="Admin email"
-      autocomplete="email"
-    >
-
-    <label>Password</label>
-
-    <input
-      type="password"
-      id="loginPassword"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button onclick="login()">
+<button onclick="login()">
   Login
 </button>
 
@@ -332,208 +329,243 @@
   Forgot Password?
 </button>
 
-  </div>
+  </div>  <!-- PASSWORD RECOVERY -->  <div
+    id="recoverySection"
+    class="card hidden"
+  ><h1>
+  Set New Password
+</h1>
 
+<p class="subtitle">
+  Create a new password for your ZainTechMart admin account.
+</p>
 
-  <!-- ADMIN PANEL -->
-  <div id="adminSection" class="hidden">
+<div
+  id="recoveryMessage"
+  class="message hidden"
+></div>
 
-    <div class="card">
+<label>
+  New Password
+</label>
 
-      <h1>ZainTechMart Admin Panel</h1>
+<input
+  type="password"
+  id="newPassword"
+  placeholder="Enter new password"
+  autocomplete="new-password"
+>
 
-      <p class="subtitle">
-        Manage your products and categories
-      </p>
+<label>
+  Confirm New Password
+</label>
 
-      <button
-        class="secondary"
-        onclick="logout()"
-      >
-        Logout
-      </button>
+<input
+  type="password"
+  id="confirmPassword"
+  placeholder="Confirm new password"
+  autocomplete="new-password"
+>
 
-    </div>
+<button
+  type="button"
+  onclick="updateAdminPassword()"
+>
+  Update Password
+</button>
 
+  </div>  <!-- ADMIN PANEL -->  <div
+    id="adminSection"
+    class="hidden"
+  ><div class="card">
 
-    <!-- CATEGORY MANAGEMENT -->
-    <div class="card">
+  <h1>
+    ZainTechMart Admin Panel
+  </h1>
 
-      <h2>
-        Categories
-      </h2>
+  <p class="subtitle">
+    Manage your products and categories
+  </p>
 
-      <p class="subtitle">
-        Create and manage your shop categories.
-      </p>
-
-      <input
-        type="text"
-        id="newCategoryName"
-        placeholder="Example: Smart Watches"
-      >
-
-      <label>
-        Category Status
-      </label>
-
-      <select id="newCategoryStatus">
-
-        <option value="active">
-          Active
-        </option>
-
-        <option value="coming_soon">
-          Coming Soon
-        </option>
-
-      </select>
-
-      <p class="small-note">
-        Choose Coming Soon for categories that are not available yet.
-      </p>
-
-      <button
-        class="success"
-        onclick="createCategory()"
-      >
-        Create New Category
-      </button>
-
-      <div
-        id="categoryMessage"
-        class="message hidden"
-      ></div>
-
-      <div id="categoriesList"></div>
-
-    </div>
-
-
-    <!-- ADD / EDIT PRODUCT -->
-    <div class="card">
-
-      <h2 id="formTitle">
-        Add Product
-      </h2>
-
-      <input
-        type="hidden"
-        id="productId"
-      >
-
-
-      <label>
-        Product Name
-      </label>
-
-      <input
-        type="text"
-        id="productName"
-        placeholder="Example: Air31 Earbuds"
-      >
-
-
-      <label>
-        Price
-      </label>
-
-      <input
-        type="number"
-        id="productPrice"
-        placeholder="Example: 3500"
-        min="0"
-        step="0.01"
-      >
-
-
-      <!-- CATEGORY -->
-      <label>
-        Category
-      </label>
-
-      <select id="productCategory">
-
-        <option value="">
-          Select Category
-        </option>
-
-      </select>
-
-
-      <label>
-        Product Image
-      </label>
-
-      <input
-        type="file"
-        id="productImageFile"
-        accept="image/*"
-        onchange="previewImage(event)"
-      >
-
-      <p
-        id="uploadStatus"
-        class="upload-status"
-      ></p>
-
-      <img
-        id="imagePreview"
-        class="image-preview"
-        alt="Image preview"
-      >
-
-
-      <label>
-        Features / Description
-      </label>
-
-      <textarea
-        id="productDescription"
-        placeholder="Write product features..."
-      ></textarea>
-
-
-      <button onclick="saveProduct()">
-        Save Product
-      </button>
-
-
-      <button
-        id="cancelEditButton"
-        class="secondary hidden"
-        onclick="cancelEdit()"
-      >
-        Cancel Edit
-      </button>
-
-    </div>
-
-
-    <!-- PRODUCTS -->
-    <div class="card">
-
-      <h2>
-        Your Products
-      </h2>
-
-      <div
-        id="productsMessage"
-        class="message"
-      >
-        Loading products...
-      </div>
-
-      <div id="productsList"></div>
-
-    </div>
-
-  </div>
+  <button
+    class="secondary"
+    onclick="logout()"
+  >
+    Logout
+  </button>
 
 </div>
 
-<div id="visitorSetting"></div>
-<script>
+
+<!-- CATEGORY MANAGEMENT -->
+
+<div class="card">
+
+  <h2>
+    Categories
+  </h2>
+
+  <p class="subtitle">
+    Create and manage your shop categories.
+  </p>
+
+  <input
+    type="text"
+    id="newCategoryName"
+    placeholder="Example: Smart Watches"
+  >
+
+  <label>
+    Category Status
+  </label>
+
+  <select id="newCategoryStatus">
+
+    <option value="active">
+      Active
+    </option>
+
+    <option value="coming_soon">
+      Coming Soon
+    </option>
+
+  </select>
+
+  <p class="small-note">
+    Choose Coming Soon for categories that are not available yet.
+  </p>
+
+  <button
+    class="success"
+    onclick="createCategory()"
+  >
+    Create New Category
+  </button>
+
+  <div
+    id="categoryMessage"
+    class="message hidden"
+  ></div>
+
+  <div id="categoriesList"></div>
+
+</div>
+
+
+<!-- ADD / EDIT PRODUCT -->
+
+<div class="card">
+
+  <h2 id="formTitle">
+    Add Product
+  </h2>
+
+  <input
+    type="hidden"
+    id="productId"
+  >
+
+  <label>
+    Product Name
+  </label>
+
+  <input
+    type="text"
+    id="productName"
+    placeholder="Example: Air31 Earbuds"
+  >
+
+  <label>
+    Price
+  </label>
+
+  <input
+    type="number"
+    id="productPrice"
+    placeholder="Example: 3500"
+    min="0"
+    step="0.01"
+  >
+
+  <label>
+    Category
+  </label>
+
+  <select id="productCategory">
+
+    <option value="">
+      Select Category
+    </option>
+
+  </select>
+
+  <label>
+    Product Image
+  </label>
+
+  <input
+    type="file"
+    id="productImageFile"
+    accept="image/*"
+    onchange="previewImage(event)"
+  >
+
+  <p
+    id="uploadStatus"
+    class="upload-status"
+  ></p>
+
+  <img
+    id="imagePreview"
+    class="image-preview"
+    alt="Image preview"
+  >
+
+  <label>
+    Features / Description
+  </label>
+
+  <textarea
+    id="productDescription"
+    placeholder="Write product features..."
+  ></textarea>
+
+  <button onclick="saveProduct()">
+    Save Product
+  </button>
+
+  <button
+    id="cancelEditButton"
+    class="secondary hidden"
+    onclick="cancelEdit()"
+  >
+    Cancel Edit
+  </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<div class="card">
+
+  <h2>
+    Your Products
+  </h2>
+
+  <div
+    id="productsMessage"
+    class="message"
+  >
+    Loading products...
+  </div>
+
+  <div id="productsList"></div>
+
+</div>
+
+  </div></div><div id="visitorSetting"></div><script>
+
 
   // ==============================
   // SUPABASE CONFIGURATION
@@ -553,21 +585,95 @@
 
 
   // ==============================
+  // UI HELPERS
+  // ==============================
+
+  function showLoginMessage(text) {
+
+    const message =
+      document.getElementById("loginMessage");
+
+    message.textContent =
+      text;
+
+    message.classList.remove("hidden");
+  }
+
+
+  function showRecoveryMessage(text) {
+
+    const message =
+      document.getElementById("recoveryMessage");
+
+    message.textContent =
+      text;
+
+    message.classList.remove("hidden");
+  }
+
+
+  function showLoginScreen() {
+
+    document
+      .getElementById("adminSection")
+      .classList
+      .add("hidden");
+
+    document
+      .getElementById("recoverySection")
+      .classList
+      .add("hidden");
+
+    document
+      .getElementById("loginSection")
+      .classList
+      .remove("hidden");
+
+  }
+
+
+  function showRecoveryScreen() {
+
+    document
+      .getElementById("loginSection")
+      .classList
+      .add("hidden");
+
+    document
+      .getElementById("adminSection")
+      .classList
+      .add("hidden");
+
+    document
+      .getElementById("recoverySection")
+      .classList
+      .remove("hidden");
+
+  }
+
+
+  // ==============================
   // LOGIN
   // ==============================
 
   async function login() {
 
     const email =
-      document.getElementById("loginEmail").value.trim();
+      document
+        .getElementById("loginEmail")
+        .value
+        .trim();
 
     const password =
-      document.getElementById("loginPassword").value;
+      document
+        .getElementById("loginPassword")
+        .value;
 
     const message =
       document.getElementById("loginMessage");
 
     message.classList.add("hidden");
+
 
     if (!email || !password) {
 
@@ -578,11 +684,13 @@
       return;
     }
 
+
     const { error } =
       await supabaseClient.auth.signInWithPassword({
         email: email,
         password: password
       });
+
 
     if (error) {
 
@@ -593,81 +701,278 @@
       return;
     }
 
-    showAdminPanel();
+
+    await verifyAdminAndShowPanel();
+
   }
 
-function showLoginMessage(text) {
 
-  const message =
-    document.getElementById("loginMessage");
+  // ==============================
+  // FORGOT PASSWORD
+  // ==============================
 
-  message.textContent = text;
+  async function forgotPassword() {
 
-  message.classList.remove("hidden");
-}
+    const email =
+      document
+        .getElementById("loginEmail")
+        .value
+        .trim();
 
 
-// ==============================
-// FORGOT PASSWORD
-// ==============================
+    if (!email) {
 
-async function forgotPassword() {
+      showLoginMessage(
+        "Please enter your admin email first."
+      );
 
-  const email =
-    document.getElementById("loginEmail").value.trim();
+      return;
+    }
 
-  if (!email) {
+
+    const { error } =
+      await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+          redirectTo:
+            "https://zaintechmart.github.io/ZainTechMart/admin.html"
+        }
+      );
+
+
+    if (error) {
+
+      showLoginMessage(
+        error.message
+      );
+
+      return;
+    }
+
 
     showLoginMessage(
-      "Please enter your admin email first."
+      "Password reset link has been sent to your email."
     );
 
-    return;
   }
 
-  const { error } =
-    await supabaseClient.auth.resetPasswordForEmail(
-      email,
-      {
-        redirectTo:
-          "https://zaintechmart.github.io/ZainTechMart/admin.html"
-      }
-    );
 
-  if (error) {
-
-    showLoginMessage(
-      error.message
-    );
-
-    return;
-  }
-
-  showLoginMessage(
-    "Password reset link has been sent to your email."
-  );
-}
-
-
-// ==============================
-// LOGOUT
-// ==============================
+  // ==============================
+  // LOGOUT
+  // ==============================
 
   async function logout() {
 
     await supabaseClient.auth.signOut();
 
-    document
-      .getElementById("adminSection")
-      .classList.add("hidden");
+    sessionStorage.removeItem(
+      "zaintechmart_password_recovery"
+    );
 
-    document
-      .getElementById("loginSection")
-      .classList.remove("hidden");
+    window.location.hash = "";
 
     document
       .getElementById("loginPassword")
       .value = "";
+
+    document
+      .getElementById("newPassword")
+      .value = "";
+
+    document
+      .getElementById("confirmPassword")
+      .value = "";
+
+    showLoginScreen();
+
+  }
+
+
+  // ==============================
+  // UPDATE ADMIN PASSWORD
+  // ==============================
+
+  async function updateAdminPassword() {
+
+    const newPassword =
+      document
+        .getElementById("newPassword")
+        .value;
+
+    const confirmPassword =
+      document
+        .getElementById("confirmPassword")
+        .value;
+
+
+    const message =
+      document
+        .getElementById("recoveryMessage");
+
+    message.classList.add("hidden");
+
+
+    if (!newPassword || !confirmPassword) {
+
+      showRecoveryMessage(
+        "Please enter and confirm your new password."
+      );
+
+      return;
+    }
+
+
+    if (newPassword.length < 6) {
+
+      showRecoveryMessage(
+        "Password must be at least 6 characters."
+      );
+
+      return;
+    }
+
+
+    if (newPassword !== confirmPassword) {
+
+      showRecoveryMessage(
+        "Passwords do not match."
+      );
+
+      return;
+    }
+
+
+    const { error } =
+      await supabaseClient.auth.updateUser({
+        password: newPassword
+      });
+
+
+    if (error) {
+
+      showRecoveryMessage(
+        error.message
+      );
+
+      return;
+    }
+
+
+    sessionStorage.removeItem(
+      "zaintechmart_password_recovery"
+    );
+
+
+    await supabaseClient.auth.signOut();
+
+
+    window.location.hash = "";
+
+
+    document
+      .getElementById("newPassword")
+      .value = "";
+
+    document
+      .getElementById("confirmPassword")
+      .value = "";
+
+
+    alert(
+      "Password updated successfully. Please login with your new password."
+    );
+
+
+    showLoginScreen();
+
+  }
+
+
+  // ==============================
+  // VERIFY ADMIN
+  // ==============================
+
+  async function verifyAdminAndShowPanel() {
+
+    const {
+      data: sessionData,
+      error: sessionError
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if (sessionError || !sessionData?.session) {
+
+      await supabaseClient.auth.signOut();
+
+      showLoginScreen();
+
+      return;
+
+    }
+
+
+    const session =
+      sessionData.session;
+
+
+    const {
+      data: adminProfile,
+      error: adminError
+    } =
+      await supabaseClient
+        .from("admin_profiles")
+        .select(
+          "user_id, role, is_active"
+        )
+        .eq(
+          "user_id",
+          session.user.id
+        )
+        .eq(
+          "role",
+          "admin"
+        )
+        .eq(
+          "is_active",
+          true
+        )
+        .maybeSingle();
+
+
+    if (adminError) {
+
+      console.error(
+        "Admin verification error:",
+        adminError.message
+      );
+
+      await supabaseClient.auth.signOut();
+
+      showLoginScreen();
+
+      return;
+
+    }
+
+
+    if (!adminProfile) {
+
+      console.warn(
+        "Authenticated user is not an active admin."
+      );
+
+      await supabaseClient.auth.signOut();
+
+      showLoginScreen();
+
+      return;
+
+    }
+
+
+    showAdminPanel();
+
   }
 
 
@@ -679,14 +984,168 @@ async function forgotPassword() {
 
     document
       .getElementById("loginSection")
-      .classList.add("hidden");
+      .classList
+      .add("hidden");
+
+    document
+      .getElementById("recoverySection")
+      .classList
+      .add("hidden");
 
     document
       .getElementById("adminSection")
-      .classList.remove("hidden");
+      .classList
+      .remove("hidden");
+
 
     await loadCategories();
+
     await loadProducts();
+
+    await loadVisitorSetting();
+
+  }
+
+
+  // ==============================
+  // PASSWORD RECOVERY DETECTION
+  // ==============================
+
+  function isRecoveryLink() {
+
+    const hash =
+      window.location.hash || "";
+
+    return (
+      hash.includes("type=recovery")
+    );
+
+  }
+
+
+  // ==============================
+  // AUTH STATE LISTENER
+  // ==============================
+
+  supabaseClient.auth.onAuthStateChange(
+    async function(event, session) {
+
+      if (
+        event === "PASSWORD_RECOVERY"
+      ) {
+
+        sessionStorage.setItem(
+          "zaintechmart_password_recovery",
+          "true"
+        );
+
+        showRecoveryScreen();
+
+        return;
+      }
+
+
+      if (
+        event === "SIGNED_OUT"
+      ) {
+
+        showLoginScreen();
+
+        return;
+      }
+
+    }
+  );
+
+
+  // ==============================
+  // CHECK EXISTING SESSION
+  // ==============================
+
+  async function checkSession() {
+
+    try {
+
+      const recoveryMode =
+        isRecoveryLink() ||
+        sessionStorage.getItem(
+          "zaintechmart_password_recovery"
+        ) === "true";
+
+
+      // ==============================
+      // RECOVERY MODE
+      // ==============================
+
+      if (recoveryMode) {
+
+        showRecoveryScreen();
+
+        return;
+
+      }
+
+
+      // ==============================
+      // GET SESSION
+      // ==============================
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .auth
+          .getSession();
+
+
+      if (error) {
+
+        console.error(
+          "Session check error:",
+          error.message
+        );
+
+        showLoginScreen();
+
+        return;
+
+      }
+
+
+      const session =
+        data?.session;
+
+
+      if (!session) {
+
+        showLoginScreen();
+
+        return;
+
+      }
+
+
+      // ==============================
+      // VERIFY ADMIN
+      // ==============================
+
+      await verifyAdminAndShowPanel();
+
+
+    } catch (error) {
+
+      console.error(
+        "Unexpected session error:",
+        error
+      );
+
+      await supabaseClient.auth.signOut();
+
+      showLoginScreen();
+
+    }
+
   }
 
 
@@ -699,8 +1158,14 @@ async function forgotPassword() {
     return name
       .toLowerCase()
       .trim()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+      .replace(
+        /[^a-z0-9]+/g,
+        "-"
+      )
+      .replace(
+        /^-+|-+$/g,
+        "");
+
   }
 
 
@@ -711,16 +1176,22 @@ async function forgotPassword() {
   async function createCategory() {
 
     const input =
-      document.getElementById("newCategoryName");
+      document.getElementById(
+        "newCategoryName"
+      );
 
     const statusSelect =
-      document.getElementById("newCategoryStatus");
+      document.getElementById(
+        "newCategoryStatus"
+      );
+
 
     const name =
       input.value.trim();
 
     const categoryStatus =
       statusSelect.value;
+
 
     if (!name) {
 
@@ -729,10 +1200,13 @@ async function forgotPassword() {
       );
 
       return;
+
     }
+
 
     const slug =
       createSlug(name);
+
 
     if (!slug) {
 
@@ -741,7 +1215,9 @@ async function forgotPassword() {
       );
 
       return;
+
     }
+
 
     const { error } =
       await supabaseClient
@@ -754,9 +1230,12 @@ async function forgotPassword() {
           }
         ]);
 
+
     if (error) {
 
-      if (error.code === "23505") {
+      if (
+        error.code === "23505"
+      ) {
 
         alert(
           "This category already exists."
@@ -768,38 +1247,58 @@ async function forgotPassword() {
           "Could not create category:\n\n" +
           error.message
         );
+
       }
 
       return;
+
     }
+
 
     input.value = "";
 
     statusSelect.value =
       "active";
 
+
     showCategoryMessage(
       "Category created successfully."
     );
 
+
     await loadCategories();
+
   }
 
 
   function showCategoryMessage(text) {
 
     const message =
-      document.getElementById("categoryMessage");
+      document.getElementById(
+        "categoryMessage"
+      );
 
-    message.textContent = text;
 
-    message.classList.remove("hidden");
+    message.textContent =
+      text;
 
-    setTimeout(() => {
 
-      message.classList.add("hidden");
+    message.classList.remove(
+      "hidden"
+    );
 
-    }, 3000);
+
+    setTimeout(
+      function() {
+
+        message.classList.add(
+          "hidden"
+        );
+
+      },
+      3000
+    );
+
   }
 
 
@@ -809,16 +1308,26 @@ async function forgotPassword() {
 
   async function loadCategories() {
 
-    const { data, error } =
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("categories")
         .select("*")
-        .order("sort_order", {
-          ascending: true
-        })
-        .order("name", {
-          ascending: true
-        });
+        .order(
+          "sort_order",
+          {
+            ascending: true
+          }
+        )
+        .order(
+          "name",
+          {
+            ascending: true
+          }
+        );
+
 
     if (error) {
 
@@ -828,14 +1337,19 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
     const list =
-      document.getElementById("categoriesList");
+      document.getElementById(
+        "categoriesList"
+      );
 
     const select =
-      document.getElementById("productCategory");
+      document.getElementById(
+        "productCategory"
+      );
 
 
     list.innerHTML = "";
@@ -844,204 +1358,260 @@ async function forgotPassword() {
       '<option value="">Select Category</option>';
 
 
-    if (!data || data.length === 0) {
+    if (
+      !data ||
+      data.length === 0
+    ) {
 
       list.innerHTML =
         '<p class="empty-text">No categories created yet.</p>';
 
       return;
+
     }
 
 
-    data.forEach(category => {
+    data.forEach(
+      function(category) {
 
-      const categoryStatus =
-        category.status || "active";
+        const categoryStatus =
+          category.status ||
+          "active";
 
 
-      // ==============================
-      // PRODUCT DROPDOWN
-      // ==============================
+        // PRODUCT DROPDOWN
 
-      const option =
-        document.createElement("option");
+        const option =
+          document.createElement(
+            "option"
+          );
 
-      option.value =
-        category.id;
 
-      option.textContent =
-        category.name +
-        (
-          categoryStatus === "coming_soon"
-            ? " — Coming Soon"
-            : ""
+        option.value =
+          category.id;
+
+
+        option.textContent =
+          category.name +
+          (
+            categoryStatus ===
+            "coming_soon"
+              ? " — Coming Soon"
+              : ""
+          );
+
+
+        select.appendChild(
+          option
         );
 
-      select.appendChild(option);
+
+        // CATEGORY LIST ITEM
+
+        const item =
+          document.createElement(
+            "div"
+          );
 
 
-      // ==============================
-      // CATEGORY LIST ITEM
-      // ==============================
-
-      const item =
-        document.createElement("div");
-
-      item.className =
-        "category-item";
+        item.className =
+          "category-item";
 
 
-      const info =
-        document.createElement("div");
-
-      info.className =
-        "category-info";
-
-
-      const name =
-        document.createElement("div");
-
-      name.className =
-        "category-name";
-
-      name.textContent =
-        category.name;
+        const info =
+          document.createElement(
+            "div"
+          );
 
 
-      const meta =
-        document.createElement("div");
-
-      meta.className =
-        "category-meta";
+        info.className =
+          "category-info";
 
 
-      const statusBadge =
-        document.createElement("span");
+        const name =
+          document.createElement(
+            "div"
+          );
 
-      statusBadge.className =
-        "status-badge " +
-        (
-          categoryStatus === "coming_soon"
-            ? "status-coming"
-            : "status-active"
+
+        name.className =
+          "category-name";
+
+
+        name.textContent =
+          category.name;
+
+
+        const meta =
+          document.createElement(
+            "div"
+          );
+
+
+        meta.className =
+          "category-meta";
+
+
+        const statusBadge =
+          document.createElement(
+            "span"
+          );
+
+
+        statusBadge.className =
+          "status-badge " +
+          (
+            categoryStatus ===
+            "coming_soon"
+              ? "status-coming"
+              : "status-active"
+          );
+
+
+        statusBadge.textContent =
+          categoryStatus ===
+          "coming_soon"
+            ? "Coming Soon"
+            : "Active";
+
+
+        meta.appendChild(
+          statusBadge
         );
 
-      statusBadge.textContent =
-        categoryStatus === "coming_soon"
-          ? "Coming Soon"
-          : "Active";
+
+        info.appendChild(
+          name
+        );
+
+        info.appendChild(
+          meta
+        );
 
 
-      meta.appendChild(
-        statusBadge
-      );
-
-
-      info.appendChild(name);
-      info.appendChild(meta);
-
-
-      const actions =
-        document.createElement("div");
-
-      actions.className =
-        "category-actions";
-
-
-      // ==============================
-      // STATUS BUTTON
-      // ==============================
-
-      const statusButton =
-        document.createElement("button");
-
-      statusButton.textContent =
-        categoryStatus === "coming_soon"
-          ? "Set Active"
-          : "Set Coming Soon";
-
-      statusButton.className =
-        categoryStatus === "coming_soon"
-          ? "success"
-          : "secondary";
-
-      statusButton.onclick =
-        function() {
-
-          updateCategoryStatus(
-            category.id,
-            category.name,
-            categoryStatus
+        const actions =
+          document.createElement(
+            "div"
           );
 
-        };
+
+        actions.className =
+          "category-actions";
 
 
-      // ==============================
-      // RENAME BUTTON
-      // ==============================
+        // STATUS BUTTON
 
-      const editButton =
-        document.createElement("button");
-
-      editButton.textContent =
-        "Rename";
-
-      editButton.onclick =
-        function() {
-
-          renameCategory(
-            category.id,
-            category.name
+        const statusButton =
+          document.createElement(
+            "button"
           );
 
-        };
+
+        statusButton.textContent =
+          categoryStatus ===
+          "coming_soon"
+            ? "Set Active"
+            : "Set Coming Soon";
 
 
-      // ==============================
-      // DELETE BUTTON
-      // ==============================
+        statusButton.className =
+          categoryStatus ===
+          "coming_soon"
+            ? "success"
+            : "secondary";
 
-      const deleteButton =
-        document.createElement("button");
 
-      deleteButton.textContent =
-        "Delete";
+        statusButton.onclick =
+          function() {
 
-      deleteButton.className =
-        "danger";
+            updateCategoryStatus(
+              category.id,
+              category.name,
+              categoryStatus
+            );
 
-      deleteButton.onclick =
-        function() {
+          };
 
-          deleteCategory(
-            category.id,
-            category.name
+
+        // RENAME BUTTON
+
+        const editButton =
+          document.createElement(
+            "button"
           );
 
-        };
+
+        editButton.textContent =
+          "Rename";
 
 
-      actions.appendChild(
-        statusButton
-      );
+        editButton.onclick =
+          function() {
 
-      actions.appendChild(
-        editButton
-      );
+            renameCategory(
+              category.id,
+              category.name
+            );
 
-      actions.appendChild(
-        deleteButton
-      );
+          };
 
 
-      item.appendChild(info);
+        // DELETE BUTTON
 
-      item.appendChild(actions);
+        const deleteButton =
+          document.createElement(
+            "button"
+          );
 
-      list.appendChild(item);
 
-    });
+        deleteButton.textContent =
+          "Delete";
+
+
+        deleteButton.className =
+          "danger";
+
+
+        deleteButton.onclick =
+          function() {
+
+            deleteCategory(
+              category.id,
+              category.name
+            );
+
+          };
+
+
+        actions.appendChild(
+          statusButton
+        );
+
+        actions.appendChild(
+          editButton
+        );
+
+        actions.appendChild(
+          deleteButton
+        );
+
+
+        item.appendChild(
+          info
+        );
+
+        item.appendChild(
+          actions
+        );
+
+
+        list.appendChild(
+          item
+        );
+
+      }
+    );
+
   }
 
 
@@ -1056,7 +1626,8 @@ async function forgotPassword() {
   ) {
 
     const newStatus =
-      currentStatus === "coming_soon"
+      currentStatus ===
+      "coming_soon"
         ? "active"
         : "coming_soon";
 
@@ -1067,7 +1638,10 @@ async function forgotPassword() {
         .update({
           status: newStatus
         })
-        .eq("id", id);
+        .eq(
+          "id",
+          id
+        );
 
 
     if (error) {
@@ -1078,6 +1652,7 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
@@ -1091,11 +1666,13 @@ async function forgotPassword() {
       name +
       "\" is now " +
       (
-        newStatus === "coming_soon"
+        newStatus ===
+        "coming_soon"
           ? "Coming Soon."
           : "Active."
       )
     );
+
   }
 
 
@@ -1103,7 +1680,10 @@ async function forgotPassword() {
   // RENAME CATEGORY
   // ==============================
 
-  async function renameCategory(id, oldName) {
+  async function renameCategory(
+    id,
+    oldName
+  ) {
 
     const newName =
       prompt(
@@ -1111,12 +1691,19 @@ async function forgotPassword() {
         oldName
       );
 
-    if (newName === null) {
+
+    if (
+      newName === null
+    ) {
+
       return;
+
     }
+
 
     const name =
       newName.trim();
+
 
     if (!name) {
 
@@ -1125,10 +1712,13 @@ async function forgotPassword() {
       );
 
       return;
+
     }
+
 
     const slug =
       createSlug(name);
+
 
     const { error } =
       await supabaseClient
@@ -1137,11 +1727,17 @@ async function forgotPassword() {
           name: name,
           slug: slug
         })
-        .eq("id", id);
+        .eq(
+          "id",
+          id
+        );
+
 
     if (error) {
 
-      if (error.code === "23505") {
+      if (
+        error.code === "23505"
+      ) {
 
         alert(
           "Another category with this name already exists."
@@ -1153,17 +1749,23 @@ async function forgotPassword() {
           "Could not rename category:\n\n" +
           error.message
         );
+
       }
 
       return;
+
     }
 
+
     await loadCategories();
+
     await loadProducts();
+
 
     alert(
       "Category renamed successfully."
     );
+
   }
 
 
@@ -1171,7 +1773,10 @@ async function forgotPassword() {
   // DELETE CATEGORY
   // ==============================
 
-  async function deleteCategory(id, name) {
+  async function deleteCategory(
+    id,
+    name
+  ) {
 
     const confirmed =
       confirm(
@@ -1180,8 +1785,11 @@ async function forgotPassword() {
         "\"?\n\nProducts in this category will become uncategorized."
       );
 
+
     if (!confirmed) {
+
       return;
+
     }
 
 
@@ -1189,7 +1797,10 @@ async function forgotPassword() {
       await supabaseClient
         .from("categories")
         .delete()
-        .eq("id", id);
+        .eq(
+          "id",
+          id
+        );
 
 
     if (error) {
@@ -1200,6 +1811,7 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
@@ -1211,6 +1823,7 @@ async function forgotPassword() {
     alert(
       "Category deleted successfully."
     );
+
   }
 
 
@@ -1221,26 +1834,41 @@ async function forgotPassword() {
   async function loadProducts() {
 
     const message =
-      document.getElementById("productsMessage");
+      document.getElementById(
+        "productsMessage"
+      );
 
     const list =
-      document.getElementById("productsList");
+      document.getElementById(
+        "productsList"
+      );
 
-    message.classList.remove("hidden");
+
+    message.classList.remove(
+      "hidden"
+    );
+
 
     message.textContent =
       "Loading products...";
 
+
     list.innerHTML = "";
 
 
-    const { data, error } =
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("products")
         .select("*")
-        .order("created_at", {
-          ascending: false
-        });
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
 
 
     if (error) {
@@ -1250,169 +1878,268 @@ async function forgotPassword() {
         error.message;
 
       return;
+
     }
 
 
-    if (!data || data.length === 0) {
+    if (
+      !data ||
+      data.length === 0
+    ) {
 
       message.textContent =
         "No products found.";
 
       return;
+
     }
 
 
-    message.classList.add("hidden");
+    message.classList.add(
+      "hidden"
+    );
 
-
-    // Load categories for displaying names
 
     const {
       data: categories
     } =
       await supabaseClient
         .from("categories")
-        .select("id, name");
+        .select(
+          "id, name"
+        );
 
 
     const categoryMap = {};
 
-    (categories || []).forEach(category => {
 
-      categoryMap[category.id] =
-        category.name;
+    (
+      categories ||
+      []
+    ).forEach(
+      function(category) {
 
-    });
+        categoryMap[
+          category.id
+        ] =
+          category.name;
 
-
-    data.forEach(product => {
-
-      const div =
-        document.createElement("div");
-
-      div.className =
-        "product";
-
-
-      const title =
-        document.createElement("h3");
-
-      title.textContent =
-        product.name || "";
-
-      div.appendChild(title);
-
-
-      const price =
-        document.createElement("p");
-
-      price.className =
-        "price";
-
-      price.textContent =
-        "Price: " +
-        (product.price ?? "");
-
-      div.appendChild(price);
-
-
-      if (product.category_id &&
-          categoryMap[product.category_id]) {
-
-        const category =
-          document.createElement("span");
-
-        category.className =
-          "category-badge";
-
-        category.textContent =
-          categoryMap[product.category_id];
-
-        div.appendChild(category);
       }
+    );
 
 
-      if (product.image) {
+    data.forEach(
+      function(product) {
 
-        const image =
-          document.createElement("img");
+        const div =
+          document.createElement(
+            "div"
+          );
 
-        image.className =
-          "product-image";
 
-        image.src =
-          product.image;
+        div.className =
+          "product";
 
-        image.alt =
-          product.name || "Product image";
 
-        image.onerror = function() {
+        const title =
+          document.createElement(
+            "h3"
+          );
 
-          this.style.display =
-            "none";
 
-        };
+        title.textContent =
+          product.name ||
+          "";
 
-        div.appendChild(image);
+
+        div.appendChild(
+          title
+        );
+
+
+        const price =
+          document.createElement(
+            "p"
+          );
+
+
+        price.className =
+          "price";
+
+
+        price.textContent =
+          "Price: " +
+          (
+            product.price ??
+            ""
+          );
+
+
+        div.appendChild(
+          price
+        );
+
+
+        if (
+          product.category_id &&
+          categoryMap[
+            product.category_id
+          ]
+        ) {
+
+          const category =
+            document.createElement(
+              "span"
+            );
+
+
+          category.className =
+            "category-badge";
+
+
+          category.textContent =
+            categoryMap[
+              product.category_id
+            ];
+
+
+          div.appendChild(
+            category
+          );
+
+        }
+
+
+        if (
+          product.image
+        ) {
+
+          const image =
+            document.createElement(
+              "img"
+            );
+
+
+          image.className =
+            "product-image";
+
+
+          image.src =
+            product.image;
+
+
+          image.alt =
+            product.name ||
+            "Product image";
+
+
+          image.onerror =
+            function() {
+
+              this.style.display =
+                "none";
+
+            };
+
+
+          div.appendChild(
+            image
+          );
+
+        }
+
+
+        const description =
+          document.createElement(
+            "p"
+          );
+
+
+        description.textContent =
+          product.description ||
+          "";
+
+
+        div.appendChild(
+          description
+        );
+
+
+        const actions =
+          document.createElement(
+            "div"
+          );
+
+
+        actions.className =
+          "product-actions";
+
+
+        const editButton =
+          document.createElement(
+            "button"
+          );
+
+
+        editButton.textContent =
+          "Edit";
+
+
+        editButton.onclick =
+          function() {
+
+            editProduct(
+              product.id
+            );
+
+          };
+
+
+        const deleteButton =
+          document.createElement(
+            "button"
+          );
+
+
+        deleteButton.textContent =
+          "Delete";
+
+
+        deleteButton.className =
+          "danger";
+
+
+        deleteButton.onclick =
+          function() {
+
+            deleteProduct(
+              product.id
+            );
+
+          };
+
+
+        actions.appendChild(
+          editButton
+        );
+
+        actions.appendChild(
+          deleteButton
+        );
+
+
+        div.appendChild(
+          actions
+        );
+
+
+        list.appendChild(
+          div
+        );
+
       }
+    );
 
-
-      const description =
-        document.createElement("p");
-
-      description.textContent =
-        product.description || "";
-
-      div.appendChild(description);
-
-
-      const actions =
-        document.createElement("div");
-
-      actions.className =
-        "product-actions";
-
-
-      const editButton =
-        document.createElement("button");
-
-      editButton.textContent =
-        "Edit";
-
-      editButton.onclick =
-        function() {
-
-          editProduct(product.id);
-
-        };
-
-
-      const deleteButton =
-        document.createElement("button");
-
-      deleteButton.textContent =
-        "Delete";
-
-      deleteButton.className =
-        "danger";
-
-      deleteButton.onclick =
-        function() {
-
-          deleteProduct(product.id);
-
-        };
-
-
-      actions.appendChild(editButton);
-
-      actions.appendChild(deleteButton);
-
-      div.appendChild(actions);
-
-      list.appendChild(div);
-
-    });
   }
 
 
@@ -1425,11 +2152,17 @@ async function forgotPassword() {
     const file =
       event.target.files[0];
 
+
     const preview =
-      document.getElementById("imagePreview");
+      document.getElementById(
+        "imagePreview"
+      );
+
 
     const status =
-      document.getElementById("uploadStatus");
+      document.getElementById(
+        "uploadStatus"
+      );
 
 
     if (!file) {
@@ -1441,22 +2174,31 @@ async function forgotPassword() {
         "";
 
       return;
+
     }
 
 
-    if (!file.type.startsWith("image/")) {
+    if (
+      !file.type.startsWith(
+        "image/"
+      )
+    ) {
 
       alert(
         "Please select an image file."
       );
 
+
       event.target.value =
         "";
+
 
       preview.style.display =
         "none";
 
+
       return;
+
     }
 
 
@@ -1470,17 +2212,22 @@ async function forgotPassword() {
         preview.src =
           e.target.result;
 
+
         preview.style.display =
           "block";
 
       };
 
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(
+      file
+    );
+
 
     status.textContent =
       "Image selected: " +
       file.name;
+
   }
 
 
@@ -1491,7 +2238,9 @@ async function forgotPassword() {
   async function uploadImage(file) {
 
     if (!file) {
+
       return null;
+
     }
 
 
@@ -1516,7 +2265,9 @@ async function forgotPassword() {
       fileName;
 
 
-    const { error } =
+    const {
+      error
+    } =
       await supabaseClient
         .storage
         .from("product-images")
@@ -1524,8 +2275,10 @@ async function forgotPassword() {
           filePath,
           file,
           {
-            cacheControl: "3600",
-            upsert: false
+            cacheControl:
+              "3600",
+            upsert:
+              false
           }
         );
 
@@ -1533,17 +2286,25 @@ async function forgotPassword() {
     if (error) {
 
       throw error;
+
     }
 
 
-    const { data } =
+    const {
+      data
+    } =
       supabaseClient
         .storage
-        .from("product-images")
-        .getPublicUrl(filePath);
+        .from(
+          "product-images"
+        )
+        .getPublicUrl(
+          filePath
+        );
 
 
     return data.publicUrl;
+
   }
 
 
@@ -1554,46 +2315,68 @@ async function forgotPassword() {
   async function saveProduct() {
 
     const id =
-      document.getElementById("productId").value;
+      document.getElementById(
+        "productId"
+      ).value;
+
 
     const name =
       document
-        .getElementById("productName")
+        .getElementById(
+          "productName"
+        )
         .value
         .trim();
 
+
     const price =
-      document
-        .getElementById("productPrice")
-        .value;
+      document.getElementById(
+        "productPrice"
+      ).value;
+
 
     const categoryId =
       document
-        .getElementById("productCategory")
+        .getElementById(
+          "productCategory"
+        )
         .value;
+
 
     const description =
       document
-        .getElementById("productDescription")
+        .getElementById(
+          "productDescription"
+        )
         .value
         .trim();
 
+
     const imageFile =
       document
-        .getElementById("productImageFile")
+        .getElementById(
+          "productImageFile"
+        )
         .files[0];
 
+
     const status =
-      document.getElementById("uploadStatus");
+      document.getElementById(
+        "uploadStatus"
+      );
 
 
-    if (!name || !price) {
+    if (
+      !name ||
+      !price
+    ) {
 
       alert(
         "Product name and price are required."
       );
 
       return;
+
     }
 
 
@@ -1604,6 +2387,7 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
@@ -1613,41 +2397,46 @@ async function forgotPassword() {
         "Saving product...";
 
 
-      let imageUrl = null;
+      let imageUrl =
+        null;
 
-
-      // Upload new image if selected
 
       if (imageFile) {
 
         status.textContent =
           "Uploading image...";
 
+
         imageUrl =
-          await uploadImage(imageFile);
+          await uploadImage(
+            imageFile
+          );
+
       }
 
 
       const productData = {
 
-        name: name,
+        name:
+          name,
 
-        price: Number(price),
+        price:
+          Number(price),
 
-        category_id: Number(categoryId),
+        category_id:
+          Number(categoryId),
 
-        description: description
+        description:
+          description
 
       };
 
-
-      // Only change image when
-      // a new image was selected
 
       if (imageUrl) {
 
         productData.image =
           imageUrl;
+
       }
 
 
@@ -1659,12 +2448,15 @@ async function forgotPassword() {
         result =
           await supabaseClient
             .from("products")
-            .update(productData)
-            .eq("id", id);
+            .update(
+              productData
+            )
+            .eq(
+              "id",
+              id
+            );
 
       } else {
-
-        // New product needs an image
 
         if (!imageUrl) {
 
@@ -1672,10 +2464,13 @@ async function forgotPassword() {
             "Please select a product image."
           );
 
+
           status.textContent =
             "";
 
+
           return;
+
         }
 
 
@@ -1685,6 +2480,7 @@ async function forgotPassword() {
             .insert([
               productData
             ]);
+
       }
 
 
@@ -1695,10 +2491,13 @@ async function forgotPassword() {
           result.error.message
         );
 
+
         status.textContent =
           "";
 
+
         return;
+
       }
 
 
@@ -1711,6 +2510,7 @@ async function forgotPassword() {
 
       clearForm();
 
+
       await loadProducts();
 
     } catch (error) {
@@ -1720,9 +2520,12 @@ async function forgotPassword() {
         error.message
       );
 
+
       status.textContent =
         "";
+
     }
+
   }
 
 
@@ -1732,11 +2535,17 @@ async function forgotPassword() {
 
   async function editProduct(id) {
 
-    const { data, error } =
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("products")
         .select("*")
-        .eq("id", id)
+        .eq(
+          "id",
+          id
+        )
         .single();
 
 
@@ -1748,47 +2557,65 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
     document
-      .getElementById("productId")
+      .getElementById(
+        "productId"
+      )
       .value =
       data.id;
 
 
     document
-      .getElementById("productName")
+      .getElementById(
+        "productName"
+      )
       .value =
-      data.name || "";
+      data.name ||
+      "";
 
 
     document
-      .getElementById("productPrice")
+      .getElementById(
+        "productPrice"
+      )
       .value =
-      data.price || "";
+      data.price ||
+      "";
 
 
     document
-      .getElementById("productCategory")
+      .getElementById(
+        "productCategory"
+      )
       .value =
-      data.category_id || "";
+      data.category_id ||
+      "";
 
 
     document
-      .getElementById("productDescription")
+      .getElementById(
+        "productDescription"
+      )
       .value =
-      data.description || "";
+      data.description ||
+      "";
 
 
     const preview =
-      document.getElementById("imagePreview");
+      document.getElementById(
+        "imagePreview"
+      );
 
 
     if (data.image) {
 
       preview.src =
         data.image;
+
 
       preview.style.display =
         "block";
@@ -1802,27 +2629,36 @@ async function forgotPassword() {
 
 
     document
-      .getElementById("uploadStatus")
+      .getElementById(
+        "uploadStatus"
+      )
       .textContent =
       "Choose a new image only if you want to replace the current image.";
 
 
     document
-      .getElementById("formTitle")
+      .getElementById(
+        "formTitle"
+      )
       .textContent =
       "Edit Product";
 
 
     document
-      .getElementById("cancelEditButton")
+      .getElementById(
+        "cancelEditButton"
+      )
       .classList
-      .remove("hidden");
+      .remove(
+        "hidden"
+      );
 
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+
   }
 
 
@@ -1839,15 +2675,22 @@ async function forgotPassword() {
 
 
     if (!confirmed) {
+
       return;
+
     }
 
 
-    const { error } =
+    const {
+      error
+    } =
       await supabaseClient
         .from("products")
         .delete()
-        .eq("id", id);
+        .eq(
+          "id",
+          id
+        );
 
 
     if (error) {
@@ -1858,6 +2701,7 @@ async function forgotPassword() {
       );
 
       return;
+
     }
 
 
@@ -1866,7 +2710,8 @@ async function forgotPassword() {
     );
 
 
-    loadProducts();
+    await loadProducts();
+
   }
 
 
@@ -1877,63 +2722,86 @@ async function forgotPassword() {
   function clearForm() {
 
     document
-      .getElementById("productId")
+      .getElementById(
+        "productId"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("productName")
+      .getElementById(
+        "productName"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("productPrice")
+      .getElementById(
+        "productPrice"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("productCategory")
+      .getElementById(
+        "productCategory"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("productDescription")
+      .getElementById(
+        "productDescription"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("productImageFile")
+      .getElementById(
+        "productImageFile"
+      )
       .value =
       "";
 
 
     document
-      .getElementById("formTitle")
+      .getElementById(
+        "formTitle"
+      )
       .textContent =
       "Add Product";
 
 
     document
-      .getElementById("cancelEditButton")
+      .getElementById(
+        "cancelEditButton"
+      )
       .classList
-      .add("hidden");
+      .add(
+        "hidden"
+      );
 
 
     document
-      .getElementById("imagePreview")
+      .getElementById(
+        "imagePreview"
+      )
       .style.display =
       "none";
 
 
     document
-      .getElementById("uploadStatus")
+      .getElementById(
+        "uploadStatus"
+      )
       .textContent =
       "";
+
   }
 
 
@@ -1943,6 +2811,7 @@ async function forgotPassword() {
 
   }
 
+
   // ==============================
   // STORE VISITORS SHOW / HIDE
   // ==============================
@@ -1950,18 +2819,33 @@ async function forgotPassword() {
   async function loadVisitorSetting() {
 
     const container =
-      document.getElementById("visitorSetting");
+      document.getElementById(
+        "visitorSetting"
+      );
+
 
     if (!container) {
+
       return;
+
     }
 
-    const { data, error } =
+
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("store_settings")
-        .select("visitors_visible")
-        .eq("id", 1)
+        .select(
+          "visitors_visible"
+        )
+        .eq(
+          "id",
+          1
+        )
         .maybeSingle();
+
 
     if (error) {
 
@@ -1969,27 +2853,32 @@ async function forgotPassword() {
         "<p style='color:#b00020;'>Could not load visitor setting.</p>";
 
       return;
+
     }
+
 
     const visible =
       data
         ? data.visitors_visible
         : true;
 
+
     container.innerHTML = `
+
       <div style="
         margin-top:20px;
         padding:18px;
-        border:1px solid #eee;
+        border:1px solid #263550;
         border-radius:14px;
-        background:#fff;
+        background:#151f33;
+        color:white;
       ">
 
         <h3 style="margin-top:0;">
           👀 Store Visitors
         </h3>
 
-        <p style="margin-bottom:12px;">
+        <p style="margin-bottom:12px;color:#b8c2d6;">
           Choose whether the visitor counter should appear on the store.
         </p>
 
@@ -2020,7 +2909,7 @@ async function forgotPassword() {
           HIDE
         </button>
 
-        <p style="margin-bottom:0;margin-top:12px;">
+        <p style="margin-bottom:0;margin-top:12px;color:#b8c2d6;">
           Current status:
           <strong>
             ${visible ? "SHOWING" : "HIDDEN"}
@@ -2028,19 +2917,30 @@ async function forgotPassword() {
         </p>
 
       </div>
+
     `;
+
   }
 
 
-  async function setVisitorVisibility(visible) {
+  async function setVisitorVisibility(
+    visible
+  ) {
 
-    const { error } =
+    const {
+      error
+    } =
       await supabaseClient
         .from("store_settings")
         .update({
-          visitors_visible: visible
+          visitors_visible:
+            visible
         })
-        .eq("id", 1);
+        .eq(
+          "id",
+          1
+        );
+
 
     if (error) {
 
@@ -2050,7 +2950,9 @@ async function forgotPassword() {
       );
 
       return;
+
     }
+
 
     alert(
       visible
@@ -2058,90 +2960,17 @@ async function forgotPassword() {
         : "Store Visitors is now hidden."
     );
 
-    loadVisitorSetting();
-  }
 
-// ==============================
-// CHECK EXISTING SESSION
-// ==============================
-
-async function checkSession() {
-
-  try {
-
-    const { data, error } =
-      await supabaseClient
-        .auth
-        .getSession();
-
-    if (error) {
-
-      console.error(
-        "Session check error:",
-        error.message
-      );
-
-      return;
-    }
-
-    const session =
-      data?.session;
-
-    if (!session) {
-
-      return;
-    }
-
-    const { data: adminProfile, error: adminError } =
-      await supabaseClient
-        .from("admin_profiles")
-        .select("user_id, role, is_active")
-        .eq("user_id", session.user.id)
-        .eq("role", "admin")
-        .eq("is_active", true)
-        .maybeSingle();
-
-    if (adminError) {
-
-      console.error(
-        "Admin verification error:",
-        adminError.message
-      );
-
-      await supabaseClient.auth.signOut();
-
-      return;
-    }
-
-    if (!adminProfile) {
-
-      console.warn(
-        "Authenticated user is not an active admin."
-      );
-
-      await supabaseClient.auth.signOut();
-
-      return;
-    }
-
-    showAdminPanel();
-
-  } catch (error) {
-
-    console.error(
-      "Unexpected session error:",
-      error
-    );
-
-    await supabaseClient.auth.signOut();
+    await loadVisitorSetting();
 
   }
 
-  }
- checkSession();
-loadVisitorSetting();
 
-</script>
+  // ==============================
+  // START
+  // ==============================
 
-</body>
+  checkSession();
+
+</script></body>
 </html>
